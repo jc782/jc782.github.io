@@ -1,20 +1,21 @@
 ---
-title: "Japow delivers."
+title: Japow delivers.
 layout: post
-date: 2018-03-25 14:10
+date: '2018-03-25 14:10'
 headerImage: false
 tag:
-- travel
-- skiing
+  - travel
+  - skiing
 star: false
 category: blog
 author: joshcarr
 description: A trip report for two weeks in Japow.
+published: true
 ---
 
 ## Summary:
 
-I'd been mulling over a 2018 Japow ski trip for a few years, so when the idea of racing an Ekiden came along it was a no-brainer to tag on some days on the slopes. Japan's reputation for deep, light powder, especially on the north island of Hokkaido has become internationally reknowned. We went to find out what it was all about.
+I'd been mulling over a 2018 Japow ski trip for a few years, so when the idea of racing an Ekiden came along it was a no-brainer to tag on some days on the slopes. Japan's reputation for deep, light powder, especially on the north island of Hokkaido has become internationally renowned. We went to find out what it was all about.
 
 ## Logistics:
 
@@ -40,6 +41,8 @@ Not much to say about Gala, we skied there on a Tuesday morning and it was prett
 
 Linked into the same lift system as Gala and Yuzawa Kogen this was definitely the best of the three. It felt like there was more vertical on offer, the average run was much steeper, it was easier to dive offpiste or between pistes and seemed to all count as inbounds, and best of all it was so quiet that we were skiing deep fresh powder at 6pm in floodlit conditions. (Nighta is a big thing in Japan!)
 
+![IMG_20180130_172446-min.jpg]({{site.baseurl}}/_posts/IMG_20180130_172446-min.jpg)
+
 
 ### Kandatsu Kogen
 
@@ -56,6 +59,9 @@ The skiing here was good, it felt fairly alpine with a few distinct areas that w
 
 You can't mention Zao Onsen without talking about the Snow Monsters. I've never seen anything like it. The picture speaks for itself.
 
+![DSCF3619-min.JPG]({{site.baseurl}}/_posts/DSCF3619-min.JPG)
+
+
 ### Geto Kogen
 
 Hands down this was the best skiing we had. It might be a small resort but I could happily have skied there for a week in the conditions we had. Arriving, there was only a few cm of snowfall forecast, but for the 48hrs we spent there is didn't stop snowing. You can stay right at the mountain in a capsule hotel half board for a very reasonable price. The spa including outdoor pool was great. The food was not but who cares when you've spent the day skiing waist deep powder through trees.
@@ -64,6 +70,9 @@ Geto Kogen has opened tree runs over the last few years. They've pruned the fore
 
 If you go to Japan and you just want to ski powder in trees on your own / with buddies then Geto is the place to be.
 
+![IMG_3739-min.JPG]({{site.baseurl}}/_posts/IMG_3739-min.JPG)
+
+
 ### Niseko
 
 Finally on Hokkaido. We braved hiring a car for this part because our hotel was not near the slopes. Niseko is expensive, it's full of Aussie's, it does have good skiing and the lift infrastructure is better than anywhere else in Japan. But... I wouldn't go back. I'd rather try out more small resorts in Northern Honshu than listen to Aussie's brag about drinking lots the night before.
@@ -71,6 +80,4 @@ Finally on Hokkaido. We braved hiring a car for this part because our hotel was 
 
 ### Skiing Summary
 
-Japan lived up to it's reputation. I think we skied deep powder at least half of the days we were there. It's not as expensive as you might think (apart from Niseko), has amazing culture, great food in general, and unbeatable Onsens. I fully intend to go back in the future.
-
- 
+Japan lived up to it's reputation. I think we skied 'deep' powder at least half of the days we were there. It's not as expensive as you might think (apart from Niseko), has amazing culture, great food in general, and unbeatable Onsens.
