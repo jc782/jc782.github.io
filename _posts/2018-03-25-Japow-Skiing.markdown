@@ -1,5 +1,5 @@
 ---
-title: Japow delivers.
+title: Japow Delivers.
 layout: post
 date: '2018-03-25 14:10'
 headerImage: false
@@ -19,7 +19,7 @@ I'd been mulling over a 2018 Japow ski trip for a few years, so when the idea of
 
 ## Logistics:
 
-Our trip was a little over two weeks long and the plan was to spend the first 4 days in Tokyo and racing in the Okumusashi Ekiden at Hanno city. This left just under 2 weeks to explore Japan's skiing so we planned an itinary with four stops. This works perfectly with the south-east Hokkaido and East Japan rail pass which allows 6 days of travel on JR trains within a 14day period. It includes travel on the Shinkansen and simply using it for Tokyo-Hakodate return makes the pass worthwhile. It also works nicely for people with their own skis as there's no extra charge for carrying them. We'd heard that it was frowned upon to carry large amounts of luggage but this was unavoidable for us and we didn't have any problems other than on the metro in Tokyo.
+Our trip was a little over two weeks long and the plan was to spend the first 4 days in Tokyo and racing in the Okumusashi Ekiden at Hanno city. This left just under 2 weeks to explore Japan's skiing so we planned an itinary with four stops. This works perfectly with the south-east Hokkaido and East Japan rail pass which allows 6 days of travel on JR trains within a 14 day period. It includes travel on the Shinkansen and simply using it for Tokyo-Hakodate return makes the pass worthwhile. It also works nicely for people with their own skis as there's no extra charge for carrying them. We'd heard that it was frowned upon to carry large amounts of luggage but this was unavoidable for us and we didn't have any problems other than on the metro in Tokyo.
 
 ## Tokyo:
 
