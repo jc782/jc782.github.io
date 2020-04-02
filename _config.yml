@@ -1,5 +1,5 @@
 # main text of home
-name: Josh Carr
+name: Joshua Carr
 bio: Things I find interesting.
 
 # twitter summary info
@@ -17,21 +17,11 @@ resume-external: False
 resume-url:
 
 url: https://joshcarr.co.uk
-# your url: http://USERNAME.github.io
 
 permalink: /:title/
 
 # To enable google analytics, supply your token below
 analytics-google: 'UA-116356115-1'
-
-# To enable piwik tracking, supply your url & site ID below
-# analytics-piwik-url: 'piwik.my-host.com'
-# analytics-piwik-id: 1
-
-# if you don't want comments in your posts, leave categories empty
-disqus:
-  shortname: disqus_XLwqRSOVVz # enter this from your disqus account
-  categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
 #facebook: myfacebook
@@ -50,11 +40,11 @@ github: jc782
 #medium: medium
 # vimeo: myvimeo
 # lanyrd: mylanyrd
-email: joshcarr3007@gmail.com
+email: josh.carr@cantab.net
 
 authors:
     joshcarr:
-        name: Josh Carr
+        name: Joshua Carr
         bio: Things I find interesting.
         external-image: false
         picture: assets/images/profile.jpg
@@ -70,7 +60,7 @@ width: normal
 # paginate_path: "blog/:num/"
 
 # if you don't need projects, comment the *projects* configs below
-projects: true
+projects: false
 
 # if you don't need "about" or "blog", comment them out below
 about: true

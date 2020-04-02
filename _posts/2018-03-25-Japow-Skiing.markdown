@@ -6,6 +6,7 @@ headerImage: false
 tag:
   - travel
   - skiing
+  - holidays
 star: false
 category: blog
 author: joshcarr
