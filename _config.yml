@@ -23,9 +23,6 @@ permalink: /:title/
 # To enable google analytics, supply your token below
 analytics-google: 'UA-116356115-1'
 
-# if you don't have any of social below, comment the line
-#facebook: myfacebook
-# linkedin: mylinkedin
 github: jc782
 email: josh.carr@cantab.net
 
@@ -35,16 +32,9 @@ authors:
         bio: Things I find interesting.
         external-image: false
         picture: assets/images/profile.jpg
-        twitter:
-
-# do you want a larger site? change the option below
-# options: [normal, large] | default: normal
-# normal = 560px / large = 810px
+        
+# Site Size
 width: large
-
-# if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: "blog/:num/"
 
 # if you don't need projects, comment the *projects* configs below
 projects: false
