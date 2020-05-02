@@ -1,5 +1,5 @@
 window.onload= function(){
-var world = Snap.load("http://localhost:4000/assets/svg/Georgia.svg", onSVGLoaded ) ;
+var world = Snap.load("https://joshcarr.co.uk/assets/svg/Georgia.svg", onSVGLoaded ) ;
 };
 
 function onSVGLoaded( data ){ 
