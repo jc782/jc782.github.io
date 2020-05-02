@@ -1,7 +1,7 @@
 ---
-title: Japow Delivers.
+title: Japan 2018
 layout: post
-date: '2018-03-25 14:10'
+date: '2020-04-26 14:10'
 headerImage: false
 tag:
   - travel
@@ -64,10 +64,10 @@ If you go to Japan and you just want to ski powder in trees on your own / with b
 Hokkaido powder is legendary, so we had to make the trip up to the north island. We hired a car for this part because our hotel (read:dodgy roadside trucker motel) was not ski-in ski-out. Niseko, the largest and most well known resort was our first destination. is expensive, it's full of Aussie's, and they're all insufferable. Anticlimatic after Geto.
 
 By coincidence we were in town at the time of the Sapporo Ice Festival which was well worth the trip. It came alive with the lightshow.
-![iceFestival](/assets/images/japan/IceFestival.jpg){:class="img-responsive"}
+![iceFestival](/assets/images/japan/IceFestival.JPG){:class="img-responsive"}
 
 Two memorable aspects to Hakodate. Our night time walk up to get the iconic view of the bay, and the monkey's in the onsen. Though the 'onsen' was a surprisingly fake affair.
-![hakodate](/assets/images/japan/Hakodate.jpg){:class="img-responsive"}
+![hakodate](/assets/images/japan/Hakodate.JPG){:class="img-responsive"}
 
 Japan lived up to it's reputation. I think we skied 'deep' powder at least half of the days we were there. It's not as expensive as you might think (apart from Niseko), has amazing culture, great food in general, and unbeatable onsens. I'll certainly return
 
