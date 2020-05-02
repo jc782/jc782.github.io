@@ -1,0 +1,14 @@
+window.onload= function(){
+var world = Snap.load("http://localhost:4000/assets/svg/Georgia.svg", onSVGLoaded ) ;
+};
+
+function onSVGLoaded( data ){ 
+    var path = data.select("#flight");
+    var s = Snap("#someID");
+    s.append( data );
+    var bbox = s.getBBox();
+    var viewBox = bbox.x+' '+bbox.y+' '+bbox.width+' '+ bbox.height;
+    path.animate({
+      "stroke-dashoffset": -300,
+    }, 4000, mina.easeinout);
+}

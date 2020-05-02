@@ -1,0 +1,61 @@
+---
+title: Georgia 2019
+layout: post
+date: '2020-04-21 21:10'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: blog
+author: joshcarr
+description: Cycle touring the Greater Caucasus
+jsarr:
+  - /assets/js/snap.svg.js
+  - /assets/js/main.js
+published: true
+---
+
+## The Plan:
+
+We booked a flight to Kutaisi and bought two old 90s steel frame mountain bikes with centrepull brakes and 5 speed friction shifters. Should be suitable for the rough roads of the Svaneti. The only other thing we planned was to sell the bikes at the end. They had a 1 way ticket.
+<style>
+.container {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+svg {
+    position: absolute;
+    display: block;
+}
+</style>
+<div class="container">
+<br>
+<svg id="someID" width="100%" height="100%" viewBox="0 0 700 700" preserveAspectRatio="xMaxYMax meet" ></svg>
+<br>
+</div>
+
+
+## Day 1:
+
+More aptly, the first 24hrs. We spend the first few 'sleeping' in the airport. At first light we built the bikes in the carpark and had a moment of fortune when some other travellers gifted their full gas canister to us. There is something quite liberating about leaving or arriving at an airport on foot/bike. We turned left heading to the junction town of Samtredi where we located a taxi willing to drive us and bikes to Jvari. Thus saving a day of cycling in the flatlands.
+
+Jvari marks the entrance to the Greater Caucasus, and is perilously close to the no-go zone of Abkhazia. The road (paved) climbs steeply from the town before dipping over a pass and down to a stunning reservoir. On its banks we sought out easily the most overpriced can of coke for our entire trip.
+
+The initial target was the mountain village of Mestia, but the late start and relentless uphill meant after we paused for dinner (inc. homemade georgian wine) darkness had fallen so we called it a day a little before a tiny village called Iskari. 
+
+## To Ushguli:
+
+The morning, except for swirling clouds offering only tantelising glimpses of the mountains, was largely uneventful. We lunched in Mestia which for all intensive purposes was the cheapest Swiss ski town I've ever been to. It was easily the most touristy place we visted. 
+
+Our goal for the day was to reach Ushguli, the highest settlement in the valley. Between Mestia and Ushguli we had our first mechanical. Nothing major, just the crank arm falling off. By complete chance the guilty nut was located and re tightened - with only a short adjustable spanner though. Still on paved road we climbed more steeply until, right as we reach the summit, the heavens opened and there was the most torrential downpour. Over the next few days we realised this afternoon monsoon was regular at around 2pm each day. Unfortunately on this occasion it happened in the midst of the only serious downhill of the day. Again, centrepull brakes, now with wet rims and cold hands. Not ideal.
+
+We were warned that the paved road would eventually run out. This marked the start of real adventure and the end of rapid progress. What a dichotomy. At least we had bikes up for the job. More on the bikes - the one I had was universally excellent, boasting a triple chainring and a padded saddle. I had this by virtue of buying them both and selecting the better one. Jordan's one had a double chainring (=no granny gear) and a hard plastic saddle called the Unicator, but referred to as the eunuch-inator. I'm told that if you get through day 2 the eunuch-inator is actually very comfy.
+
+Further heavy rain on the climb to Ushguli caused a temporary retreat for hot tea, and broke our resolve for wild camping. Luckily we had no problems finding an excellent guesthouse looking over the village, with Shkhara for a backdrop, and best of all a hot shower.
+
+## Up and over
+
+Ushguli is over 2000m, so unsurpr
+

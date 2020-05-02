@@ -23,6 +23,9 @@ layout: compress
     {% capture scss_sheet %}{% include style.scss %}{% endcapture %}
     {{ scss_sheet | scssify }}
     </style>
+    {% for js in page.jsarr %}
+    <script src="{{ base.url | prepend: site.url }}{{ js }}"></script>
+    {% endfor %}
 
 </head>
 <body>
