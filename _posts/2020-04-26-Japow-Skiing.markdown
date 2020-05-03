@@ -12,8 +12,33 @@ category: blog
 author: joshcarr
 description: A trip report for two weeks in Japow.
 jsarr:
+  - /assets/js/snap.svg.js
+  - /assets/js/japan.js
 published: true
 ---
+
+<style>
+.container {
+    position: fixed;
+    top: 0px;
+    left: 25%;
+    color: white;
+    border: green 5px solid;
+    z-index: -1;
+    height: 100vh;
+    width: 50%;
+}
+
+svg {
+    position: absolute;
+    display: block;
+}
+</style>
+<div class="container">
+<br>
+<svg id="someID" width="100%" height="100%" viewBox="-150 0 800 800" preserveAspectRatio="xMaxYMax meet" ></svg>
+<br>
+</div>
 
 Ekiden racing, deep Japow, and daily onsens.
 
