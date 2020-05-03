@@ -11,6 +11,10 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+h3 {
+  margin-bottom: -10px;
+  padding: 0;
+}
 /**
  * Remove the margin: in all browsers (opinionated).
  */
@@ -57,7 +61,6 @@ video {
 /**
  * Add the correct display: in iOS 4-7.
  */
-
 audio:not([controls]) {
   display: none;
   height: 0;

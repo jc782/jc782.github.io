@@ -17,13 +17,13 @@ published: true
 
 Ekiden racing, deep Japow, and daily onsens.
 
-## Ekiden
+### Ekiden
 
 We took part in the Okumusashi Ekiden - an excellent experience and one well worth repeating. 6 legs along an out-and-back course along the Seibu-Ikebukoro line. Individually I had a mediocre run; as a team we finished 4th to some quality teams. 
 
 ![ekiden](/assets/images/japan/ekiden.jpeg){:class="img-responsive"}
 
-## Yuzawa Resorts
+### Yuzawa Resorts
 
 90mins on the bullet train from Tokyo station we arrived at Gala Yuzawa. The Shinkansen actually stops at the base station of the mountain which is cool. There's a collection of resorts in the area, some interlinked with lifts and others a shuttle bus away.
 
@@ -40,7 +40,7 @@ The snow was falling quicker than we could ski it, so we stayed on late under th
 We caught a free shuttle from Yuzawa up to Kandatsu Kogen, another resort in this mini metropolis. The skiing is all in one big bowl, the lower slopes were great for blasting some big carved turns. Higher up there were pockets of tree skiing that were fun to loop. I think it might have had the steepest skiing we found in all of Japan. Kandatsu was notable for the abundance of bumps/moguls/zip lines. The Japanese love their moguls - some kids outclassed me hammering down one line.
 
 
-## Zao Onsen
+### Zao Onsen
 
 More bullet train. First back toward Tokyo then up to Sendai and accross to Zao Onsen. The place stinks of sulphur. It's 'Atmospheric'. Both the public and private onsens were excellent. The water is said to have healed Warriors in the past so it's good enough to sooth aching post-ski legs. The skiing here was good, it felt fairly alpine with a few distinct areas that were connected (sort of) and some quicker chairlifts. On a blue sky day the views down the valley were incredible. You can't mention Zao Onsen without talking about the Snow Monsters. I've never seen anything like it. The picture speaks for itself.
 
@@ -64,12 +64,12 @@ Hokkaido powder is legendary, so we had to make the trip up to the north island.
 By coincidence we were in town at the time of the Sapporo Ice Festival which was well worth the trip. It came alive with the lightshow.
 ![iceFestival](/assets/images/japan/IceFestival.JPG){:class="img-responsive"}
 
-Two memorable aspects to Hakodate. Our night time walk up to get the iconic view of the bay, and the monkey's in the onsen. Though the 'onsen' was a surprisingly fake affair.
+Two memorable aspects to Hakodate. Our night time walk up to get the iconic view of the bay, and the monkey's in the onsen. Though the 'onsen' was a surprisingly fake affair. It would be better described as Monkeys in a zoo with a bath.
 ![hakodate](/assets/images/japan/Hakodate.JPG){:class="img-responsive"}
 
 Japan lived up to it's reputation. I think we skied 'deep' powder at least half of the days we were there. It's not as expensive as you might think (apart from Niseko), has amazing culture, great food in general, and unbeatable onsens. I'll certainly return
 
-### Logistics:
+### Logistics
 
 We use the south-east Hokkaido and East Japan rail pass which allows 6 days of travel on JR trains within a 14 day period. It includes travel on the Shinkansen and using it for Tokyo-Hakodate return alone makes the pass economic. It also works nicely for people with their own skis as there's no extra charge for carrying them.
 
