@@ -12,8 +12,6 @@ category: blog
 author: joshcarr
 description: A trip report for two weeks in Japow.
 jsarr:
-  - /assets/js/snap.svg.js
-  - /assets/js/main.js
 published: true
 ---
 
