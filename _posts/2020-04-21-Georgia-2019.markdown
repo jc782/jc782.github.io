@@ -16,9 +16,6 @@ jsarr:
 published: true
 ---
 
-## The Plan:
-
-We booked a flight to Kutaisi and bought two old 90s steel frame mountain bikes with centrepull brakes and 5 speed friction shifters. Should be suitable for the rough roads of the Svaneti. The only other thing we planned was to sell the bikes at the end. They had a 1 way ticket.
 <style>
 .container {
     position: relative;
@@ -32,12 +29,17 @@ svg {
 </style>
 <div class="container">
 <br>
-<svg id="someID" width="100%" height="100%" viewBox="0 0 700 700" preserveAspectRatio="xMaxYMax meet" ></svg>
+<svg id="someID" width="100%" height="100%" viewBox="160 0 200 200" preserveAspectRatio="xMaxYMax meet" ></svg>
 <br>
 </div>
 
+### The Plan:
 
-## Day 1:
+We booked a flight to Kutaisi and bought two old 90s steel frame mountain bikes with centrepull brakes and 5 speed friction shifters. Should be suitable for the rough roads of the Svaneti. The only other thing we planned was to sell the bikes at the end. They had a 1 way ticket.
+
+![steeds](/assets/images/georgia/steeds.jpg){:class="img-responsive"}
+
+### Day 1:
 
 More aptly, the first 24hrs. We spend the first few 'sleeping' in the airport. At first light we built the bikes in the carpark and had a moment of fortune when some other travellers gifted their full gas canister to us. There is something quite liberating about leaving or arriving at an airport on foot/bike. We turned left heading to the junction town of Samtredi where we located a taxi willing to drive us and bikes to Jvari. Thus saving a day of cycling in the flatlands.
 
@@ -45,7 +47,7 @@ Jvari marks the entrance to the Greater Caucasus, and is perilously close to the
 
 The initial target was the mountain village of Mestia, but the late start and relentless uphill meant after we paused for dinner (inc. homemade georgian wine) darkness had fallen so we called it a day a little before a tiny village called Iskari. 
 
-## To Ushguli:
+### To Ushguli:
 
 The morning, except for swirling clouds offering only tantelising glimpses of the mountains, was largely uneventful. We lunched in Mestia which for all intensive purposes was the cheapest Swiss ski town I've ever been to. It was easily the most touristy place we visted. 
 
@@ -55,7 +57,7 @@ We were warned that the paved road would eventually run out. This marked the sta
 
 Further heavy rain on the climb to Ushguli caused a temporary retreat for hot tea, and broke our resolve for wild camping. Luckily we had no problems finding an excellent guesthouse looking over the village, with Shkhara for a backdrop, and best of all a hot shower.
 
-## Up and over
+![shkhara](/assets/images/georgia/shkhara.JPG){:class="img-responsive"}
 
-Ushguli is over 2000m, so unsurpr
+tbc...
 
