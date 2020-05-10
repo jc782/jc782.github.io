@@ -16,16 +16,23 @@ jsarr:
   - /assets/js/japan.js
 published: true
 ---
-
 <style>
 .container {
     position: sticky;
     position: -webkit-sticky;
+    grid-column-start: 1; 
+    grid-row-start: 1;
     top: 0;
     left: 0;
     z-index:-1;
     height: 100vh;
     width: 100%;
+}
+
+.contentCont{
+  grid-column-start: 1; 
+  grid-row-start: 1;
+  width:100%;
 }
 
 svg {
@@ -35,13 +42,15 @@ svg {
 </style>
 <div class="container">
 <br>
-<svg id="someID" width="100%" height="0%" viewBox="-150 0 800 800" preserveAspectRatio="xMaxYMax meet" ></svg>
+<svg id="someID" width="100%" height="100%" viewBox="-150 0 900 900" preserveAspectRatio="xMaxYMax meet" ></svg>
 <br>
 </div>
 
+<div markdown="1" class="contentCont" id="scroll">
 Ekiden racing, deep Japow, and daily onsens.
 
 ### Ekiden
+
 
 We took part in the Okumusashi Ekiden - an excellent experience and one well worth repeating. 6 legs along an out-and-back course along the Seibu-Ikebukoro line. Individually I had a mediocre run; as a team we finished 4th to some quality teams. 
 
@@ -98,4 +107,4 @@ Japan lived up to it's reputation. I think we skied 'deep' powder at least half 
 We use the south-east Hokkaido and East Japan rail pass which allows 6 days of travel on JR trains within a 14 day period. It includes travel on the Shinkansen and using it for Tokyo-Hakodate return alone makes the pass economic. It also works nicely for people with their own skis as there's no extra charge for carrying them.
 
 By flying with Air France we took skis + boot bags in place of normal luggage.
-
+</div>

@@ -20,8 +20,15 @@ layout: page
         {% endfor %}
     </div>
 {% endif %}
-
-{{content}}
+<style>
+.post-content{
+    display:grid;
+    grid-template-columns: 1fr;
+  }
+</style>
+<div class="post-content" id="post-content">
+    {{content}}
+</div>
 
 
 {% if site.related %}
