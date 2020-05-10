@@ -45,6 +45,10 @@ layout: compress
         </div>
     </div>
 
+    {% if site.show-author %}
+    {% include author.html %}
+    {% endif %}
+    {% include footer.html %}
     {% include icons.html %}
 
     {% include analytics-google.html %}

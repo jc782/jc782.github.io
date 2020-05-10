@@ -19,24 +19,23 @@ published: true
 
 <style>
 .container {
-    position: fixed;
-    top: 0px;
-    left: 25%;
-    color: white;
-    border: green 5px solid;
-    z-index: -1;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    z-index:-1;
     height: 100vh;
-    width: 50%;
+    width: 100%;
 }
 
 svg {
-    position: absolute;
-    display: block;
-}
+    display: inline;
+  }
+
 </style>
 <div class="container">
 <br>
-<svg id="someID" width="100%" height="100%" viewBox="-150 0 800 800" preserveAspectRatio="xMaxYMax meet" ></svg>
+<svg id="someID" width="100%" height="0%" viewBox="-150 0 800 800" preserveAspectRatio="xMaxYMax meet" ></svg>
 <br>
 </div>
 
