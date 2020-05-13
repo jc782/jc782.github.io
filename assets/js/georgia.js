@@ -1,5 +1,5 @@
 window.onload = function () {
-  var world = Snap.load("https://joshcarr.co.uk/assets/svg/test.svg", onSVGLoaded);
+  var world = Snap.load("http://localhost:4000/assets/svg/georgia.svg", onSVGLoaded);
   var s = Snap("#someID");
   let last_known_scroll_position = 0;
   let ticking = false;
