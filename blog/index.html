@@ -7,7 +7,12 @@ title: Blog
 		<p class="text-center">Nothing published yet!</p>
 	{% elsif site.paginate %}
 		{% for post in paginator.posts %}
-			{% if post.category == 'blog' %}
+			{% if post.category == 'post' %}
+				{% if post.hidden != true %}
+					{% include blog-post.html %}
+				{% endif %}
+			{% endif %}
+			{% if post.category == 'travel' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
@@ -16,12 +21,22 @@ title: Blog
 
 		{% include pagination.html%}
 	{% else %}
+		<h4>Posts</h4>
 		{% for post in site.posts %}
-			{% if post.category == 'blog' %}
+			{% if post.category == 'post' %}
 				{% if post.hidden != true %}
 					{% include blog-post.html %}
 				{% endif %}
 			{% endif %}
 		{% endfor %}
+		<h4>Travel</h4>
+		{% for post in site.posts %}
+		{% if post.category == 'travel' %}
+			{% if post.hidden != true %}
+				{% include blog-post.html %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+
 	{% endif %}
 </section>

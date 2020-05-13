@@ -7,7 +7,7 @@ tag:
   - travel
   - holidays
 star: false
-category: blog
+category: travel
 author: joshcarr
 description: Cycle touring the Greater Caucasus
 jsarr:

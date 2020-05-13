@@ -8,7 +8,7 @@ tag:
   - skiing
   - holidays
 star: false
-category: blog
+category: travel
 author: joshcarr
 description: A trip report for two weeks in Japow.
 jsarr:

@@ -6,7 +6,7 @@ headerImage: false
 tag:
   - books
 star: false
-category: blog
+category: post
 author: joshcarr
 description: 2020 Book Reviews
 published: true

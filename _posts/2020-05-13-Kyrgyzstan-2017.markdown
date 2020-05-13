@@ -1,0 +1,63 @@
+---
+title: Kyrgyzstan 2017
+layout: post
+date: '2020-05-13 21:10'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Adventure in Asia
+jsarr:
+  - /assets/js/snap.svg.js
+  - /assets/js/kyrgyzstan.js
+published: true
+---
+
+<style>
+.container {
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  background-color: white;
+  z-index:10;
+}
+.img-responsive{
+  display: block;
+   margin: auto auto;
+}
+
+</style>
+<div class="container">
+<br>
+<svg id="someID" width="100%" viewBox="0 0 600 150" ></svg>
+<br>
+</div>
+
+<div markdown="1" class="contentCont" id="scroll">
+
+Kyrgyzstan was the chosen '-stan' for the high mountain terrain and easy visa access. We landed in Bishkek with a vague plan to buy some bikes and tour the country for 10 days. Bishkek airport is a terrible place to try and sleep. 0/10 would not repeat. Though I hear 'the flight from Osh has arrived. Buying bikes was surprisingly difficult but eventually we bought two of the highest 'Germanski' quality. No korean bikes for us.
+![maps](/assets/images/kyrgyzstan/maps-min.JPG){:class="img-responsive"}
+
+![steeds](/assets/images/kyrgyzstan/steeds-min.JPG){:class="img-responsive"}
+
+Such was the palava of buying bikes that we barely made it out the city before darkness. We borrowed the homeless' soap and shelter for the night and had freshly picked cucumber for breakfast.
+![armybase](/assets/images/kyrgyzstan/armybase-min.JPG){:class="img-responsive"}
+
+
+![mechanical](/assets/images/kyrgyzstan/mechanical-min.JPG){:class="img-responsive"}
+
+![pass](/assets/images/kyrgyzstan/pass-min.JPG){:class="img-responsive"}
+
+![people](/assets/images/kyrgyzstan/people-min.JPG){:class="img-responsive"}
+
+![song-kul](/assets/images/kyrgyzstan/songKul-min.JPG){:class="img-responsive"}
+
+![alaarcha](/assets/images/kyrgyzstan/alaarcha-min.JPG){:class="img-responsive"}
+
+![crossing](/assets/images/kyrgyzstan/crossing-min.JPG){:class="img-responsive"}
+
+![flag](/assets/images/kyrgyzstan/crossing-min.JPG){:class="img-responsive"}
+</div>
