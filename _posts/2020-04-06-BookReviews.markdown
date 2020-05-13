@@ -37,3 +37,8 @@ From concept to IPO, the story of NIKE. It's interesting to see change in how NI
 Give yourself optionality.
 
 
+### Daemon, Daniel Suarez
+*May 2020*  
+Fiction for a world being taken over by a daemon invoked upon the death of a games company founder. An eye into the importance of digital security.
+
+
