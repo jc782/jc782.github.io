@@ -38,15 +38,25 @@ published: true
 
 <div markdown="1" class="contentCont" id="scroll">
 
+Morocco had been on the cards for a few years. The rise in cheap flights and it's relative proximity to the UK making it an attractive destination. Given the success of 'winging it' in Kyrgyzstan, we decided to do the same again.
 ![souks](/assets/images/morocco/souks.jpg){:class="img-responsive"}
+
 ![waiting](/assets/images/morocco/waiting.JPG){:class="img-responsive"}
+
 ![steeds](/assets/images/morocco/steeds.JPG){:class="img-responsive"}
+
 ![sky](/assets/images/morocco/sky.jpg){:class="img-responsive"}
+
 ![skiing](/assets/images/morocco/skiing.jpg){:class="img-responsive"}
+
 ![inversion](/assets/images/morocco/inversion.JPG){:class="img-responsive"}
+
 ![biking](/assets/images/morocco/biking.jpg){:class="img-responsive"}
+
 ![deals](/assets/images/morocco/deals.jpg){:class="img-responsive"}
+
 ![drinks](/assets/images/morocco/drinks.jpg){:class="img-responsive"}
+
 ![toubkal](/assets/images/morocco/toubkal.JPG){:class="img-responsive"}
 
 </div>
