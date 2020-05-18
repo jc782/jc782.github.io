@@ -4,10 +4,8 @@ window.onload = function () {
   let last_known_scroll_position = 0;
   let ticking = false;
   var limit = document.getElementById("scroll").scrollHeight
-  console.log(limit)
   window.addEventListener('scroll', function (e) {
     last_known_scroll_position = window.scrollY;
-    this.console.log(window.scrollY)
     if (!ticking) {
       window.requestAnimationFrame(function () {
         doSomething(window.scrollY, limit)

@@ -1,5 +1,5 @@
 window.onload = function () {
-  var world = Snap.load("https://joshcarr.co.uk/assets/svg/georgia.svg", onSVGLoaded);
+  var world = Snap.load("http://localhost:4000/assets/svg/mor.svg", onSVGLoaded);
   var s = Snap("#someID");
   let last_known_scroll_position = 0;
   let ticking = false;
@@ -25,10 +25,10 @@ function onSVGLoaded(data) {
 
 function doSomething(scroll_pos, limit) {
   var s = Snap("#someID");
-  var path = s.select("#linearGradient6854")
-  var elev = s.select("#path2549")
+  var path = s.select("#linearGradient5928")
+  var elev = s.select("#path5360")
   var dimens = elev.getBBox();
   var len = dimens.width;
   var value = len * (scroll_pos / parseFloat(limit));
-  path.attr({ "x2": value, "x1": 0, "y2": 200, "y1": 200, });
+  path.attr({ "x2": value, "x1": 0, "y2": 180, "y1": 180, });
 }
