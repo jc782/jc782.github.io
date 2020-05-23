@@ -17,33 +17,22 @@ jsarr:
 published: true
 ---
 <style>
-.container {
-    position: sticky;
-    position: -webkit-sticky;
-    grid-column-start: 1; 
-    grid-row-start: 1;
-    top: 0;
-    left: 0;
-    z-index:-1;
-    height: 100vh;
-    width: 100%;
+  .container {
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  background-color: white;
+  z-index:10;
+  height: 12vh;
 }
-
-.contentCont{
-  grid-column-start: 1; 
-  grid-row-start: 1;
-  width:100%;
+.img-responsive{
+  display: block;
+   margin: auto auto;
 }
-
-svg {
-    display: inline;
-  }
-
 </style>
+
 <div class="container">
-<br>
-<svg id="someID" width="100%" height="100%" viewBox="-150 0 900 900" preserveAspectRatio="xMaxYMax meet" ></svg>
-<br>
+<svg id="someID" viewBox="0 450 900 100" overflow="hidden"></svg>
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">

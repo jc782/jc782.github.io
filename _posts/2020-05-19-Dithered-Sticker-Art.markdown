@@ -9,26 +9,26 @@ star: false
 category: post
 author: joshcarr
 description: Artwork by algorithms
-published: false
+published: true
 ---
-
+<div markdown="1" class="contentCont" id="scroll">
 I am not particularly artistic. Nonetheless, I can try, and one aspect I have found enjoyabe is creating artwork by abstracting photographs. It was something we did in school once, and in 2019 I decided to have another go, but in a more formulaic way. 
 
 The original plan convert a photo into a piece of art where the pixels were represented by push pins. Unfortunately it would have been a relatively expensive piece of art with push pins even if I sourced them from Alibaba. Instead I compromised on dot stickers often used to mark stationary.
 
 The starting photograph, I decided, was one of my parents Border terrier standing in her characteristic pose.
-![ribble](/assets/images/algoart/ribble.JPG){:class="img-responsive"}
+![ribble](/assets/images/algoart/Ribble.JPG){:class="img-responsive"}
 
 The colours available were set by the stickers that I could easily buy.
 
 My initial naive attempt was to reduce the resolution of the image to the target resolution and to set each pixel to be the closest colour defined by a cartesian distance in RGB space. The psuedo code being something like
 
-```python
+```
 colours = 
 minDist = inf
 pixel = [r,g,b]
 for col in colours:
-    dist = (r-col.r)**2 +(g-col.g)**2 +(g-col.g)**2 + 
+    dist = (r-col.r)**2 +(g-col.g)**2 +(g-col.g)**2
     if dist < minDist:
         minDist = dist
 ```
@@ -36,8 +36,22 @@ for col in colours:
 This does something. But probably isn't the best we can do.
 ![ribble](/assets/images/algoart/nodither.png){:class="img-responsive"}
 
-Some research and I discovered the world of dithering. There are numerous algorithms.
-![ribble](/assets/images/algoart/dither.png){:class="img-responsive"}
+Some research and I discovered the world of dithering. Back in the days of 8bit images (before the days of more memory and higher CPU speeds) there was a lot of research into this. The essence of it is to distribute the error to nearby pixels. 
 
+Wikipedia has some good pseudocode 
+```
+for each y from top to bottom do
+    for each x from left to right do
+        oldpixel := pixel[x][y]
+        newpixel := find_closest_palette_color(oldpixel)
+        pixel[x][y] := newpixel
+        quant_error := oldpixel - newpixel
+        pixel[x + 1][y    ] := pixel[x + 1][y    ] + quant_error × 7 / 16
+        pixel[x - 1][y + 1] := pixel[x - 1][y + 1] + quant_error × 3 / 16
+        pixel[x    ][y + 1] := pixel[x    ][y + 1] + quant_error × 5 / 16
+        pixel[x + 1][y + 1] := pixel[x + 1][y + 1] + quant_error × 1 / 16
+```
+![ribble](/assets/images/algoart/dither.png){:class="img-responsive"}
+</div>
 
 
