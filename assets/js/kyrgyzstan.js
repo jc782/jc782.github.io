@@ -8,10 +8,9 @@ window.onload = function () {
     last_known_scroll_position = window.scrollY;
     if (!ticking) {
       window.requestAnimationFrame(function () {
-        doSomething(window.scrollY, limit)
+        updatePosition(window.scrollY, limit)
         ticking = false;
       });
-
       ticking = true;
     }
   }
@@ -24,7 +23,7 @@ function onSVGLoaded(data) {
   s.append(data);
 }
 
-function doSomething(scroll_pos, limit) {
+function updatePosition(scroll_pos, limit) {
   var s = Snap("#someID");
   var path = s.select("#linearGradient5274")
   var elev = s.select("#path5249")
