@@ -25,10 +25,6 @@ published: true
   z-index:10;
   height: 12vh;
 }
-.img-responsive{
-  display: block;
-   margin: auto auto;
-}
 </style>
 
 <div class="container">

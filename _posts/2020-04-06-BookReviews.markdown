@@ -1,5 +1,5 @@
 ---
-title: Book Reviews
+title: Books 2020
 layout: post
 date: '2020-04-06 21:30'
 headerImage: false
@@ -8,7 +8,7 @@ tag:
 star: false
 category: post
 author: joshcarr
-description: 2020 Book Reviews
+description: 2020 Books
 published: true
 ---
 
