@@ -12,9 +12,7 @@ description: Fixing a carbon bike frame
 published: true
 ---
 <div markdown="1" class="contentCont" id="scroll">
-Time trial bikes are expensive. A friend was offered one at mates rates with a frustrating problem; it had an integrated seat post and he was taller than the previous rider.
-
-No matter, carbon is an friendly material for rework, so we decided the best and the proper fix was to extend the seat post with fresh carbon. After some measurements it looked like we needed to add approximately 3" additional height. 
+Time trial bikes are expensive. A friend was offered one at mates rates with a frustrating problem; it had an integrated seat post and he was taller than the previous rider. No matter, carbon is an friendly material for rework, so we decided the best (and the proper fix was to extend the seat post with fresh carbon). After some measurements it looked like we needed to add approximately 3" additional height. 
 
 This seat was an external fit, so it was important the the outer dimensions and geometry match the profile of the seat. I sketched up a simple plan.
 ![plan](/assets/images/ISP/plan.jpg){:class="img-responsive"}
@@ -23,7 +21,7 @@ For the core that we would wrap around we photographed it, then scaled in in Ons
 ![planview](/assets/images/ISP/planview.png){:class="img-responsive"}
 ![cad](/assets/images/ISP/cad.png){:class="img-responsive"}
 
-I 3d printed the core, and was impressed to find it was within 0.2mm of design size, and a snug fit in the bike.
+I 3d printed the core, and was impressed to find it was within 0.2mm of design size, and a snug fit in the bike. Pretty good for my cheap FDM printer.
 ![inserted](/assets/images/ISP/inserted.jpg){:class="img-responsive"}
 
 To ensure the dimensions after wrapping would be right, and convince ourselves in the structural integrity of carbon, we made a test piece. Material wise the carbon was 2x2twill 200g carbon,and a the epoxy a standard room temperature fast cure resin. Based on the target thickness and some online research, between 10 and 12 layers was recommended.
