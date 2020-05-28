@@ -24,6 +24,7 @@ published: true
   background-color: white;
   z-index:10;
   height: 15vh;
+  overflow: hidden;
 }
 </style>
 <div class="container">

@@ -36,7 +36,7 @@ function drawMap(scroll_pos, limit) {
     var subPat1 = s.path(subPath1);
     subPat1.attr({ "id": "scrolled", "stroke": "red", "stroke-width": "1.5", "fill": "none", "line-cap": "round" });
     var y = Math.floor(470 - 400 * (scroll_pos / parseFloat(limit)));
-    s.attr({ viewBox: "0," + y + ",900,100" });
+    s.attr({ viewBox: "0," + y + ",900,200" });
   } catch (error) {
     console.error('no scrolled element yet');
   }
