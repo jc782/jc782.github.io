@@ -29,7 +29,7 @@ published: true
 </style>
 
 <div class="container">
-<svg id="someID" viewBox="0 450 900 200" overflow="hidden"></svg>
+<svg id="someID" viewBox="0 400 900 200" overflow="hidden"></svg>
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
@@ -53,8 +53,10 @@ Gala Yuzawa itself was crowded, and other than the novely of Shinkansen->skiing 
 Conditions were excellent. Unfortunately, so deep was the snow, we spent an hour fruitlessly searching for a lost ski. We had given up but the incredible pisteurs searched on with the obligatory metal detector and delivered the lost ski back to us after we'd enjoyed a Katsu curry. This epitomises Japanese culture. 
 ![skifound](/assets/images/japan/skifound.JPG){:class="img-responsive"}
 
-The snow was falling quicker than we could ski it, so we stayed on late under the flood lights enjoying the Japanese tradition of 'Nighta'.
+The snow was falling quicker than we could ski it, so we stayed on late under the flood lights enjoying the Japanese tradition of 'Nighta'. Photos don't lie, I must have fallen over at least once to be bestowed with Mr Bump.
 ![nighta](/assets/images/japan/nighta.jpg){:class="img-responsive"}
+
+![mrBump](/assets/images/japan/mrbump.jpg){:class="img-responsive"}
 
 We caught a free shuttle from Yuzawa up to Kandatsu Kogen, another resort in this mini metropolis. The skiing is all in one big bowl, the lower slopes were great for blasting some big carved turns. Higher up there were pockets of tree skiing that were fun to loop. I think it might have had the steepest skiing we found in all of Japan. Kandatsu was notable for the abundance of bumps/moguls/zip lines. The Japanese love their moguls - some kids outclassed me hammering down one line.
 
@@ -68,12 +70,15 @@ More bullet train. First back toward Tokyo then up to Sendai and accross to Zao 
 
 ### Geto Kogen
 
-Hands down this was the best skiing we had. The forecast predicted a few mere cms of snow. but for the 48hrs we spent there it was dumping constantly. You can stay right at the mountain in a capsule hotel half board with the onsen included. The food was, uh, not great. Who cares when you've spent the day skiing waist deep powder through trees.
+Hands down this was the best skiing we had. The forecast predicted a few mere cms of snow. but for the 48hrs we spent there it was dumping constantly. You can stay right at the mountain in a capsule hotel half board with the onsen included. The food was, uh, not great. Who cares when you've spent the day skiing 'balls-deep' deep powder tree lines.
+![getoPowder](/assets/images/japan/getoPow.JPG){:class="img-responsive"}
 
-Geto Kogen has opened tree runs over the last few years. They've pruned the forest so you can hit any number of different lines down the mountain under the main gondala and still end up back at home. Even with only this gondala if it's snowing enough Geto is the place to be. I could write a whole post about how great this place was. Other than the food the only other downer was the lack of a free bus down to the Shinkansen station before 5pm. A nice employee gave us a lift.
+![montage](/assets/images/japan/montage.jpg){:class="img-responsive"}
+
+Geto Kogen has opened tree runs over the last few years. They've pruned the forest so you can hit any number of different lines down the mountain under the main gondala and still end up back at home. Even with only this the single gondala open, if it's snowing enough Geto is the place to be. I could write a whole post about how great this place was. Other than the food the only other downer was the lack of a free bus down to the Shinkansen station before 5pm. A nice employee gave us a lift.
 
 If you go to Japan and you just want to ski powder in trees on your own / with buddies then Geto is the place to be.
-![getoPowder](/assets/images/japan/getoPow.JPG){:class="img-responsive"}
+![Geto Snow](/assets/images/japan/getosnow.jpg){:class="img-responsive"}
 
 
 ### Hokkaido
