@@ -60,6 +60,14 @@ Fictional story of terrorist attacks on Nasa rocket launches being thwarted by a
 *May 2020*
 Laurie Lee goes on a colourful adventure tramping through first southern England then Spain. He experiences the outbreak of civil war; the hardship of poorer classes in the 30s is sobering.
 
+### Trouble with Lichen, John Wyndham
+*May 2020*
+Fiction tale about the discovery of 'antigerones' to extend life. Some interesting ethical considerations...
+
+### Never Split the Difference, Chris Voss
+*May 2020*
+I think thi book will pay for itself many times over.
+
 
 
 

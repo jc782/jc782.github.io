@@ -1,0 +1,47 @@
+---
+title: Scotland 2011
+layout: post
+date: '2011-07-30 22:03'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Hiking in the Cairngorms
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+*Historical post written up during the coronavirus lockdown for posterity*
+
+2011 was #2 in the adventure series. Young and naive, the wilderness selected was the Cairngorms. I'm not sure exactly how, but the megabus deals were phenomenal and actually for Birmingham->Edinburgh on the train. 
+
+Some mistakes were made in the planning of this trip. Ultralight wasn't really a thing anywhere and it definitely wasn't a thing on this trip. 
+
+The route is preserved in history on a map from my Grandparents. It started with a climb up the feshie hills.
+
+![feshie hills](/assets/images/scotland2011/feshiehills.jpg){:class="img-responsive"}
+
+At some point we made it around the the lairig ghru where bad weather pinned us down for a day camped at the old Sinclair hut site.
+![lairig ghru](/assets/images/scotland2011/lairigghru.jpg){:class="img-responsive"}
+
+There's evidence of the poor food planning. Non dehydrated food, not a good idea for kcal/100g.
+![food](/assets/images/scotland2011/food.jpg){:class="img-responsive"}
+
+The loop came down the back of cairngorm which left a long walk on the flat back to Aviemore.
+![loch morlich](/assets/images/scotland2011/lochmorlich.jpg){:class="img-responsive"}
+
+Look how young we were!
+![youth](/assets/images/scotland2011/youth.jpg){:class="img-responsive"}
+
+Highlights were:
+* Cairngorm / over the feshie hills
+* Deep fried mars bar
+* KFC in Edinburgh
+
+Lowlights were:
+* Sausages outside Aviemore
+* Tent inadequacies in high winds
+
+</div>

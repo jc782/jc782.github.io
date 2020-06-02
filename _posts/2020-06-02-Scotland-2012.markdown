@@ -1,0 +1,29 @@
+---
+title: Scotland 2012
+layout: post
+date: '2012-06-22 22:03'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Hiking in the Cairngorms
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+*Historical post written up during the coronavirus lockdown for posterity*
+
+2012 was adventure trip #3, post A-levels. The formula built upon the previous year. Good things carried forward included the megabus / megatrain deals to get us to Aviemore dirt cheap and the target location. Things improved were:
+* Tent upgrade to something suitable for high winds
+* Significant improvement in packing to reduce pack weight, involving detailed calculations on optimal foods by kcal/100g.
+
+The exact route details are hazy, but I believe we walked from Aviemore down to Glen Feshie, over Carn-ban-mor and down to Loch Einich, then around the bottom into the Lairig Ghru then looped over Braeriach and Cairn Toul before a retreat in bad weather to Glenmore. The route was then picked up over Cairngorm, the Macdui plateu, and back out over the feshie hills.
+
+Notable moments included finally summiting Braeriach, the 'wotsits' in the Lairig ghru, football at Glenmoor lodge, wild-swimming in the lochs. It must have rained a lot this year, there's a lack of photos except for what was one of the best wild camping spots I think ever.
+
+![lake](/assets/images/scotland2012/lake.jpg){:class="img-responsive"}
+
+
+</div>

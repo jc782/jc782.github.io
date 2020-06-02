@@ -1,7 +1,7 @@
 ---
 title: Kyrgyzstan 2017
 layout: post
-date: '2020-05-13 21:10'
+date: '2017-09-13 21:10'
 headerImage: false
 tag:
   - travel
