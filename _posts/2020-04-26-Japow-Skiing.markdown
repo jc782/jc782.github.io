@@ -23,13 +23,13 @@ published: true
   top:0;
   background-color: white;
   z-index:10;
-  height: 12vh;
+  height: 20vh;
   overflow: hidden;
 }
 </style>
 
 <div class="container">
-<svg id="someID" viewBox="0 400 900 200" overflow="hidden"></svg>
+<svg id="someID" viewBox="0 450 900 300" overflow="hidden"></svg>
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
