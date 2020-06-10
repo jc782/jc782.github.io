@@ -1,0 +1,44 @@
+---
+title: Dolomites 2016
+layout: post
+date: '2016-07-12 12:00'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Italian Dolomites
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+*Historical post written up during the coronavirus lockdown for posterity*
+
+Airport sleeping is a great way to start an adventure holiday. Although Stansted ranks low on my 'best airport to sleep at'. Heathrow is better. 
+![airport](/assets/images/Dolomites2016/airport.JPG){:class="img-responsive"}
+
+Presumably it was an early morning flight which took us to Treviso, the cheap version of Venice. Immediately on leaving the airport it was clearly a hot day - I think we walked to town and caught a bus up to Cortina, arriving into the first of many thunderstorms. The travel and sourcing of gas / food took a lot of the day, so we wandered up only as far as the first suitable wild camping spot, which just so happened to be right on a ski run.
+![skislope](/assets/images/Dolomites2016/skislope.JPG){:class="img-responsive"}
+
+Exact route details are foggy in my mind, but we must have gone to Rifuge Giussani Hutte
+![rifuge](/assets/images/Dolomites2016/rifuge.JPG){:class="img-responsive"}
+
+The terrain is notably steeper than the Alps, and many of the paths were only suitable for Via Ferrata - which given the frequency of thunderstorms seemed a fools errand.
+![mountains](/assets/images/Dolomites2016/mountains.JPG){:class="img-responsive"}
+
+The days typically started fine - cool and crisp. The afternoons rumbled thunder around the big walls before clearing into fine evenings. During the storms finding shelter was advisable as the lightning danced around. Although we found out afterwards that hiding in caves was generally a bad idea. Fortunately not an issue this time.
+![Sheltering](/assets/images/Dolomites2016/shelter.JPG){:class="img-responsive"}
+
+We found universally excellent wild camping locations.
+![Dry Lake](/assets/images/Dolomites2016/drylake.JPG){:class="img-responsive"}
+
+![Camping](/assets/images/Dolomites2016/camping.JPG){:class="img-responsive"}
+
+It was great to have Ben along - he was on the first of many adventures and a few since and can always be relied on.
+![Bro](/assets/images/Dolomites2016/bro.JPG){:class="img-responsive"}
+
+![Pano](/assets/images/Dolomites2016/pano.JPG){:class="img-responsive"}
+
+The trip home was simple until we landed as Stansted. I've never seen such a huge queue to get on a bus to the carpark. No problem, I said, 'let's walk'. I maintain it was quicker, but my compatriots were maybe not so convinced. We reached 10,000 steps for the day at 1am as we arrived back at Jordan's car for the late night drive home. I tried to stay awake to keep Jord company while he drove; and somehow I think he went to work the next day.
+</div>
