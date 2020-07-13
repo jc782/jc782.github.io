@@ -40,6 +40,10 @@ Give yourself optionality.
 *May 2020*  
 Fiction for a world being taken over by a daemon invoked upon the death of a games company founder. An eye into the importance of digital security.
 
+### Freedom, Daniel Suarez
+*June 2020* 
+Sequel to Daemon. Unfortunately not as good as the first; felt lacklustre throughout and insufficiently interesting to be a page-turner.
+
 ### Black Hawk Down, Mark Bowden
 *May 2020*
 Other than my initial misconceptions that Black Hawk Down was just a film, this was a really great story.
@@ -66,7 +70,13 @@ Fiction tale about the discovery of 'antigerones' to extend life. Some interesti
 
 ### Never Split the Difference, Chris Voss
 *May 2020*
-I think thi book will pay for itself many times over.
+I think this book will pay for itself many times over.
+
+### The Map that Changed the World, Simon Winchester
+*June 2020*
+The story of William Smith traipsing around England and mapping the strata. Much more readable than I expected and enjoyable. Surveyor in the early 1800s sounded fun.
+
+
 
 
 
