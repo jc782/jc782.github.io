@@ -76,6 +76,18 @@ I think this book will pay for itself many times over.
 *June 2020*
 The story of William Smith traipsing around England and mapping the strata. Much more readable than I expected and enjoyable. Surveyor in the early 1800s sounded fun.
 
+### Why I'm No Longer Talking To White People About Race, Renni Eddo-Lodge
+*June 2020*
+There is a problem and I'm part of it. I was hoping for more actionable points at the end of the book.
+
+### The Drunkard's Walk, Leonard Mlodinow
+*July 2020*
+Statistics is necessarily intuitive so do the math. 
+
+### The Narrow Road To The Deeo North, Richard Flanagan
+*July 2020*
+Fictional tale about the horrors in a Japanese PoW camp and following the later lives of those involved.
+
 
 
 
