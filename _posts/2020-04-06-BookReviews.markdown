@@ -88,6 +88,10 @@ Statistics is necessarily intuitive so do the math.
 *July 2020*
 Fictional tale about the horrors in a Japanese PoW camp and following the later lives of those involved.
 
+### Bad Blood, John Carreyrou
+*August 2020*
+[Audio book] - The tale of Theranos. Stunning account of lies, deceipt, and groupthink leading to the rise and fall Theranos. 
+
 
 
 
