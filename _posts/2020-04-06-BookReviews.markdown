@@ -93,7 +93,13 @@ Fictional tale about the horrors in a Japanese PoW camp and following the later 
 [Audio book] - The tale of Theranos. Stunning account of lies, deceipt, and groupthink leading to the rise and fall Theranos. 
 
 
+### Everest The First Ascent: The untold story of Griffith Pugh, Harriet Tuckey
+*August 2020*
+A great story of the success of evidence driven experimentation. Includes high altitude physiological research leading to success on Everest. Also reapplied to the Mexico City Olympic games.
 
+### The Men who United the States, Simon Winchester
+*August 2020*  
+A sweeping tale of America's development. Canals, roads, rail, the internet. My favourite section was a scam surrounding planted gems solved by geologist Clarence King.
 
 
 
