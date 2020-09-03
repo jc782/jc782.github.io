@@ -102,4 +102,10 @@ A great story of the success of evidence driven experimentation. Includes high a
 A sweeping tale of America's development. Canals, roads, rail, the internet. My favourite section was a scam surrounding planted gems solved by geologist Clarence King.
 
 
+### Now you see her, Heidi Perks
+*August 2020*  
+Fictional. Some moral issues with this book. Not sure which side I was on. 
+
+
+
 

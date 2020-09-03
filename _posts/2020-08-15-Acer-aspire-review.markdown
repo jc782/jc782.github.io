@@ -27,7 +27,7 @@ Things that irk me so far:
 * RAM is not 3200MHz
 * Not a proper set of arrow keys
 * Charge connector feels flimsy and is a frustrating way for a laptop to fail if it does. No option for USB-C charging
-* Speakers are poor quality
+* Speakers are poor quality [fine with headphones]
 
 I am dual booting Windows and Ubuntu 20.04 with the 5.8 kernel. Most things seems to work out of the box with Ubuntu. It runs smoothly and quiet under normal operation.
 * Fn keys seem to not be bound to the Fn key
@@ -35,6 +35,6 @@ I am dual booting Windows and Ubuntu 20.04 with the 5.8 kernel. Most things seem
 
 The laptop feels solid and for a 15" laptop it's suprisingly small and light.
 
-The first upgrade should be adding an additional 16GB RAM stick.
+The first upgrade should be adding an additional 16GB RAM stick to the Dimm slot.
 
 
