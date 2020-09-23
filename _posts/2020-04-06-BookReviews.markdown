@@ -107,5 +107,19 @@ A sweeping tale of America's development. Canals, roads, rail, the internet. My 
 Fictional. Some moral issues with this book. Not sure which side I was on. 
 
 
+### Love and War in the Appennines, Eric Newby
+*September 2020*  
+PoW in Italy at the time of their armstice. The locals helped hide our plucky escapee through the summer months in the mountains of the appenines. Ultimately a fruitless endeavour. 
+
+
+### Energy, Vaclav Smil
+*September 2020*  
+Interesting book that bounced around. An appreciation for power consumption / power generation from different sources was useful.
+
+
+### A Piano in the Pyrenees, Tony Hawks
+*September 2020*  
+Highly amusing. Not many books actually make you chuckle.
+
 
 
