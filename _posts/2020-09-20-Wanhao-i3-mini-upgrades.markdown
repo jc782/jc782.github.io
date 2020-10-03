@@ -33,16 +33,12 @@ This is a schematic of the wiring for my setup.
 ![wiring diagram](/assets/images/HeatedBed/i3wiring.png){:class="img-responsive"}
 
 By wiring the additional power supply onto the switch with the main printer the single mains supply can be used. 
-
 I cut a hole in the front of the printer which provides access for the cables between the heated bed and the main board, and also for the power supply for the heated bed.
 
 ## Step 3 - Firmware update
 I loaded the th3d unified firmware. It is a custom marlin. This requires usb connection to the printer and the arduino software.
-
 The firmware can be downloaded from [here](https://support.th3dstudio.com/hc/en-us/articles/360043293452-TH3D-Unified-Firmware-Package). The arduino software can be downloaded from [here](https://www.arduino.cc/en/main/software)
-
 Once the project is loaded there were a few specific steps that I had to do to successfully download the firmware. First, I'm running linux and had to setup the arduino software correctly. There is a script to run from the console to do that ([guide here.](https://www.arduino.cc/en/guide/linux))
-
 I had to install the U8Glib package by searching for that library and including it.
 
 Search for the Wanhao printer options in configuration.h and uncomment the v2 of the i3 mini. v2 has the heated bed options. Select the Arduino Mega 2560 and the COM port that the printer is plugged into and click the upload button.
@@ -51,16 +47,15 @@ With the firmware successfully downloaded we can begin to debug any issues.
 
 ## Step 4 - Debugging
 With the new firmware the load screen should now show a bed temperature. If the temperature is nonsensical then there is an issue with your thermistor or its wiring. 
+When we set the bed temperature above this temperature the signal from the bed add pin should be driven to 5V. Check this with a multimeter. It is also worth checking the voltage of the power supplies and lastly the voltage on the output of the heated bed mosfet when it is supposed to be driving.
 
-When we set the bed temperature above this temperature the signal from the bed add pin should be driven to 5V. We can check this with a multimeter. It is also worth checking the voltage of the power supplies and lastly the voltage on the output of the heated bed mosfet when it is supposed to be driving.
 
 ## Step 5 - Print!
-Print! I use cura to create the gcode files and set the bed temperature to 60deg for PLA. I get good adhesion and have had some excellent results.
+Print! I use cura to create the gcode files and set the bed temperature to 60deg for PLA. I get good adhesion and have had some excellent results. The bed size is also slightly increased with the new firmware to 120 x 140 x 100.
 
 I hope this is useful for someone!
 
 
 ### Alternative heated bed option.
-
 There is a slightly simple 'poor mans' option to install a heated bed without requiring integrated electronics or firmware updates. This is to create a separate bed heating circuit using an external power supply and controlled by a temperature based relay such as the W1209 board. I initially took this route and it worked well enough, but I got frustrated by needing to manually turn the bed off when a print finished rather than letting the printer firmware do this. However if you don't want to modify the printer or its firmware this is a good option to achieve improved bed adhesion.
 
