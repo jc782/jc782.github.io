@@ -8,7 +8,7 @@ tag:
 star: false
 category: post
 author: joshcarr
-description: Simple upgrades to a basic 3D printed
+description: Heated bed upgrade for Wanhao i3 mini v1
 published: true
 ---
 
@@ -23,7 +23,7 @@ The parts you will need are:
 * Heated bed Mosfet driver - such as [this one](https://www.ebay.co.uk/itm/143662472205)
 * USB cable to update the firmware
 
-There are of course lots of different options for the heated bed. I chose a DC powered one as I felt it was a bit safer than having the potential for mains on the 3d printer frame. Although it's probably a marginally more expensive option with the extra power supply.
+There are of course lots of different options for the heated bed. I chose a 12V DC one as I felt it was a bit safer than having the potential for mains on the 3d printer frame. A 24V DC heated bed would reduce the required current significantly.
 
 ## Step 2 - Bed attach and wiring
 Attach the heating pad to the underside of the bed. The print area is offset so I suggest centring this toward the front of the printer. We can now wire up the 3D printer. This is probably best explained with the picture below. This photo is of the bed add connector which shows the pin arrangement for the thermistor and the drive signal.
@@ -43,11 +43,11 @@ I had to install the U8Glib package by searching for that library and including 
 
 Search for the Wanhao printer options in configuration.h and uncomment the v2 of the i3 mini. v2 has the heated bed options. Select the Arduino Mega 2560 and the COM port that the printer is plugged into and click the upload button.
 
-With the firmware successfully downloaded we can begin to debug any issues. 
+After the firmware is successfully downloaded we can begin to debug any issues. 
 
 ## Step 4 - Debugging
 With the new firmware the load screen should now show a bed temperature. If the temperature is nonsensical then there is an issue with your thermistor or its wiring. 
-When we set the bed temperature above this temperature the signal from the bed add pin should be driven to 5V. Check this with a multimeter. It is also worth checking the voltage of the power supplies and lastly the voltage on the output of the heated bed mosfet when it is supposed to be driving.
+When we set the bed temperature above this temperature the signal from the bed add pin should be driven to 5V. Check this with a multimeter. It is also worth checking the voltage of the power supplies and lastly the voltage on the output of the heated bed mosfet when it is supposed to be driving. For me, as soon as the bed is being driven the fan on the power supply kicks in, a surefire sign that it's drawing more current.
 
 
 ## Step 5 - Print!
