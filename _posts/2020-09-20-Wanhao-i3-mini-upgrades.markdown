@@ -26,7 +26,11 @@ The parts you will need are:
 There are of course lots of different options for the heated bed. I chose a 12V DC one as I felt it was a bit safer than having the potential for mains on the 3d printer frame. A 24V DC heated bed would reduce the required current significantly.
 
 ## Step 2 - Bed attach and wiring
-Attach the heating pad to the underside of the bed. The print area is offset so I suggest centring this toward the front of the printer. We can now wire up the 3D printer. This is probably best explained with the picture below. This photo is of the bed add connector which shows the pin arrangement for the thermistor and the drive signal.
+Attach the heating pad to the underside of the bed. The print area is offset so I suggest centring this toward the front of the printer. Most of the pads available have a tacky side, so simply remove the bed then stick the pad onto the bed. The thermistor and power cables should route out from under the bed. I have mine coming to the front of the printer but in hindsight the cabling would be neater at the back.
+![bed add connector](/assets/images/HeatedBed/underBed.jpg){:class="img-responsive"}
+
+
+We can now wire up the 3D printer. This is probably best explained with the picture below. This photo is of the bed add connector which shows the pin arrangement for the thermistor and the drive signal.
 ![bed add connector](/assets/images/HeatedBed/mainBoardPin.jpeg){:class="img-responsive"}
 
 This is a schematic of the wiring for my setup.
@@ -41,9 +45,10 @@ The firmware can be downloaded from [here](https://support.th3dstudio.com/hc/en-
 Once the project is loaded there were a few specific steps that I had to do to successfully download the firmware. First, I'm running linux and had to setup the arduino software correctly. There is a script to run from the console to do that ([guide here.](https://www.arduino.cc/en/guide/linux))
 I had to install the U8Glib package by searching for that library and including it.
 
-Search for the Wanhao printer options in configuration.h and uncomment the v2 of the i3 mini. v2 has the heated bed options. Select the Arduino Mega 2560 and the COM port that the printer is plugged into and click the upload button.
+Search for the Wanhao printer options in configuration.h and uncomment the v2 of the i3 mini. v2 has the heated bed options. Select the Arduino Mega 2560 and the COM port that the printer is plugged into and click the upload button. Hopefully you'll end up seeing something like the below:
+![firmware](/assets/images/HeatedBed/firmware.jpg){:class="img-responsive"}
 
-After the firmware is successfully downloaded we can begin to debug any issues. 
+After the firmware is successfully downloaded we can begin to debug any issues.
 
 ## Step 4 - Debugging
 With the new firmware the load screen should now show a bed temperature. If the temperature is nonsensical then there is an issue with your thermistor or its wiring. 
