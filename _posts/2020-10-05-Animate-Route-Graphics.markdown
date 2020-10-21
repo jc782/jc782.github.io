@@ -77,4 +77,22 @@ Setting the viewbox correctly is important to get this to look reasonable on bot
 This is all build into the jekyll page and I can update this for different posts to select different base images and change the code within the drawmap function.
 
 The elevation style plots are created by using a python script to parse the gpx file of a route and output an svg path. Then a gradient fill can be used and the position of the gradient fill line is dynamically adjusted. As most of my adventures have an associated gpx and some cool elevation I quite like this.
+
+### Part 2 - Jekyll integration
+Adding JS scripts via a markdown file in Jekyll was a small challenge. Ultimately I put the JS files into the static directory under /assets/js
+
+I then add a short piece of code to the default.html in _layouts. This tells the page to look for items in the jsarr which is defined in the markdown file, then add these scripts.
+
+```
+{% for js in page.jsarr %}
+<script src="{{ base.url | prepend: site.url }}{{ js }}"></script>
+{% endfor %}
+```
+
+Finally the JS files are added in the markdown header as follows. The first file is the general snap.svg js file which enables the SVG manipulation. The second file is specific for the animation on that exact page.
+```css
+jsarr:
+  - /assets/js/snap.svg.js
+  - /assets/js/japan.js
+```
 </div>
