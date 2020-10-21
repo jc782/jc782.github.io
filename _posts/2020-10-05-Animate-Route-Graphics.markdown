@@ -83,7 +83,7 @@ Adding JS scripts via a markdown file in Jekyll was a small challenge. Ultimatel
 
 I then add a short piece of code to the default.html in _layouts. This tells the page to look for items in the jsarr which is defined in the markdown file, then add these scripts.
 
-```
+```html
 {% for js in page.jsarr %}
 <script src="{{ base.url | prepend: site.url }}{{ js }}"></script>
 {% endfor %}
