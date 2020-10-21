@@ -119,7 +119,11 @@ Interesting book that bounced around. An appreciation for power consumption / po
 
 ### A Piano in the Pyrenees, Tony Hawks
 *September 2020*  
-Highly amusing. Not many books actually make you chuckle.
+Highly amusing. Not many books actually make you chuckle. Life in the Pyrenees sounds okay.
+
+### Backroom Boys, Francis Spufford
+*October 2020*  
+Tales of British engineering. My personal favourites were the development of the Atari games in Cambridge and the start of VoDafone
 
 
 
