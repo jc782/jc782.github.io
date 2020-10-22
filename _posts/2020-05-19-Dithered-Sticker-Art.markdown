@@ -16,7 +16,7 @@ I am not particularly artistic. Nonetheless, I can try, and one aspect I have fo
 
 The original plan convert a photo into a piece of art where the pixels were represented by push pins. Unfortunately it would have been a relatively expensive piece of art with push pins even if I sourced them from Alibaba. Instead I compromised on dot stickers often used to mark stationary.
 
-The starting photograph, I decided, was one of my parents Border terrier standing in her characteristic pose.
+The starting photograph, I decided, was one of my parents' Border terriers standing in her characteristic pose.
 ![ribble](/assets/images/algoart/Ribble.JPG){:class="img-responsive"}
 
 The colours available were set by the stickers that I could easily buy.

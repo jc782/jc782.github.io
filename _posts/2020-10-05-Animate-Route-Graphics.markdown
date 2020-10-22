@@ -84,9 +84,11 @@ Adding JS scripts via a markdown file in Jekyll was a small challenge. Ultimatel
 I then add a short piece of code to the default.html in _layouts. This tells the page to look for items in the jsarr which is defined in the markdown file, then add these scripts.
 
 ```html
+<!--
 {% for js in page.jsarr %}
 <script src="{{ base.url | prepend: site.url }}{{ js }}"></script>
 {% endfor %}
+-->
 ```
 
 Finally the JS files are added in the markdown header as follows. The first file is the general snap.svg js file which enables the SVG manipulation. The second file is specific for the animation on that exact page.
