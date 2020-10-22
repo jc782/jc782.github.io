@@ -25,13 +25,14 @@ The colours available were set by the stickers that I could easily buy.
 My initial naive attempt was to reduce the resolution of the image to the target resolution and to set each pixel to be the closest colour defined by a cartesian distance in RGB space. The psuedo code being something like
 
 ```
-colours = 
+colours = [r1,g1,b1; r2,g2,b2]
 minDist = inf
 pixel = [r,g,b]
 for col in colours:
     dist = (r-col.r)**2 +(g-col.g)**2 +(g-col.g)**2
     if dist < minDist:
         minDist = dist
+        finalColour = col
 ```
 
 This does something. But probably isn't the best we can do.
