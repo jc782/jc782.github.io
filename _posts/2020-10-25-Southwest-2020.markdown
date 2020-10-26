@@ -1,0 +1,67 @@
+---
+title: Southwest 2020
+layout: post
+date: '2020-10-24 21:10'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Cycle touring England's hilly southwest
+jsarr:
+  - /assets/js/snap.svg.js
+published: false
+---
+
+<style>
+.container {
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  background-color: white;
+  z-index:10;
+  height: 15vh;
+  overflow: hidden;
+}
+</style>
+<div class="container">
+<svg id="someID" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 600 150" ></svg>
+</div>
+
+<div markdown="1" class="contentCont" id="scroll">
+2020 is going down as a helluva year. Marking a decade of adventure trips with a pandemic. The rising tide of cases forced us in a southerly direction. 
+
+### Day 0 Cambride -> Pershore
+This was a pilgrimage home. 120 miles fully loaded into a headwind with a sprinkling of torrential rain in the final 20 miles to keep me entertained. The route was progressively hillier and cut through middle England. Barring the Bedford -> Milton Keynes section is was lovely. 
+
+### Day 1 Bridgwater -> Exmoor
+'Recovery day'. An alpine start it was not. Once departed we were up and over the Quantock hills with a pleasant descent into Minehead. From here we looped back past Dunster Castle and selected an exceedingly steep single-track climb to ascend onto Exmoor. Fortunately the high section of Exmoor was not too hilly. We left the high platuau and it's abundance of wild-camping spots for the sleepy village of Simonsford. A pub there was generous enough to serve us food but not enough to let us camp in their garden. Food was good though. 
+
+### Day 2 Exmoor -> Tintage
+The big day. Observations:
+- The coastal road is exceptionally hilly
+- 20 mile diversions to do 'top 100' climbs are worthwhile
+- Progress on the A39 is an order of magnitude faster than country lanes. Literally.
+- Apparently everyone knows everyone else on those country lanes. And we're supposed to know everyone too.
+- Diversions to random towns for lunch are not worthwhile.
+- Tintagel is like the Lourdes but with King Arthur.
+- Our BnB was not in Tintagel.
+- If you're warm and its raining, don't stop cycling. You'll get cold.
+
+
+### Day 3 Tintagel -> St Just
+This trip was summed up by our route choice from the BnB. We selected the small road which is the as the crow flies route. This would be a good choice if you were a crow. But we're not, and we can't fly. It was the final straw for Jordan's knee. Luckily with some Ibuprofen and a ferry trip he could soldier on. 
+
+At some point our close embrace with the coastal road became too intense and so we went inland through Redruth. After Redruth things got kinda quiet and the road from St Ives down to St Just was sublime. Sadly in St Just we discovered the chippy was closed. Our tragedy deepened when we descended to the beach to wild camp only to discover we had no water and a good pitch was not obvious in the darkness. 
+
+St Just rugby club was the perfect alternative though.
+
+### Days 4 onwards
+That was that for big cycle miles. Broken knees and the hint of a headwind heading north was enough to dissuade us. So ended 2020s adventure edition. 
+
+
+
+
+</div>
