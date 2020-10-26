@@ -12,7 +12,8 @@ author: joshcarr
 description: Cycle touring England's hilly southwest
 jsarr:
   - /assets/js/snap.svg.js
-published: false
+  - /assets/js/southwest.js
+published: true
 ---
 
 <style>
@@ -27,7 +28,7 @@ published: false
 }
 </style>
 <div class="container">
-<svg id="someID" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 600 150" ></svg>
+<svg id="someID" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 130 600 150" ></svg>
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
@@ -39,7 +40,7 @@ This was a pilgrimage home. 120 miles fully loaded into a headwind with a sprink
 ### Day 1 Bridgwater -> Exmoor
 'Recovery day'. An alpine start it was not. Once departed we were up and over the Quantock hills with a pleasant descent into Minehead. From here we looped back past Dunster Castle and selected an exceedingly steep single-track climb to ascend onto Exmoor. Fortunately the high section of Exmoor was not too hilly. We left the high platuau and it's abundance of wild-camping spots for the sleepy village of Simonsford. A pub there was generous enough to serve us food but not enough to let us camp in their garden. Food was good though. 
 
-### Day 2 Exmoor -> Tintage
+### Day 2 Exmoor -> Tintagel
 The big day. Observations:
 - The coastal road is exceptionally hilly
 - 20 mile diversions to do 'top 100' climbs are worthwhile
