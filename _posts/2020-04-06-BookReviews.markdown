@@ -136,6 +136,17 @@ Life as a junior doctor sounds grim. Makes my life seem easy.
 *October 2020*  
 Horrific. A gripping story. I think it would have been better without the 5% dramatic license. 
 
+### Factfulness, Ana, Hans, and Ola Rosling
+*Novemeber 2020 Audiobook*  
+There are many take home points from this. The world is a bad place - but it's not as bad as we might imagine. I feel like one's impression of the world comes from what is learnt at school, and appreciating change since then is challenging.
+
+### Revelation, Bill Napier
+*November 2020*  
+Fictional tale based on the supposition a scientist in the Manhatten project discovered something that should very much be kept a secret. Enjoyable story lines, but quite long, and took too long to conclude.
+
+
+
+
 
 
 
