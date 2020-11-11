@@ -1,0 +1,43 @@
+---
+title: Live Running Game - Flutter
+layout: post
+date: '2020-11-11 22:10'
+headerImage: false
+tag:
+  - project
+star: false
+category: post
+author: joshcarr
+description: Flutter App
+published: true
+---
+
+I have never built an app. I've decided, with lockdown v2.0, it's time to do just that. 
+
+I want to keep things relatively simple, but also make something 'interesting'. My concept is quite a basic one. Create an 'arcade game' that uses GPS data during exercise as the key control mechanism.
+
+There are a number of challenges I'm expecting to face:
+* Is the data stream for speed / position sufficiently high quality to feel like you are in 'control'
+* Realisitcally until AR glasses are a thing the interaction will be limited to audio feedback
+* I've never built an app before... 
+
+
+### Target
+The targets in order of difficulty are:
+1. Create an app that runs on my phone and enables me to play a game while running (and looking at my phone)
+2. Augment the above app with audio data to make it 'hands free'
+3. Create a UI that enables other players to adapt the settings to be suitable for them
+4. Create a database for 'high scores'
+5. Enable players to play live against each other
+
+I'm benchmarking 'success' as anything beyond level 1. As I am doing this as part of the November 2020 'Game Off' I'm also setting myself a time limit for this project.
+
+
+### Progress - Week 1
+I have decided to build the app using the 'Flutter' platform. It seems relatively simple to use and offers cross platform capability while also delivering native apps. It's not designed for games, but equally I'm not trying to make anything too complex here. I'm going to try and build 'Pong' where the height of the paddle is changed by moving faster/slower than a reference speed. I've started just by installing flutter and its requirements and following a couple of simple tutorials.
+
+### Progress - Week 2
+I've built out the basic UI and game mechanics. Testing is all on an emulator. I'm using the geolocator plugin to capture speed information, but at present this is not part of the control loop. The next step is to implement the geolocator as part of the game loop, and also try some 'On device' testing.
+I still need to work out a mechanism for 'Audio Pong' which generates the audio files on the fly.
+
+
