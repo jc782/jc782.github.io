@@ -144,6 +144,15 @@ There are many take home points from this. The world is a bad place - but it's n
 *November 2020*  
 Fictional tale based on the supposition a scientist in the Manhatten project discovered something that should very much be kept a secret. Enjoyable story lines, but quite long, and took too long to conclude.
 
+### The Flying Scotsman, Graeme Obree
+*November 2020*  
+Autobiography of a phenomenal athlete and innovater. I had not realised before the troubled life that Obree had, or the swings in form. It is a shame he was not better recognised for his achievements at the time.
+
+### The Lynmouth Flood Disaster, Eric Delderfield
+*November 2020*  
+This was the Boscastle before Boscastle. 9" rain in a matter of hours is terrifying. Likely to happen again. Questionable how well prepared the next location that becomes victim to this is.
+
+
 
 
 
