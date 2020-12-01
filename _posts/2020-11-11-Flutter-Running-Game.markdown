@@ -40,4 +40,6 @@ I have decided to build the app using the 'Flutter' platform. It seems relativel
 I've built out the basic UI and game mechanics. Testing is all on an emulator. I'm using the geolocator plugin to capture speed information, but at present this is not part of the control loop. The next step is to implement the geolocator as part of the game loop, and also try some 'On device' testing.
 I still need to work out a mechanism for 'Audio Pong' which generates the audio files on the fly.
 
+### Progress - Week 3 & 4
+Testing on my phone now; makes things much smoother. 'Audio Pong' is implemented and is a mind bender. I'm unconvinced my brain can handle this. My implementation is 90% there & therefore has another 90% to go. I will fix a few bugs then decide whether to publish. It has been fun to learn a new language / skill nonetheless.
 
