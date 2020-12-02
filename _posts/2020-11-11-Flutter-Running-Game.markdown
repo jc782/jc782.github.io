@@ -1,5 +1,5 @@
 ---
-title: Live Running Game - Flutter
+title: Audio-pong! GPS Enabled.
 layout: post
 date: '2020-11-11 22:10'
 headerImage: false
@@ -8,18 +8,18 @@ tag:
 star: false
 category: post
 author: joshcarr
-description: Flutter App
+description: Android app to play Pong! with gps input and audio output.
 published: true
 ---
 
 I have never built an app. I've decided, with lockdown v2.0, it's time to do just that. 
 
-I want to keep things relatively simple, but also make something 'interesting'. My concept is quite a basic one. Create an 'arcade game' that uses GPS data during exercise as the key control mechanism.
+I want to keep things relatively simple, but also make something 'interesting'. My concept is quite a basic one. Create an 'arcade game' that uses GPS data streamed during a run/cycle as the input control mechanism.
 
 There are a number of challenges I'm expecting to face:
 * Is the data stream for speed / position sufficiently high quality to feel like you are in 'control'
 * Realisitcally until AR glasses are a thing the interaction will be limited to audio feedback
-* I've never built an app before... 
+* I've never built an app before... the learning curve could be a steep one
 
 
 ### Target
@@ -30,11 +30,11 @@ The targets in order of difficulty are:
 4. Create a database for 'high scores'
 5. Enable players to play live against each other
 
-I'm benchmarking 'success' as anything beyond level 1. As I am doing this as part of the November 2020 'Game Off' I'm also setting myself a time limit for this project.
+I'm benchmarking 'success' as anything beyond level 1. I'm giving myself a few weeks to have a go at this. Target is to 'ship it' in December 2020.
 
 
 ### Progress - Week 1
-I have decided to build the app using the 'Flutter' platform. It seems relatively simple to use and offers cross platform capability while also delivering native apps. It's not designed for games, but equally I'm not trying to make anything too complex here. I'm going to try and build 'Pong' where the height of the paddle is changed by moving faster/slower than a reference speed. I've started just by installing flutter and its requirements and following a couple of simple tutorials.
+I have decided to build the app with 'Flutter'. It seems relatively simple and offers cross platform capability. I like that it delivers a native experience. It's not designed for games, but equally I'm not trying to make the next Battlefield. I'm going to try and build 'Pong' where the height of the paddle is changed by moving faster/slower than a reference speed. I've started just by installing flutter and its requirements, and following a couple of simple tutorials.
 
 ### Progress - Week 2
 I've built out the basic UI and game mechanics. Testing is all on an emulator. I'm using the geolocator plugin to capture speed information, but at present this is not part of the control loop. The next step is to implement the geolocator as part of the game loop, and also try some 'On device' testing.
