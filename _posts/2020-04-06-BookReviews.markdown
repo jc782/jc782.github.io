@@ -16,6 +16,13 @@ published: true
 
 This year (2020) I am attempting to read more. To keep track I'm listing the books I've read here along with short comment and notable takeaways. In no particular order.
 
+## Year End Summary:
+
+I only started recording strictly from March. 35 books of which 8 were fictional. Best book was 'The Making of the Atomic Bomb' for it's detail and frightening end. I read fiction books more quickly, and next year plan to read more fiction that isn't murder mysteries or similar.
+
+The pandemic undoubtably increased my reading and that is one positive that can be taken from 2020. In 2021 I will again target at least 2 books per month, and additionally 30 books for the year. One of the challenges is finding interesting books to read so I will also start a 'to read' list.
+
+
 ### The Making of the Atomic Bomb, Richard Rhodes
 *Mar 2020*  
 It's incredible the progress to realise the progress made between 1900 and 1945 with physics. That the developed two different bombs in parallel was new to me. The suckerpunch describing the devastation was akin to the finale of Blackadder goes forth. 
@@ -152,7 +159,7 @@ Autobiography of a phenomenal athlete and innovater. I had not realised before t
 *November 2020*  
 This was the Boscastle before Boscastle. 9" rain in a matter of hours is terrifying. Likely to happen again. Questionable how well prepared the next location that becomes victim to this is.
 
-### TThe Wright Brothers, David McCullough
+### The Wright Brothers, David McCullough
 *December 2020*  
 Takeaways are that the development took years of incremental improvement and that they used wing warping not ailerons for control. Remarkable achievement entirely bootstrapped. One wonders what equivalent opportunities still exist like this.
 
