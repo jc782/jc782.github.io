@@ -152,6 +152,18 @@ Autobiography of a phenomenal athlete and innovater. I had not realised before t
 *November 2020*  
 This was the Boscastle before Boscastle. 9" rain in a matter of hours is terrifying. Likely to happen again. Questionable how well prepared the next location that becomes victim to this is.
 
+### TThe Wright Brothers, David McCullough
+*December 2020*  
+Takeaways are that the development took years of incremental improvement and that they used wing warping not ailerons for control. Remarkable achievement entirely bootstrapped. One wonders what equivalent opportunities still exist like this.
+
+### Doors Open, Ian Rankin
+*December 2020*  
+Fiction revolving around a rich businessman stealing artwork then becoming entangled in the criminal world. Slight whodunnit vibes. Enjoyable quick read.
+
+### The Spies of Winter, Sinclair McKay
+*December 2020*  
+The story as GCHQ emerges from WW2 and faces the new threat from communism, while at the same time coping with the collapse of the empire. Many great minds devoted themselves to this invaluable code breaking which must have been exasperating work under stressful conditions. The reminder of how Turing was treated after the war is sobering.
+
 
 
 
