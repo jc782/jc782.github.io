@@ -21,7 +21,7 @@ title: Blog
 
 		{% include pagination.html%}
 	{% else %}
-		<h4>Posts</h4>
+		<h3>Posts</h3>
 		{% for post in site.posts %}
 			{% if post.category == 'post' %}
 				{% if post.hidden != true %}
@@ -29,7 +29,7 @@ title: Blog
 				{% endif %}
 			{% endif %}
 		{% endfor %}
-		<h4>Travel</h4>
+		<h3>Travel</h3>
 		{% for post in site.posts %}
 		{% if post.category == 'travel' %}
 			{% if post.hidden != true %}
