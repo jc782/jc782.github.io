@@ -171,7 +171,9 @@ Fiction revolving around a rich businessman stealing artwork then becoming entan
 *December 2020*  
 The story as GCHQ emerges from WW2 and faces the new threat from communism, while at the same time coping with the collapse of the empire. Many great minds devoted themselves to this invaluable code breaking which must have been exasperating work under stressful conditions. The reminder of how Turing was treated after the war is sobering.
 
-
+### A Life on Our Planet, David Attenborough
+*December 2020*  
+To me this reads as a tragedy waiting to happen for I am unconvinced humanity will act before it is too late. I am, however, optimistic that the ideas of billions of people will navigate us through the mess ahead. 
 
 
 
