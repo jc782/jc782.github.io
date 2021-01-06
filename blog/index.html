@@ -21,7 +21,8 @@ title: Blog
 
 		{% include pagination.html%}
 	{% else %}
-		<h3>Posts</h3>
+		<h3>General Posts</h3>
+		<br>
 		{% for post in site.posts %}
 			{% if post.category == 'post' %}
 				{% if post.hidden != true %}
@@ -30,6 +31,7 @@ title: Blog
 			{% endif %}
 		{% endfor %}
 		<h3>Travel</h3>
+		<br>
 		{% for post in site.posts %}
 		{% if post.category == 'travel' %}
 			{% if post.hidden != true %}
