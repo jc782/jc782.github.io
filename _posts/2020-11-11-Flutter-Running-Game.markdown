@@ -43,3 +43,6 @@ I still need to work out a mechanism for 'Audio Pong' which generates the audio 
 ### Progress - Week 3 & 4
 Testing on my phone now; makes things much smoother. 'Audio Pong' is implemented and is a mind bender. I'm unconvinced my brain can handle this. My implementation is 90% there & therefore has another 90% to go. I will fix a few bugs then decide whether to publish. It has been fun to learn a new language / skill nonetheless.
 
+### Project on pause 
+Over the break I didn't make any progress on this, but I have decided that the full audiopong is too hard and am going to attempt a more flappy-bird esque game. Where I have gotten to so far is a success on the basis that I have a functioning app on my phone written by myself.
+
