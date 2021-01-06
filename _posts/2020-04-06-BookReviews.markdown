@@ -11,16 +11,14 @@ author: joshcarr
 description: 2020 Books
 published: true
 ---
-
-## Summary:
-
-This year (2020) I am attempting to read more. To keep track I'm listing the books I've read here along with short comment and notable takeaways. In no particular order.
-
 ## Year End Summary:
 
 I only started recording strictly from March. 35 books of which 8 were fictional. Best book was 'The Making of the Atomic Bomb' for it's detail and frightening end. I read fiction books more quickly, and next year plan to read more fiction that isn't murder mysteries or similar.
 
 The pandemic undoubtably increased my reading and that is one positive that can be taken from 2020. In 2021 I will again target at least 2 books per month, and additionally 30 books for the year. One of the challenges is finding interesting books to read so I will also start a 'to read' list.
+
+## Books read in 2020:
+This year (2020) I am attempting to read more. To keep track I'm listing the books I've read here along with short comment and notable takeaways. In no particular order.
 
 
 ### The Making of the Atomic Bomb, Richard Rhodes
