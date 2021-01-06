@@ -1,1 +1,1 @@
-## a Jekyll site to record goings on.
+## Personal Website to record goings on
