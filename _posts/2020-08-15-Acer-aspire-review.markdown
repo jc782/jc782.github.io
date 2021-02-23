@@ -17,7 +17,7 @@ My chromebook has been EOL'd and my laptop is just too old to be suitable for us
 * Upgradeable RAM (seemingly the only option with the UK with upgradeable RAM at this price-point)
 * Decent build / feel - The laptop feels solid and for a 15" laptop it's suprisingly small and light.
 * Available now rather than in 6wks+
-* My previous laptop was an Acer Aspire and has lasted 8yrs...
+* My previous laptop was an Acer Aspire and has lasted 8yrs... so it seems like a good choice
 
 
 Things I didn't care about and so compromised on:
@@ -36,6 +36,7 @@ I am dual booting Windows and Ubuntu 20.04 with the 5.8 kernel. Most things seem
 Jan 2021 Update:
 * I had issues with audio reliablitly on 20.04 and generally felt a few things were not quite right. I have update to 20.10 Pop OS which seems smoother and the audio works. 
 
-The first upgrade should be adding an additional 16GB RAM stick to the Dimm slot.
+Feb 2021 Update:
+* POP OS has generally been pretty good. Occasionally something happens which makes things run slow until I reboot. Unsure what this is. I also regret turning on encryption which seems like just an extra password to remember.
 
 
