@@ -13,9 +13,13 @@ published: true
 ---
 ## Year End Summary:
 
-I only started recording strictly from March. 35 books of which 8 were fictional. Best book was 'The Making of the Atomic Bomb' for it's detail and frightening end. I read fiction books more quickly, and next year plan to read more fiction that isn't murder mysteries or similar.
-
-The pandemic undoubtably increased my reading and that is one positive that can be taken from 2020. In 2021 I will again target at least 2 books per month, and additionally 30 books for the year. One of the challenges is finding interesting books to read so I will also start a 'to read' list.
+35 books total. 
+8 fiction. 
+Best book this year = 'The Making of the Atomic Bomb' 
+Notes: 
+* I read fiction books more quickly. I should read more 'good' fiction. Not murder mysteries / easy reading.
+* The pandemic undoubtably increased my reading. It's one positive that can be taken from 2020.
+In 2021 I will again target at least 2 books per month, and additionally 30 books for the year. I'm getting through my list of books I knew I wanted to read, finding more becomes more challenging.
 
 ## Books read in 2020:
 This year (2020) I am attempting to read more. To keep track I'm listing the books I've read here along with short comment and notable takeaways. In no particular order.

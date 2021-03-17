@@ -31,11 +31,12 @@ published: true
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
-This is some notes on how to use the Snap javascript library to create web page animations like the one on this page showing our fantastic trip through Japan.
 
-The premise is to use the scroll position of the page to illustrate a position along the journey. 
+I have used the Snap javascript library to create simple web page animations to tell a story. One example is our fantastic trip through Japan.
 
-The workflow is to create an SVG image (probably best using Inkscape) and then to link the properties (such as line position or colour) of a specific part of this image to the scroll position on the page. You can take a look at the full javascript by inspecting this page. But for my own reference the main function called each time a new scroll position is found is something like the below.
+The premise is to use the scroll position of the page to represent passage along a journey. 
+
+The workflow is to create an SVG image (I use Inkscape) and then to link the properties (such as line position or colour) of a specific part of this image to the scroll position on the page. You can take a look at the full javascript by inspecting this page. The main function called each time a new scroll position is found is something like the below.
 
 ```javascript
 function drawMap(scroll_pos, limit) {
@@ -57,8 +58,7 @@ function drawMap(scroll_pos, limit) {
   }
 }
 ```
-
-Here we select the SVG which is in a div with ID #someID. Then from this we select the exact element that we want to edit.
+Here we select the SVG which is in a div with ID #someID. Then from this we select the exact element (#trainPath) that we want to edit.
 The scroll position is and input to the function and we can split the path based on the scroll position and the max possible scroll position. Then we replot the sub paths which together make up the whole path.
 
 Setting the viewbox correctly is important to get this to look reasonable on both mobile and desktop. To get the image to remain at the top of the page some css is used.
@@ -76,7 +76,7 @@ Setting the viewbox correctly is important to get this to look reasonable on bot
 
 This is all build into the jekyll page and I can update this for different posts to select different base images and change the code within the drawmap function.
 
-The elevation style plots are created by using a python script to parse the gpx file of a route and output an svg path. Then a gradient fill can be used and the position of the gradient fill line is dynamically adjusted. As most of my adventures have an associated gpx and some cool elevation I quite like this.
+The elevation style plots, such as that on the [Morocco]({% post_url 2020-05-18-Morocco-2018 %}) page are created by using a python script to parse the gpx file of a route and output an svg path. Then a gradient fill can be used and the position of the gradient fill line is dynamically adjusted. Since most of my adventures involve some cool elevation gain/loss I quite like this.
 
 ### Part 2 - Jekyll integration
 Adding JS scripts via a markdown file in Jekyll was a small challenge. Ultimately I put the JS files into the static directory under /assets/js
