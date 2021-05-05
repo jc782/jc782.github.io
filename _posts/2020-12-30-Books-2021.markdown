@@ -58,3 +58,7 @@ A clever novel in which a Roma boy tries to survive WW2. Flashbacks to the lives
 *Apr 2021*  
 A child gets lost in India, survives the streets of Calcutta, gets adopted, then uses Google Earth to find his home. I watched the film, and the book matched up well. Astonishing number of memories from before the age of 5.
 
+### Deep Thinking, Garry Kasparov
+*Apr 2021*  
+Mostly musings by Kasparov on the development of Chess engines. I liked the comment that things are intelligent until we learn how to make a machine do it, and then, in the world of 1s and 0s, we deem them no longer intelligent. Following reading this I played Stockfish on its highest level and got destroyed in 12moves...
+
