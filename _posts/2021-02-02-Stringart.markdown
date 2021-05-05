@@ -40,8 +40,10 @@ for line in range(nlines):
 
 The great thing about this is that we can visualise what it's going to look like by plotting these lines. Then we can tune the parameters (number pins, darkness reduction per line, line width) to create by eye the best likeness of the original image.
 
-Practically speaking the construction was relatively simple. I used a bike wheel rim as the circular frame and put 121 equally spaced pins in. I exported the pinList to an excel file and worked my way though simply winding around the next pin each time. It took probably 6hrs of winding for the 1200ish lines. It was nice to see it gradually come together.
+Practically speaking the construction was relatively simple. I used a bike wheel rim as the circular frame and put 126 equally spaced pins in. I exported the pinList to an excel file and worked my way though simply winding around the next pin each time. It took probably 6hrs of winding for the 1200ish lines. It was nice to see it gradually come together. Here's the final result:
+![molePicture](/assets/images/algoart/mole.jpg){:class="img-responsive"}
 
-In hindsight... it's a bit big. It looks better from a distance. Perhaps it will be installed outdoors. We'll find out after the COVID debacle calms down.
+In hindsight... it's a bit big. It looks better from a distance where the eye starts to blur the thread together. Perhaps it will be installed outdoors. We'll find out after the COVID debacle calms down.
+
 
 The [next level version](https://news.artnet.com/art-world/ani-abakumova-thread-art-computer-1626352) (thanks Russia) is to include colour. But I think next year I'll aim for something 'novel'.
