@@ -28,8 +28,8 @@ I decided the workflow should be:
 
 I want this to work without logging in as a user which creates some interesting challenges with keeping data client-side. 
 
-## Tech Stack
-Having used Django before I decided to make that the backend. Hosting is simple on pythonanywhere and it also meant I could easily integrate OpenCV to do the image manipulation. Of course the front end interaction was largely Javascript, this included user inputs, calling the backend without page refresh.
+## Stack
+Having used Django before I decided to make that the backend. Hosting is simple on pythonanywhere and it also meant I could easily integrate OpenCV to do the image manipulation. Front end interaction for user inputs / backend interaction was AJAX. I should probably learn something 'modern', but I've yet to find anything I can't do with this approach, so it seemed good enough for me.
 
 There was also integration to three separate APIs. To fufil orders the Pwinty API allows automatic order creation and fufilment. However it does not include payments. Stripe seemed like an obvious choice for payments. For order confirmation I wanted emails sent and so decided to integrate with Mailgun.
 
