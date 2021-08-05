@@ -1,0 +1,33 @@
+---
+title: Scotland 2012
+layout: post
+date: '2013-06-22 22:03'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Snowdonia adventure
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+2013 was a down year; Jordan had started work and I was doing a summer internship which curtailed any longer holiday plans. We made it away for a weekend with guest and good friend Harry Mallinson along for the ride. 
+
+The weather forecast was fine (too fine) and we drove up in Jordan's polo on Friday after work. We had Bivy bags with us and decided to climb Snowdon and camp at the top. It was nice enough on the summit to be wearing a t-shirt after nightfall.
+
+![bivvy](/assets/images/snowdon2013/bivvy.jpg){:class="img-responsive"}
+
+There was a vague plan to follow the route of the Welsh 3000s but it became apparent pretty much immediately that Harry wasn't fully recovered from his illness (and had developed minor vertigo descending Crib Goch). While cragfast we were also out of water on a very hot day. 
+![crag fast](/assets/images/snowdon2013/cribgoch.jpg){:class="img-responsive"}
+
+Off the ridge and at a stream we refilled and wandered on to the road before climbing over the Glyder Fawr and Glyder Fach. We must have pitched up by the lake on the descent and then climbed Tryfan in the evening sun. 
+![don't look mum](/assets/images/snowdon2013/dontlook.jpg){:class="img-responsive"}
+
+![team](/assets/images/snowdon2013/team.jpg){:class="img-responsive"}
+
+Looking at the photos it was a glorious weekend; warm enough for some wild swimming.
+
+The mileage might have been low, but the company was excellent and made for some fond memories.
+</div>
