@@ -1,0 +1,38 @@
+---
+title: Scotland 2021
+layout: post
+date: '2021-09-13 22:03'
+headerImage: false
+tag:
+  - travel
+  - holidays
+star: false
+category: travel
+author: joshcarr
+description: Highland 550
+published: false
+---
+<div markdown="1" class="contentCont" id="scroll">
+
+The Highland 550 is a notorious off-road bikepacking race; racing it the full distance has been completed in <4days. Call it brave (or stupid), but in search of adventure we decided to attempt a large chunk of the route in a week.
+
+**Preparation & Kit
+We both rode hardtails, which I think were the right choice. For carrying kit we each had a handlebar bag and saddlebag plus a small rucksack. Avoiding the rucksack would have been nice but would have needed us to compromise on something else.
+
+** Day 1: Tyndrum to Ben Alder Bothy
+After a relaxed morning we made it to Tyndrum and found a spot to park. Final kit selection made, we cycled up to the Green Welly and onto the route which immediately climbs out of Tyndrum and within the first few K there is a short hike-a-bike section (more on hike-a-bike later). Early progress seemed slow and our target of ~50miles/day was going to be a challenge. Luckily day 1 the paths are almost entirely good double-track. The path to the bothy becomes a bog for the last 2k and meant we finished in the dark. The bothy was already full so we pitched outside.
+
+
+** Day 2: Ben Alder Bothy to 'the windfarm after Fort Augustus'
+Our routine became: wake, eat, [(cycle, eat), repeat], review route, sleep. The route review showed day 2 had two big climbs. From the bothy the singletrack continued. I won 'first mechanical' with a puncture jumping a drainage ditch. We gradually got better and more confident with the drainage ditches though after the puncture the wider, sharper ones I generally stopped for. 
+
+The climb up to the Corriack pass was pretty epic, and the descent to Fort Augustus was, for us relatively novice MTB'ers, one of the best. In Fort Augustus we had completed half the first loop and now were heading out onto the larger and more daunting second loop. 
+
+** Day 3: 'the Windfarm'
+
+
+
+
+
+
+</div>
