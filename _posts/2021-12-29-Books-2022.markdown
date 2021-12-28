@@ -1,0 +1,25 @@
+---
+title: Books 2022
+layout: post
+date: '2021-12-29 21:30'
+headerImage: false
+tag:
+  - books
+star: false
+category: post
+author: joshcarr
+description: 2022 Books
+published: true
+---
+
+## Summary:
+So begins another year, once again 2 books / month is the target.
+
+## Reading list:
+* The design of everyday things
+* No surrender
+
+
+### Template
+*Jan 2021*  
+tbc
