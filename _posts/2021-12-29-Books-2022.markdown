@@ -13,13 +13,13 @@ published: true
 ---
 
 ## Summary:
-So begins another year, once again 2 books / month is the target.
+So begins another year, once again 2 books / month is the target. I'd like, again, to read a few more classics and also more history. 
 
 ## Reading list:
 * The design of everyday things
 * No surrender
 
 
-### Template
+### Good Data, Sam Gilbert
 *Jan 2021*  
-tbc
+An optimist's guide to our digital future. A reasonable take on the legitimacy of big-tech and the value of data. Most interesting sections around the development of 'Bought by Many' and how they looked into this. 
