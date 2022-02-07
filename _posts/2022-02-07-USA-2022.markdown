@@ -1,0 +1,42 @@
+---
+title: USA Jan 2022
+layout: post
+date: '2022-02-07 22:03'
+headerImage: false
+tag:
+  - travel
+star: false
+category: travel
+author: joshcarr
+description: SF & Boulder
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+
+A first plane journey in 2 years on a work trip to the US. Locations happened to be San Francisco & Boulder.
+
+## San Francisco
+My third visit to SF and every time I am appalled at the homeless / drugs problem in Downtown. After landing I enjoyed a traverse of the city, through Golden Gate park down to Ocean Beach for sunset. Guided by the one and only Mark Nelson & Sid. Catching the final few minutes of the NFL 49'ers vs Green Bay was excellent. 
+
+Keeping with the solar theme I ran up Twin Peaks for sunrise. Around Civic centre comatose bodies litter the streets with many it is a struggle to identify signs of life. That there is a refugee style setup is, in itself, tragic. Twin Peaks was lovely and a nice hill. 
+
+## Boulder
+Endurance athletes love Boulder, they say. My stay was extended, for work reasons, and this allowed some excellent opportunities for fun.
+
+### Friday
+Slightly early finish on Friday and straight out to Flagstaff Road. Boulder nestles against the front range and excellent trails lead to some impressive views. I set out to run Green Mountain. The American's excelling, as ever, with their naming. On this occassion it was snowy white. 
+
+### Saturday
+The closest ski resort to Boulder is Eldora. Though it has a reasonable downhill area, I elected for some XC skiing. The nordic trails at Eldora were surprisingly hilly; probably a net positive ahead of Engadin Ski Marathon in March.
+
+Coincidentally the road to Eldora runs parallel to Magnolia Road, of great fame in Running with the Buffaloes. This dirt road runs for 7.5miles (15 for the full out n back) rolling through the Colorado plains. I managed a meagre 8.5miles. A Bison farm, and an intersection with Lazy Drive were highlights.
+
+### Sunday
+When in Rome. So I went downhill skiing. Colorado has trended toward conglomerates like Epic and Ikon. Having neither of those passes meant the 'main' areas were extremely expensive. I tried Loveland which was both a little closer, and pleasantly light on the wallet. I found the terrain excellent, especially skiers right of the fast quad. There were extensive mogul and tree skiing options. 
+
+## Notes on food
+There were too many good food restuarants to list them all, particular highlights were Blackbelly, Upslope, and Illegal Pete's.
+
+Photos to be added another day...
+
+</div>
