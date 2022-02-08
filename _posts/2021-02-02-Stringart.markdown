@@ -11,6 +11,7 @@ author: joshcarr
 description: String Art
 published: true
 ---
+<div markdown="1" class="contentCont" id="scroll">
 
 Last year for Christmas I made the [dithered sticker art thing](https://algorithmic-art.firebaseapp.com/). It was fun, so I tried something similar for 2020.
 
@@ -47,3 +48,5 @@ In hindsight... it's a bit big. It looks better from a distance where the eye st
 
 
 The [next level version](https://news.artnet.com/art-world/ani-abakumova-thread-art-computer-1626352) (thanks Russia) is to include colour. But I think next year I'll aim for something 'novel'.
+
+</div>
