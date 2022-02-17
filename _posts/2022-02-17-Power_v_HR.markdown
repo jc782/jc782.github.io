@@ -1,0 +1,42 @@
+---
+title: Power and Heartrate - A correlation 
+layout: post
+date: '2022-02-19 21:30'
+headerImage: false
+tag:
+  - training
+  - data
+star: false
+category: post
+author: joshcarr
+description: Investigating Power and Heartrate
+published: true
+---
+
+In the last 6 months I have gotten into Zwift racing. Compared to running, (in the real world), the world of indoor (virtual) cycling offers a controlled environment with excellent metrics for performance. There is no wind, no surface variation, and relatively little temperature variation. The control on these variables gives us a chance to extract deeper understanding from the data. 
+
+This post is an investigation into the correlation between heart-rate and power data. Interesting questions include:
+- Can long term fitness be identified in Power / HR data?
+- Can form for a particular day be identified in Power / HR data? 
+- Can Power / HR data be used, live, to control an effort during a cycling race?
+- Can we identify rider type based on Power / HR data?
+
+The value of the above depends who you are - if you're team Ineos and you're interested ... get in touch.
+
+My hypothesis is that on a longer time base power and HR will be correlated and that this will be close to linear. A few more obvious things:
+- Heart rate will lag power (it takes the body time to respond to a change in output)
+- Heart rate will be much smoother than power (again, it takes the body time to respond to a change in output)
+
+Taking a particular activity we can look at fitting our power and HR data. We can measure the quality of the fit of this data using statistucal measures like R^2. For a stream of power and HR data this can be calculated. 
+
+We can then adjust these data streams. For example varying the smoothing of the power data (moving average), and the lag between the power and HR data. We can look on this surface for a maxima in the correlation.
+
+{% include_relative /assets/html/test.html}
+
+
+
+
+
+
+
+
