@@ -1,0 +1,49 @@
+---
+title: Engadin 2022
+layout: post
+date: '2022-03-18 21:03'
+headerImage: false
+tag:
+  - travel
+star: false
+category: travel
+author: joshcarr
+description: Engadin Ski Marathon & St Moritz Downhill
+published: true
+---
+<div markdown="1" class="contentCont" id="scroll">
+Optimistically viewed as inaugural the 'PostPandemic' ski trip we (5) descended on Stansted Airport. Remarkably little change at Stansted since Jan 2020, with just a smattering of travellers wearings masks. The Ryanair flight (both ways) was pleasantly quiet and after landing in Bergamo we headed along the side of Lake Como, over the border and Maloja pass, to St Moritz.
+
+## The XC Skiing Part
+After 2019's pioneering 'just enter an XC ski race and see what happens' we'd returned to the Alps to tackle the Engadin Ski Marathon. It is undisputedly one of the greatest ski races in the world. It runs from Maloja to S-Chanf down the Engadin valley passing through St Moritz and Pontresina on the way. With a few days available for practice we made the most of the good conditions getting in a half marathon on the Friday and, tapering, 8miles on Saturday. 
+
+Sunday morning dawned fine and bright and heading to the race we mused on expected finishing times, our relevant running race experience, and evident beginner status at XC skiing. Unlike the Ganghoferlauf, this time the start was in waves which meant a much less manic opening mile.
+![start](/assets/images/Engadin2022/racestart.jpg){:class="img-responsive"}
+
+The first 8miles are predominantly on frozen lakes which meant excellent smooth snow and wide tracks. This came to a grinding halt at Champfer and the first significant climb on the course. For the leaders this represents opportunity to break opponents while the immense help from drafting is reduced. Sadly for the rest of us it means trudging / waddling three abreast in queues up the hill. Engadin was great, but for me queueing during a race was heartbreaking and easily the worst part of the whole experience. 
+
+After the Champfer hill the section from St Moritz to Pontresina, which we had recce'd on Friday, was the toughest part of the course. The snow was churned and soft, and there were a few significant inclines both upward and downward of note. This was the only point of the race where I was concerned about finishing... From halfway the frequency of aid stations increased and fortunately there were more easy, lake-frozen miles. The drinks provided were all warmed and I wondered whether this had any stomach-aiding influence that marathon runners should take note of. The options of Iso, broth, tea, or water were remarkably distinct and, for the impatient racer, something of a lottery. 
+
+The slight uphill drag in the final few miles was tiresome and the final 100m gave indication to what the race would have been like with a headwind. Overall an excellent experience which was extremely well organised. We all (even the complete XC skate skiers) finished in times between 3 and 4.5hrs.
+![finish](/assets/images/Engadin2022/finish.jpg){:class="img-responsive"}
+
+
+Engadin Ski Marathon [x]
+
+## The Downhill Skiing Part
+St Moritz is also internationally famed for downhill (amongst other things like the Cresta run). It is similar to perhaps Chamonix, more a collection of smaller ski areas than one complete, linked, area. There are two larger areas, Corviglia and Corvatsch and we spent a day at each.
+
+Corviglia had a nice mix of cruisers, fun features, and steeper terrain. All were enjoyed, expecially the timed ski race run and the zip-line moguls. It was this day I was suspiciously not quite right (ie getting ill) but I put it down to a mix of post race, altitude, and post race wine.
+![Upper Engadin](/assets/images/Engadin2022/upperengadin.jpg){:class="img-responsive"}
+
+The next day was not so fine. A real pea-souper of a day. Much warmed and in the morning spent on the inside of a cloud. 
+![cloudy](/assets/images/Engadin2022/cloudy.jpg){:class="img-responsive"}
+
+Skiing in such conditions isn't the most fun, more a battle of feeling your way from one piste marker to the next. The underfoot conditions were fortunately very good which marginally eased the situation. After lunch, which was an excellent Schnitzel sandwich, the cloud lifted and we enjoyed a few brilliant runs including a memorable scenic route from the very top. I'd very much have like to ski the run from the Corvatsch area down to St Moritz but the one-way nature made this logistically difficult. 
+![Sandwich](/assets/images/Engadin2022/sandwich.jpg){:class="img-responsive"}
+
+
+## The Aftermath Part
+Drove back from the mountains and had another exellent pizza from a kebab shop. We had one on the first night from a place in Lecco. I was sneezing more than normal and was suspicious I had picked up more than just the Engadin finishers medal. Indeed, the next day I got home, LFT tested and was positive. Darn - so much for post pandemic...
+
+</div>
