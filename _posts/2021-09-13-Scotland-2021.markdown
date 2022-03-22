@@ -20,12 +20,16 @@ The Highland 550 is a notorious off-road bikepacking race; racing it the full di
 We both rode hardtails, which I think were the right choice. For carrying kit we each had a handlebar bag and saddlebag plus a small rucksack. Avoiding the rucksack would have been nice but would have needed us to compromise on something else.
 
 ![start](/assets/images/scotland2021/start.JPG){:class="img-responsive"}
+<figcaption>Setting off from Tyndrum</figcaption>
+
 
 ## Day 1: Tyndrum to Ben Alder Bothy
 After a relaxed morning we made it to Tyndrum and found a spot to park. Final kit selection made, we cycled up to the Green Welly and onto the route which immediately climbs out of Tyndrum and within the first few K there is a short hike-a-bike section (more on hike-a-bike later). Early progress seemed slow and our target of ~50miles/day was going to be a challenge. Luckily day 1 the paths are almost entirely good double-track. There were a couple of river crossings but nothing too challenging. The path to the bothy becomes a bog for the last 2k and meant we finished in the dark. The bothy was already full so we pitched outside.
 ![river](/assets/images/scotland2021/river.jpg){:class="img-responsive"}
+<figcaption>So long dry feet</figcaption>
 
 ![bothy](/assets/images/scotland2021/bothy.JPG){:class="img-responsive"}
+<figcaption>Many a midge at this Bothy</figcaption>
 
 
 ## Day 2: Ben Alder Bothy to 'the windfarm after Fort Augustus'
@@ -34,11 +38,14 @@ Our routine became: wake, eat, [(cycle, eat), repeat], review route, sleep. The 
 The climb up to the Corriack pass was pretty epic, and the descent to Fort Augustus was, for us relatively novice MTB'ers, one of the best. In Fort Augustus we had completed half the first loop and now were heading out onto the larger and more daunting second loop. 
 
 ![ulu](/assets/images/scotland2021/ulu.jpg){:class="img-responsive"}
+<figcaption>The 'ulu'</figcaption>
+
 
 ## Day 3: 'the Windfarm' to 'Wilderness after Contin'
 Thankfully the wind kept the midges away for this night. We had a pretty cool view over the Loch and were camped on the beach. From the windfarm it was a short climb followed by a nice long descent to Cannich (on the road section hitting 70kph!). A flowing 10miles following the river took us to Struy where we began the major ascent for the day. The ascent was almost entirely rideable, but I was unfortunate in snapping my seat post clamp M8 bolt. A 4x4 came past but, despite disassembling their van didn't have the right part. The guy maintaining the aquaduct helped to zip-tie the seat down to make the descent safer and suggested we head to the garage in Contin. Said garage was lovely, giving us a long M8 bolt and some washers to fix the problem. We had made good progress to Contin and restocked at the stores to carry us through to Ullapool which we expected would take about a day. We pushed on late, enjoying good weather and good doubletrack. We met some Highland cows and finally stopped just before Loch Vaich. It was another 100km day, and if not for the mechanical would likely have been our best day for cycling.
 
 ![cow](/assets/images/scotland2021/cow.jpg){:class="img-responsive"}
+<figcaption>We must be in the highlands</figcaption>
 
 ## Day 4: 'Wilderness after Contin' to 'Fisherfield Forest'
 We woke early and saw glimpses of sun. The doubletrack continued and we made quick progress, cover 40km by around 10am. The short road section at Croich was nice, and the sign suggesting there was a 'road' to Ullapool 30miles was welcomed. Initially the 'road' was good. It was fairly flat and mostly double track. Toward the top we made a small diversion to traverse the hillside at the point where the second loop met the third. It cut out a descent/ascent and was a good path. We passed the Schoolhouse bothy, which would have been an excellent stop, and were briefly joined by another cyclist who was attempting a munro. From this point progress slowed; initially by the gradient, and then by our first longer section of hike-a-bike to join up with the path to Ullapool. So much for the road. 
@@ -48,15 +55,19 @@ Once on the proper descent we made better progress, and cycled wearly (body and 
 Ullapool to Poolewe, one might plan as a 'rest day' between BnBs. Beware, this section is slow. At first you're lulled into optimism by a long fast road section, but reality strikes at 'Coffin Road', which frankly I don't think anyone rides up fully laden. The 10km section between roads took us 2hrs, and much of the descent was also unrideable for us. Our dreams of a 100km day were dashed, but keen to camp high, where wind deters midges, we carried on till sunset up the climb into the Fisherfield section. This would probably be rideable if fresh.
 
 ![sunrise](/assets/images/scotland2021/sunrise.JPG){:class="img-responsive"}
+<figcaption>Sunrise</figcaption>
 
 ![bike](/assets/images/scotland2021/bike.JPG){:class="img-responsive"}
+<figcaption>The hardtails did well</figcaption>
 
 ## Day 5: Fisherfield Forest to Kinlochewe
 Lol. What a day. Initially 'okay' with 8km descent taking around an hour. The river crossing was easy since there had been little rain. We knew this section might be tricky, but we hadn't appreciated just how far, or how slow, hike-a-bike was. I think we made 30km in 6hrs. There were occasional sections of descent that were fun, pushing our boundaries but doable. But largely we trudged, pushing bikes. Soul breaking.
 
 ![mountain](/assets/images/scotland2021/mountain.jpg){:class="img-responsive"}
+<figcaption>More 'ulu'</figcaption>
 
 ![wade](/assets/images/scotland2021/wade.jpg){:class="img-responsive"}
+<figcaption>Thankfully a manageable Fisherfield crossing</figcaption>
 
 ![fisherfield](/assets/images/scotland2021/fisherfield.jpg){:class="img-responsive"}
 
@@ -77,6 +88,8 @@ The climb of Devil's staircase was steep but rideable for the first 2/3rds on a 
 The last section was probably the closest I came to a proper bonk, probably a lack of food after the pub. The Green Welly man didn't seem very understanding when I stocked up on sugar once we were finally back in Tyndrum. 
 
 ![done](/assets/images/scotland2021/done.jpg){:class="img-responsive"}
+<figcaption>Back in Tyndrum</figcaption>
+
 
 ## Summary
 
