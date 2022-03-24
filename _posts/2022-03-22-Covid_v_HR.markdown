@@ -1,5 +1,5 @@
 ---
-title: Covid vs HR 
+title: How did COVID impact my fitness? 
 layout: post
 date: '2022-03-22 21:30'
 headerImage: false
@@ -9,20 +9,18 @@ tag:
 star: false
 category: post
 author: joshcarr
-description: What did Covid do to my fitness?
+description: Looking at power and HR data before / after infection.
 published: true
 ---
 
-Well, it was largely inevitable, the lurgy finally got me. I thought it'd be interesting to look at whether the impact of COVID is clear in my heart rate data.
+Well, it was inevitable, the lurgy finally got me. I thought it'd be interesting to look at whether the impact of COVID is clear in my heart rate data.
 The post covid dataset remains miniscule, so this post simply compares a pre and post COVID ride of similar lengths and efforts. This builds on my post [on HR and power correlations]({% post_url 2022-02-17-Power_v_HR %})
 
 I took two rides, each the Hilly loop on zwift, ridden in the morning at a 'steady' effort of around 200W. The best linear fit between HR and power is compared in the plot below.
 ![Before vs After](/assets/images/covidHR/bva.png){:class="img-responsive"}
 <figcaption>Comparing HR before an after COVID</figcaption>
 
-Wow! Given I feel fine, this is showing that there's approx 10BPM difference. To hold the same power after COVID is 10BPM higher at the moment than before. Given for 10BPM the slope of the graph means I can do about an extra 35W, that's a pretty huge drop. 10% of FTP! Here's hoping it returns quickly. 
-
-The question, for me, is whether this clear loss in fitness will naturally recover given time (regardless training intensity) or whether I can expect to need to rebuild this fitness at a normal rate of improvement. 
+This is showing that there's approx 10BPM difference. For me to hold the same power as pre COVID I'm needing an extra 10bpm. The slope of the linear fit is almost the same between the two activities. Given for 10BPM the slope of the graph means I can do about an extra 35W, that's a pretty huge drop. 10% of FTP! Here's hoping it returns quickly. 
 
 
 
