@@ -1,0 +1,24 @@
+---
+title: Lifetime miles 
+layout: post
+date: '2022-07-14 21:30'
+headerImage: false
+tag:
+  - training
+  - data
+star: false
+category: post
+author: joshcarr
+description: Lifetime miles vs miles run sub-4
+published: true
+---
+
+I've run about 26000miles I think. 20,000 are Strava recorded and I must have run at least another few thousand. I've run 1 complete mile in under 4 minutes. Pretty bad conversion of training miles to lifetime goal so I thought I'd see whether in a 26,000pixel image of green=outside 4mins and red = under 4mins whether it's possible to see the red one.
+
+Can you spot it?
+![Before vs After](/assets/images/sub4/sub4.png){:class="img-responsive"}
+<figcaption>Lifetime miles vs miles sub 4</figcaption>
+
+
+
+
