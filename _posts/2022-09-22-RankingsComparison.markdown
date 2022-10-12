@@ -28,4 +28,5 @@ A few interesting points
 * Those steps in the plot do seem to be around time barriers, perhaps the knowledge that a fast time is on really pushes people in those final laps.
 * Top 20 really differentiate themselves - anecdotally it seems most of these times come from fast races abroad
 * 14:00 ~= 3:43.6 and 15:00 ~=3:55.6.
+* It seems like being close to a time barrier (ie 14mins for 5k) can help push times below the curve.
 
