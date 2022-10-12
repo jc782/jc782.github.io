@@ -11,6 +11,8 @@ author: joshcarr
 description: Bikepacking the mountains of North Macedonia
 published: true
 ---
+* In progress - pictures and further text to be added.
+
 With the pandemic retreating in the rear view mirror options for travel to the more remote corners has become possible again. In October 2022 for the annual 'adventure' trip we packed bikes and hopped on a Wizz Air flight to Skopje, capitol of North Macedonia. We were unusually well prepared. This included a booking for a motel to stay in after the late flight (no more airport sleeping), a defined route mapped out, and our own reliable bikes with decent brakes and gears. 
 
 Skopje airport was a wonderful experience. We cleared immigration in minutes and our bikes were already waiting for us. At 4am we reassembled them and rode the 5km to the motel. 
