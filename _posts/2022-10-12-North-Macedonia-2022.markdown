@@ -84,7 +84,7 @@ A word of warning - don't try to take bike tools through Skopje airport handlugg
 * Macedonian people were all kind and the country felt safe. The roads were extremely quiet and well paved. 
 * Our route ended up scattered, but I am confident that a loop could be completed. We rode ~70% on paved roads, but there were plenty of good off-road routes that could be explored. 
 
-The GPX of our route can be found [here](/assets/images/northmacedonia/northmacedonia.gpx)
+The GPX of our route can be found [here](/assets/images/northmacedonia/NorthMacedonia.gpx)
 
 
 
