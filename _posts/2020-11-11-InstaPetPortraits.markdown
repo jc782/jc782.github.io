@@ -31,7 +31,7 @@ I want this to work without logging in as a user which creates some interesting 
 ## Stack
 Having used Django before I decided to make that the backend. Hosting is simple on pythonanywhere and it also meant I could easily integrate OpenCV to do the image manipulation. Front end interaction for user inputs / backend interaction was AJAX. I should probably learn something 'modern', but I've yet to find anything I can't do with this approach, so it seemed good enough for me.
 
-There was also integration to three separate APIs. To fufil orders the Pwinty API allows automatic order creation and fufilment. However it does not include payments. Stripe seemed like an obvious choice for payments. For order confirmation I wanted emails sent and so decided to integrate with Mailgun.
+There was also integration to three separate APIs. To fulfil orders the Pwinty API allows automatic order creation and fulfillment. However it does not include payments. Stripe seemed like an obvious choice for payments. For order confirmation I wanted emails sent and so decided to integrate with Mailgun.
 
 ## Challenges
 Getting something that could create images automatically was challenging. This was especially true for more complex images. To make life easier for the algorithms I implemented a user input to define the position of the pets head and eyes. The algorithm itself is a version of OpenCVs grabcut. This could be considerable improved by further tuning. Presumably a ML model would crush this; but that seemed like a project in itself.

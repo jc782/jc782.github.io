@@ -18,7 +18,7 @@ published: true
 Best book this year = 'The Making of the Atomic Bomb' 
 Notes: 
 * I read fiction books more quickly. I should read more 'good' fiction. Not murder mysteries / easy reading.
-* The pandemic undoubtably increased my reading. It's one positive that can be taken from 2020.
+* The pandemic undoubtedly increased my reading. It's one positive that can be taken from 2020.
 In 2021 I will again target at least 2 books per month, and additionally 30 books for the year. I'm getting through my list of books I knew I wanted to read, finding more becomes more challenging.
 
 ## Books read in 2020:
@@ -31,7 +31,7 @@ It's incredible the progress to realise the progress made between 1900 and 1945 
 
 ### Longitude, Dava Sobel
 *April 2020*  
-The battle of a master craftsman and innovater to be recognised for astonishing work on developing clocks was astonishing. 
+The battle of a master craftsman and innovator to be recognised for astonishing work on developing clocks was astonishing. 
 
 ### 24 Hours at Agincourt, Michael Jones
 *January 2020*  
@@ -99,7 +99,7 @@ Fictional tale about the horrors in a Japanese PoW camp and following the later 
 
 ### Bad Blood, John Carreyrou
 *August 2020*
-[Audio book] - The tale of Theranos. Stunning account of lies, deceipt, and groupthink leading to the rise and fall Theranos. 
+[Audio book] - The tale of Theranos. Stunning account of lies, deceit, and groupthink leading to the rise and fall Theranos. 
 
 
 ### Everest The First Ascent: The untold story of Griffith Pugh, Harriet Tuckey
@@ -118,7 +118,7 @@ Fictional. Some moral issues with this book. Not sure which side I was on.
 
 ### Love and War in the Appennines, Eric Newby
 *September 2020*  
-PoW in Italy at the time of their armstice. The locals helped hide our plucky escapee through the summer months in the mountains of the appenines. Ultimately a fruitless endeavour. 
+PoW in Italy at the time of their armistice. The locals helped hide our plucky escapee through the summer months in the mountains of the appenines. Ultimately a fruitless endeavour. 
 
 
 ### Energy, Vaclav Smil
@@ -146,16 +146,16 @@ Life as a junior doctor sounds grim. Makes my life seem easy.
 Horrific. A gripping story. I think it would have been better without the 5% dramatic license. 
 
 ### Factfulness, Ana, Hans, and Ola Rosling
-*Novemeber 2020 Audiobook*  
+*November 2020 Audiobook*  
 There are many take home points from this. The world is a bad place - but it's not as bad as we might imagine. I feel like one's impression of the world comes from what is learnt at school, and appreciating change since then is challenging.
 
 ### Revelation, Bill Napier
 *November 2020*  
-Fictional tale based on the supposition a scientist in the Manhatten project discovered something that should very much be kept a secret. Enjoyable story lines, but quite long, and took too long to conclude.
+Fictional tale based on the supposition a scientist in the Manhattan project discovered something that should very much be kept a secret. Enjoyable story lines, but quite long, and took too long to conclude.
 
 ### The Flying Scotsman, Graeme Obree
 *November 2020*  
-Autobiography of a phenomenal athlete and innovater. I had not realised before the troubled life that Obree had, or the swings in form. It is a shame he was not better recognised for his achievements at the time.
+Autobiography of a phenomenal athlete and innovator. I had not realised before the troubled life that Obree had, or the swings in form. It is a shame he was not better recognised for his achievements at the time.
 
 ### The Lynmouth Flood Disaster, Eric Delderfield
 *November 2020*  

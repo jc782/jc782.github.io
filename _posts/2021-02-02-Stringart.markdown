@@ -19,7 +19,7 @@ Again the idea was to use an input image and an algorithm to overcome my lack of
 
 Keeping in theme the image selected was a pet portrait. 
 
-I wrote some code in python, the essence of the algorithm is to have fixed lines that can be transversed. Each line has associated pixels that it darkens. 
+I wrote some code in python, the essence of the algorithm is to have fixed lines between pins. Each line has associated pixels that it darkens. 
 
 From each position it's quite simple, we just have to evaluate the best next line and then update the image we're evaluating to take into account this.
 

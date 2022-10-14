@@ -29,20 +29,20 @@ My hypothesis is that on a longer time base power and HR will be correlated and 
 - Heart rate will be much smoother than power (again, it takes the body time to respond to a change in output)
 - The intercept of 0W will not be 0BPM. I'm not dead. 
 
-Taking a particular activity we can look at fitting our power and HR data. We can measure the quality of the fit of this data using statistucal measures like R^2. For a stream of power and HR data this can be calculated.
+Taking a particular activity we can look at fitting our power and HR data. We can measure the quality of the fit of this data using statistical measures like R^2. For a stream of power and HR data this can be calculated.
 We can then adjust these data streams. For example varying the smoothing of the power data (moving average), and the lag between the power and HR data. We can look on this surface for a maxima in the correlation and this can be plotted.
 
 {% include /plots/Optima.html %}
 
 There is a maxima. Luckily. We're looking at that yellow circle signifying the peak of the hill. This tells us we see the greatest correlation (in terms of linear best fit) when power is smoothed over the previous 120seconds and there is relatively little lag between HR and power. 
 
-If we then plot the optimally smooothed power and lagged HR against time, and against each other, we get the below.
+If we then plot the optimally smoothed power and lagged HR against time, and against each other, we get the below.
 
 {% include /plots/PowerHR.html %}
 
 There are some interesting points here:
-- It is quite linear. But then we are choosing the 'most linear' way to view this data so maybe this isn't a suprise.
-- There's a fair bit of variation about the line. It would be interesting to know how hysteretic this is. 
+- It is quite linear. But then we are choosing the 'most linear' way to view this data so maybe this isn't a surprise.
+- There's a fair bit of variation about the line. It would be interesting to know how much hysteresis there is. 
 
 So the next step is to look at whether a trend can be seen tracking 'fitness' and comparing results from a few different people to understand individual variation. 
 

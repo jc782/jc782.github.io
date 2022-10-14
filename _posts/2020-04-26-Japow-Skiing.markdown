@@ -48,7 +48,7 @@ We took part in the Okumusashi Ekiden - an excellent experience and one well wor
 
 Linked to Gala Yuzawa by a ropeway Yuzawa Kogen is small resort that was the closest to our basic accommodation. The steepest skiing is near the top but, like most of Japan, it's not too challenging. Note to self - they are not keen on people running up the piste.
 
-Gala Yuzawa itself was crowded, and other than the novely of Shinkansen->skiing the other resorts nearby resorts all seemed much better. One of those resorts, linked into the same lift system as Gala and Yuzawa Kogen, is Ishiuchi Maruyama. It wins best Yuzawa region for me. It felt like there was more and steeper vertical on offer, there was plenty of side-country which all counted as inbounds.
+Gala Yuzawa itself was crowded, and other than the novelty of Shinkansen->skiing the other resorts nearby resorts all seemed much better. One of those resorts, linked into the same lift system as Gala and Yuzawa Kogen, is Ishiuchi Maruyama. It wins best Yuzawa region for me. It felt like there was more and steeper vertical on offer, there was plenty of side-country which all counted as inbounds.
 
 Conditions were excellent. Unfortunately, so deep was the snow, we spent an hour fruitlessly searching for a lost ski. We had given up but the incredible pisteurs searched on with the obligatory metal detector and delivered the lost ski back to us after we'd enjoyed a Katsu curry. This epitomises Japanese culture. 
 ![skifound](/assets/images/japan/skifound.JPG){:class="img-responsive"}
@@ -63,7 +63,7 @@ We caught a free shuttle from Yuzawa up to Kandatsu Kogen, another resort in thi
 
 ### Zao Onsen
 
-More bullet train. First back toward Tokyo then up to Sendai and accross to Zao Onsen. The place stinks of sulphur. It's 'Atmospheric'. Both the public and private onsens were excellent. The water is said to have healed Warriors in the past so it's good enough to sooth aching post-ski legs. The skiing here was good, it felt fairly alpine with a few distinct areas that were connected (sort of) and some quicker chairlifts. On a blue sky day the views down the valley were incredible. You can't mention Zao Onsen without talking about the Snow Monsters. I've never seen anything like it. The picture speaks for itself.
+More bullet train. First back toward Tokyo then up to Sendai and across to Zao Onsen. The place stinks of sulphur. It's 'Atmospheric'. Both the public and private onsens were excellent. The water is said to have healed Warriors in the past so it's good enough to sooth aching post-ski legs. The skiing here was good, it felt fairly alpine with a few distinct areas that were connected (sort of) and some quicker chairlifts. On a blue sky day the views down the valley were incredible. You can't mention Zao Onsen without talking about the Snow Monsters. I've never seen anything like it. The picture speaks for itself.
 
 ![snowmonsters](/assets/images/japan/snowmonster.JPG){:class="img-responsive"}
 
@@ -83,7 +83,7 @@ If you go to Japan and you just want to ski powder in trees on your own / with b
 
 ### Hokkaido
 
-Hokkaido powder is legendary, so we had to make the trip up to the north island. We hired a car for this part because our hotel (read:dodgy roadside trucker motel) was not ski-in ski-out. Niseko, the largest and most well known resort was our first destination. is expensive, it's full of Aussie's, and they're all insufferable. Anticlimatic after Geto.
+Hokkaido powder is legendary, so we had to make the trip up to the north island. We hired a car for this part because our hotel (read:dodgy roadside trucker motel) was not ski-in ski-out. Niseko, the largest and most well known resort was our first destination. is expensive, it's full of Aussie's, and they're all insufferable. Anticlimactic after Geto.
 
 By coincidence we were in town at the time of the Sapporo Ice Festival which was well worth the trip. It came alive with the lightshow.
 ![iceFestival](/assets/images/japan/IceFestival.JPG){:class="img-responsive"}

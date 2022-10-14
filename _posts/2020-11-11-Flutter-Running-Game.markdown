@@ -18,7 +18,7 @@ I want to keep things relatively simple, but also make something 'interesting'. 
 
 There are a number of challenges I'm expecting to face:
 * Is the data stream for speed / position sufficiently high quality to feel like you are in 'control'
-* Realisitcally until AR glasses are a thing the interaction will be limited to audio feedback
+* Realistically until AR glasses are a thing the interaction will be limited to audio feedback
 * I've never built an app before... the learning curve could be steep
 
 

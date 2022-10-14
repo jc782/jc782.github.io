@@ -19,9 +19,9 @@ published: true
 * Tent upgrade to something suitable for high winds
 * Significant improvement in packing to reduce pack weight, involving detailed calculations on optimal foods by kcal/100g.
 
-The exact route details are hazy, but I believe we walked from Aviemore down to Glen Feshie, over Carn-ban-mor and down to Loch Einich, then around the bottom into the Lairig Ghru then looped over Braeriach and Cairn Toul before a retreat in bad weather to Glenmore. The route was then picked up over Cairngorm, the Macdui plateu, and back out over the feshie hills.
+The exact route details are hazy, but I believe we walked from Aviemore down to Glen Feshie, over Carn-ban-mor and down to Loch Einich, then around the bottom into the Lairig Ghru then looped over Braeriach and Cairn Toul before a retreat in bad weather to Glenmore. The route was then picked up over Cairngorm, the Macdui plateau, and back out over the feshie hills.
 
-Notable moments included finally summiting Braeriach, the 'wotsits' in the Lairig ghru, football at Glenmoor lodge, wild-swimming in the lochs. It must have rained a lot this year, there's a lack of photos except for what was one of the best wild camping spots I think ever.
+Notable moments included finally reaching the summit of Braeriach, the 'wotsits' in the Lairig ghru, football at Glenmoor lodge, wild-swimming in the lochs. It must have rained a lot this year, there's a lack of photos except for what was one of the best wild camping spots I think ever.
 
 ![lake](/assets/images/scotland2012/lake.jpg){:class="img-responsive"}
 
