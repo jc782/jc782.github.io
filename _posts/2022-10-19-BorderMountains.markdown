@@ -1,5 +1,5 @@
 ---
-title: Border Mountains 
+title: List of Mountains that are the Highest Elevation in Multiple Countries
 layout: post
 date: '2022-10-19 21:30'
 headerImage: false
@@ -22,6 +22,5 @@ Using [wikipedia](https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_co
 | Mount Stanley | Uganda & DRC | 5109m |
 | Mont Blanc | France & Italy|4820m |
 | Mont Nimba | Ivory Coast and Guinea | 1752m |
-{:.table-striped}
 
 So there you have it. I'm surprised it's so few given the nature of mountain ranges as borders.  
