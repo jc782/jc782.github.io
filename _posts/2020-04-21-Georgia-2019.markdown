@@ -32,7 +32,7 @@ published: true
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
-We flew Kutaisi with two steel 90s mountain bikes complete with with centrepull brakes and 5 speed friction shifters in tow. Kutaisi airport has some surprisingly comfy sleeping areas, and once light a nice carpark for bike construction. 
+We flew Kutaisi with two steel 90s mountain bikes complete with with centre-pull brakes and 5 speed friction shifters in tow. Kutaisi airport has some surprisingly comfy sleeping areas, and once light a nice carpark for bike construction. 
 ![airport](/assets/images/georgia/airport.jpg){:class="img-responsive"}
 
 A short cycle to Samtredia then a serendipitous taxi ride meant we arrived in Jvari earlier than expected. Out of Jvari the road climed steeply into the Caucasus mountains.
