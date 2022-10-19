@@ -17,10 +17,11 @@ Recently I climbed Mt Korab, the highest mountain in North Macedonia. Simultaneo
 Using [wikipedia](https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country) as the source there are 5:
 
 | Mountain | Countries | Elevation |
-| -------- | ------- | --------- |
+| :--------: | :-------: | :---------: |
 | Everest | China & Nepal | 8848m |
 | Mount Stanley | Uganda & DRC | 5109m |
 | Mont Blanc | France & Italy|4820m |
 | Mont Nimba | Ivory Coast and Guinea | 1752m |
+{:.table-striped}
 
 So there you have it. I'm surprised it's so few given the nature of mountain ranges as borders.  
