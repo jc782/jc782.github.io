@@ -12,7 +12,7 @@ author: joshcarr
 description: Mountains that are the highest elevation in multiple countries.
 published: true
 ---
-Recently I climbed Mt Korab, the highest mountain in North Macedonia. Simultaneously, and by partial virtue of being on the border, it is the highest mountain in Albania. This got me thinking, how many other mountains are the highest peak in multiple countries.
+Recently I climbed Mt Korab, the highest mountain in North Macedonia. It is also the highest mountain in Albania. This got me thinking, how many other mountains are the highest peak in multiple countries?
 
 Using [wikipedia](https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country) as the source there are 5:
 
