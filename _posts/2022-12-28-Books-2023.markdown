@@ -1,0 +1,21 @@
+---
+title: Books 2023
+layout: post
+date: '2022-12-29 21:30'
+headerImage: false
+tag:
+  - books
+star: false
+category: post
+author: joshcarr
+description: 2023 Books
+published: true
+---
+
+## Summary:
+My goal for 2023 is to read 24 books, with the stretch target of 36 books. Having only read 6 fiction books in 2022, I'd like to increase this to at least 10. 
+
+### Placeholder, Author
+*Jan 2023*  
+Details 
+
