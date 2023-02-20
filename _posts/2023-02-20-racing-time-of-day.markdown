@@ -19,7 +19,7 @@ Starting anecdotally, there are many occasions, Watford Grand Prix's and Gold St
 
 This dataset is for a particular station in Coventry and looks at every day from the last decade. The drop in the average wind speed between 6pm and 8pm is significant.
 
-![Racing Time](/assets/images/racingtime/coventryWind.png){:class="img-responsive"}
+![Racing Time](/assets/images/racingtime/CoventryWind.png){:class="img-responsive"}
 <figcaption>In summertime it is less windy</figcaption>
 
 Looking at it another way, the heatmap below shows the probability that the wind speed is below 7pm at a given time of day in each month. Take for example July. Running at 3pm there is a 12% chance the wind will be below 7mph. By 9pm the probability of wind <7mph has jumped up to 35% and it continues to improve, reaching 40% at 11pm. 
