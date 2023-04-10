@@ -14,13 +14,14 @@ published: true
 ---
 Recently I climbed Mt Korab, the highest mountain in North Macedonia. It is also the highest mountain in Albania. This got me thinking, how many other mountains are the highest peak in multiple countries?
 
-Using [wikipedia](https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country) as the source there are 5:
+Using [wikipedia](https://en.wikipedia.org/wiki/List_of_elevation_extremes_by_country) as the source there are 5 mountains which are the highest peak in multiple countries.
 
 | Mountain | Countries | Elevation |
 | :--------: | :-------: | :---------: |
 | Everest | China & Nepal | 8848m |
 | Mount Stanley | Uganda & DRC | 5109m |
-| Mont Blanc | France & Italy|4820m |
-| Mont Nimba | Ivory Coast and Guinea | 1752m |
+| Mont Blanc | France & Italy | 4820m |
+| Mt Korab | Albania & North Macedonia | 2764m |
+| Mont Nimba | Ivory Coast & Guinea | 1752m |
 
 So there you have it. I'm surprised it's so few given the nature of mountain ranges as borders.  
