@@ -1,7 +1,7 @@
 ---
 title: What does a decade of training look like? 
 layout: post
-date: '2023-04-10 21:30'
+date: '2023-04-09 21:30'
 headerImage: false
 tag:
   - training
