@@ -6,7 +6,6 @@ headerImage: false
 tag:
   - training
   - data
-  - visualisation
 star: false
 category: post
 author: joshcarr
