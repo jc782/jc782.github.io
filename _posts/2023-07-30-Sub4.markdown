@@ -7,18 +7,24 @@ tag:
   - running
   - tech
 star: false
-category: running
+category: post
 author: joshcarr
 description: Collating the Sub 4 Runners
-published: true
 jsarr:
   - /assets/js/bootstrap.bundle.min.js
   - /assets/js/jquery-3.6.3.slim.min.js
   - /assets/js/jquery.min.js
   - /assets/js/tablesearch.js
-
+published: true
 ---
+## Sub 4 Milers
+
+Previously NUTS has updated a [register](https://nuts.org.uk/sub-4/index.htm) of sub 4 milers. This has not been updated since May 2022.
+This table is a mirror of that database plus subsequent sub 4 performances that are listed on [World Athletics](https://worldathletics.org/records/toplists/middle-long/one-mile/outdoor/men/senior/2023).
+
 <div markdown="1" class="contentCont" id="scroll">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <style>
 	* {
 	  box-sizing: border-box;
