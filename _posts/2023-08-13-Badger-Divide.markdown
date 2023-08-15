@@ -1,5 +1,5 @@
 ---
-title: Badger Divide - Inverness to Glasgow
+title: Badger Divide - Inverness to Glasgow - 2023
 layout: post
 date: '2023-08-13 21:03'
 headerImage: false
@@ -11,7 +11,7 @@ author: joshcarr
 description: Bikepacking off-road from Inverness to Glasgow
 published: true
 ---
-The Badger Divide is described as a 'Weekender' with epic mountain passes, lochs, and forested trails. The Fastest Known Time is ~16hrs. Based on our experience to do it in 48hrs would be challenging for even the fittest. As we set out we'd given ourselves 3days. For us, the route provided ample challenge without being as much of a battle as the Highland Trail 550. There are reasonably frequent resupply options, especially for those willing to tour on cafe food and with planning there is sufficient accommodation to not carry a tent, though wild camping was part of the fine.
+The Badger Divide is described as a 'Weekender' with epic mountain passes, lochs, and forested trails. The Fastest Known Time is ~16hrs. Based on our experience to do it in 48hrs would be challenging for even the fittest. We'd given ourselves a more generous 3days. For us, the route provided ample challenge without being as much of a battle as the Highland Trail 550. There are frequent resupply options, especially for those willing to tour on cafe food. With prior planning there is sufficient accommodation to not carry a tent, though wild camping was part of the fun. Unfortunately the only bothies on the route were not close to potential night stops, but for those heading north the one on the south side of the Coriayack pass could be a good final stop. 
 
 ### Day 0 - 26km - Inverness to The Shores of Loch Ness
 On a fine, dry, Wednesday evening in August we set off from Inverness train station. We ate dinner at Morrisons and stocked up the first section down the Great Glen to Fort Augustus. The first miles through Inverness follow the river and then quickly climb onto a ridge on the northern side of Loch Ness. The plethora of mushroom varieties kept us entertained. In our eagerness to get ahead of schedule we rode until 9pm and then found a campsite in the forest for the night. A good start. 

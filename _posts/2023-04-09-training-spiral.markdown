@@ -12,9 +12,9 @@ author: joshcarr
 description: Plotting a decade of running
 published: true
 ---
-I've run regularly since around 2004 and reasonably seriously since around 2011. Since 2012 the vast majority of my training has been recorded using GPS, and the bulk of this is sitting on Strava databases. With more than a decade of nearly daily recorded activities there is a treasure trove of data to be visualised. 
+I've run regularly since around 2004 and reasonably seriously since around 2011. Since 2012 the vast majority of my training has been recorded on GPS watches, and the bulk of this is sitting on Strava databases. With more than a decade of nearly daily recorded activities there is a treasure trove of data to be visualised. 
 
-Certain metrics oft summarise periods of time, like weekly mileage. A [spiral plot](https://datavizcatalogue.com/methods/spiral_plot.html) is useful to show long term trends, particularly with periodic patterns. 
+Certain metrics oft summarise periods of time, like weekly mileage. A [spiral plot](https://datavizcatalogue.com/methods/spiral_plot.html) is useful to show long term trends, particularly with periodic patterns. Therefore, the below plot shows my decade of training as a spiral plot.
 
 ![Training Spiral](/assets/images/trainingspiral/newplot.png){:class="img-responsive"}
 
