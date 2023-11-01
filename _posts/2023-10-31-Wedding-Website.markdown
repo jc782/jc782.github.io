@@ -1,5 +1,5 @@
 ---
-title: Unnecessary Wedding Tech
+title: Wedding Tech
 layout: post
 date: '2023-10-22 22:35'
 headerImage: false
@@ -21,4 +21,5 @@ I am hosting it on Github Pages (free!)
 
 The RSPV form is a google form with the front end on this website, using [this](https://blog.puvvadi.me/posts/add-contact-form-hugo-google-forms/) example. It was easy to setup. 
 
-In other news, I also 3d scanned out venue and once I have modelled in the marquee in more detail then I will upload some renderings. 
+In other news, I also 3d scanned out venue and once I have modelled in the marquee in more detail then I will upload some renderings. This should help us with layouts and checking where everything will go.
+
