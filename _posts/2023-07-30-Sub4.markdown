@@ -16,12 +16,12 @@ published: true
 ## Sub 4 Milers
 
 Previously NUTS has updated a [register](https://nuts.org.uk/sub-4/index.htm) of sub 4 milers. This has not been updated since May 2022.
-The data at [sub4milers.com](https://www.sub4milers.com/) table is a combination of that database plus subsequent sub 4 performances that are listed on [World Athletics](https://worldathletics.org/records/toplists/middle-long/one-mile/outdoor/men/senior/2023).
+The data in [sub4milers.com](https://www.sub4milers.com/) table is a combination of that database plus subsequent sub-4 performances that are listed on [World Athletics](https://worldathletics.org/records/toplists/middle-long/one-mile/outdoor/men/senior/2023).
 
-Frustratingly the world athletics data only tracks best times, and so the record of 'first date' sub 4 is not always correction.
+Frustratingly the world athletics data only tracks best times, and so the record of 'first date' sub 4 is not always correct.
 
-With the database complete it seemed worth plotting a few graphs to visualize the dataset. 
+With the database complete it seemed worth plotting a few graphs to visualize the dataset.
 
-First, visualising athletes breaking 4 by month and by year which nicely shows the seasonality of indoor/outdoor, plus the rise in indoor sub 4 times particularly in recent years. 
+First, visualizing athletes breaking 4 by month and by year nicely shows the seasonality of indoor/outdoor, plus the rise in indoor sub 4 times, particularly in recent years. 
 ![Sub 4 Heatmap](/assets/images/sub4database/heatmap.png){:class="img-responsive"}
 

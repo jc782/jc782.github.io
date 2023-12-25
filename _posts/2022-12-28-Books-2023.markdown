@@ -13,7 +13,7 @@ published: true
 ---
 
 ## Summary:
-My goal for 2023 is to read 24 books, with the stretch target of 36 books. Having only read 6 fiction books in 2022, I'd like to increase this to at least 10. 
+My goal for 2023 is to read 24 books, with a stretch target of 36 books. Having only read 6 fiction books in 2022, I'd like to increase this to at least 10. 
 
 ### Run, Swim, Throw, Cheat: The Science behind drugs in sport, Chris Cooper
 *Jan 2023*  
@@ -21,7 +21,7 @@ A little technical but it gave an insight into possible future methods of doping
 
 ### Tell me the planets: Stories of brain injuries and what it means to survive, Ben Platts-Mills
 *Jan 2023*  
-Stories of the authors experiences working with survivors of brain injuries. The books follows several characters and shares Platt-Mill's experiences supporting them and the many challenges that they face. 
+Stories of the author's experience working with survivors of brain injuries. The book follows several characters and shares Platt-Mill's experiences supporting them and the many challenges that they face. 
 
 ### The Right Stuff, Tom Wolfe
 *Jan 2023*  
@@ -37,15 +37,15 @@ Objective, strategy, tactics. Enjoyed his parallels between sport and other walk
 
 ### Running with the Kenyans, Adharanand Finn
 *Feb 2023*  
-Move to Iten (Kenya), run higher mileage, get faster. I was surprised at how recent this book is, I had always assumed it was a 'classic'. 
+Move to Iten (Kenya), run higher mileage, and get faster. I was surprised at how recent this book is, I had always assumed it was a 'classic'. 
 
 ### Freezing Order, Bill Browder
 *Mar 2023*  
-A sequel to Red Notice which is no less thrilling. Mr Browder has powerful enemies. I expect publishing books to gain support of Western populations is a key part of his security strategy.
+A sequel to Red Notice which is no less thrilling. Mr Browder has powerful enemies. I expect publishing books to gain the support of Western populations to be a key part of his security strategy.
 
 ### No Surrender, Hiroo Oneda
 *Mar 2023*  
-Deployed in 1944 and instructed to fight a guerilla war, Oneda-san spends 30yrs on a Phillipine island fighting the good fight. Remarkable endurance and willpower. 
+Deployed in 1944 and instructed to fight a guerilla war, Oneda-san spent 30 years on a Philippine island fighting the good fight. Remarkable endurance and willpower. 
 
 ### The Price of Time, Edward Chancellor
 *Apr 2023*  
@@ -53,7 +53,7 @@ A history, and commentary, on interest and monetary policy. Low rates begot low 
 
 ### Business Adventures, John Brooks
 *Apr 2023*  
-Written in the 60s, the book tells twelve stories in twelve chapters. Xerox, the Ford Edsel, wall street woes, and employee IP disputes. As ever, some chapters more interesting than others. 
+Written in the 60s, the book tells twelve stories in twelve chapters. Xerox, the Ford Edsel, Wall Street woes, and employee IP disputes. As ever, some chapters are more interesting than others. 
 
 ### All Quiet on the Western Front, Erich Remarque
 *Apr 2023*  
@@ -61,7 +61,7 @@ Having watched the film it was nice to read the book. The film misses some key p
 
 ### Atoms and Ashes, From Bikini Atoll to Fukushima, Serhi Plokhy
 *Apr 2023*  
-6 nuclear accidents, starting from hydrogen bomb testing through to Three Mile Island, Chernobyl, and Fukishima. The premise of the book is that nuclear accidents will happen and that the impact is significant. I would compare this to aircraft crashes and driving - aircraft crashes happen, when they do the severity is bad, but overall compared to driving it is much safer.
+6 nuclear accidents, starting from hydrogen bomb testing through to Three Mile Island, Chornobyl, and Fukushima. The premise of the book is that nuclear accidents will happen and that the impact is significant. I would compare this to aircraft crashes and driving - aircraft crashes happen, and when they do the severity is bad, but overall compared to driving it is much safer.
 
 ### The Tour De France, Christopher Thompson
 *May 2023*  
@@ -69,15 +69,15 @@ More academic than expected but a good history of the Tour with excellent covera
 
 ### King Rat, James Clavell 
 *May 2023*  
-Fiction based in Changi POW camp, detailing the struggle to survive for the British, Aussie, and American troops. The King lives a lavish lifestyle with his American ways until the currency in the POW camp is devalued at the end of the war and he loses his power.
+Fiction based on the Changi POW camp, detailing the struggle to survive for the British, Aussie, and American troops. The King lives a lavish lifestyle with his American ways until the currency in the POW camp is devalued at the end of the war and he loses his power.
 
 ### My Silent War, Kim Philby 
 *May 2023*  
-An autobiography which must be taken with a pinch of salt given Philby's recent defection to Russia at the time of writing. Quite astonishing achievement to penetrate the highest levels of British Intelligence. The colourful style from this era is always enjoyable to read. 
+An autobiography that must be taken with a pinch of salt given Philby's recent defection to Russia at the time of writing. Quite an astonishing achievement to penetrate the highest levels of British Intelligence. The colourful style from this era is always enjoyable to read. 
 
 ### Frostquake, Juliet Nicolson 
 *May 2023*  
-For the hobbyist meteorologist this lacked detail about the mechanism behind the extreme cold snap. It was, however, an interesting insight into the zeitgeist of the early 60s. 
+For the hobbyist meteorologist, this lacked detail about the mechanism behind the extreme cold snap. It was, however, an interesting insight into the zeitgeist of the early 60s. 
 
 ### The 15:17 to Paris, Sadler et al 
 *May 2023*  
@@ -89,35 +89,35 @@ Surgery in war zones - challenging stuff! Certainly elements of a slightly troub
 
 ### Running up that hill, Vassos Alexander 
 *June 2023*  
-Enjoyable book about the Spartathlon and Vassos' experience in running the race. Includes several sections of interviews/advice with the Ultra-running elite like Scott Jurek and Killian Jornet. 
+An enjoyable book about the Spartathlon and Vassos' experience in running the race. Includes several sections of interviews/advice with the Ultra-running elite like Scott Jurek and Killian Jornet. 
 
 ### Ultra Marathon Man, Dean Karnazes 
 *June 2023*  
-It's interesting reading these books to see that the training the ultra crew do is not much more than regular runners. Seems the game is mostly in the mind. 
+It's interesting reading these books to see that the training the ultra crew does is not much more than regular runners. Seems the game is mostly in the mind. 
 
 ### Invasion, Luke Harding 
 *July 2023*  
-Additional detail about the start of the Ukraine war. Covering some of the background politics and the status, and essentially concluding with the widely held western view that Russia has essentially lost. Interesting to hear about the shift in the view on Zelensky pre and post war.
+Additional detail about the start of the Ukraine war. Covering some of the background politics and the status, and essentially concluding with the widely held Western view that Russia has essentially lost. Interesting to hear about the shift in the view on Zelensky pre and post-war.
 
 ### Butler to the World, Oliver Bullough  
 *July 2023*  
-Post empire Britain finds itself at the service of the mega-rich via e.g. British Virgin Islands, Scottish Limited Partnerships, and betting in Gibraltar. Depressing view on the British approach internationally. 
+Post-empire Britain finds itself at the service of the mega-rich via e.g. British Virgin Islands, Scottish Limited Partnerships, and betting in Gibraltar. Depressing view on the British approach internationally. 
 
 ### Eject, Eject, John Nichol  
 *July 2023*  
-Fun book about the development of Martin Baker ejector seats from the first trials in the late 40s through to the fully automated seats today. Great to learn about how the technology advanced and nicely interspersed with tales of what happened post ejection. 
+A fun book about the development of Martin Baker ejector seats from the first trials in the late 40s through to the fully automated seats today. Great to learn about how the technology advanced and nicely interspersed with tales of what happened post-ejection. 
 
 ### The Battle of the Beams, Tom Whipple  
 *August 2023*  
-Telling the story of the radar in WW2 and in particular the accomplishments of RV Jones who worked with a small team to implement radar countermeasures helping to save many lives by misdirecting German bombers.  
+Telling the story of the radar in WW2 and in particular, the accomplishments of RV Jones who worked with a small team to implement radar countermeasures helping to save many lives by misdirecting German bombers.  
 
 ### The Story of Hut 6, Gordon Welchman  
 *August 2023*  
-Coincidentally I stuck with a WW2 theme and read about Bletchley Park. Welchman was a maths fellow at Sidney, and became integral to the success at B.P. His descriptions of the enigma machine and the methods used to crack the code were understandable. The book gives a good idea of the scale of the effort required to consistently break the code (daily or twice daily at the end of the war), but the information gathered was invaluable.
+Coincidentally I stuck with a WW2 theme and read about Bletchley Park. Welchman was a maths fellow at Sidney Sussex and became integral to the success at B.P. His descriptions of the enigma machine and the methods used to crack the code were understandable. The book gives a good idea of the scale of the effort required to consistently break the code (daily or twice daily at the end of the war), but the information gathered was invaluable.
 
 ### One Hit Wonder, Tony Hawks  
 *September 2023*  
-I've read about Hawks' exploits against the Moldovan football team, and enjoyed his colourful storytelling. One Hit Wonder is a similarly comical effort to compose another hit. His efforts take him all over the world, chasing down that next big hit. 
+I've read about Hawks' exploits against the Moldovan football team and enjoyed his colourful storytelling. One Hit Wonder is a similarly comical effort to compose another hit. His efforts take him all over the world, chasing down that next big hit. 
 
 ### The Twist of a Knife, Anthony Horowitz  
 *September 2023*  
@@ -125,7 +125,7 @@ A continuation of the the Hawthorne series. Good twist at the end though I still
 
 ### Hello World, Hannah Fry  
 *September 2023*  
-Largely topics I'd previously read about, which made this less interesting than it might otherwise have been. Also, it was written pre GPT-4 and the rise of OpenAI, which does seem to have accelerated AI significantly.
+Largely topics I'd previously read about, which made this less interesting than it might otherwise have been. Also, it was written pre-GPT4 and the rise of OpenAI, which does seem to have accelerated AI significantly.
 
 ### Not a Penny More and Not a Penny Less, Jeffery Archer  
 *September 2023*  
@@ -137,16 +137,20 @@ More of a literature review. Some useful insights into training with lactate. Ve
 
 ### Range, David Epstein  
 *October 2023*  
-Talking about the value of a broad range of experience in some sporting and many professional examples. Enjoyable read and some actionable points. 
+Talking about the value of a broad range of experience in some sporting and many professional examples. Enjoyable read and had some actionable points. 
 
 ### Blunders of Our Governments, Anthony King  
 *October 2023*  
-From poll tax, to the millenium dome, child support agency, exit from the ERM and many others. It feels like HS2, Brexit, and the COVID response will be in future editions. Whilst reflecting and learning from mistakes is good, the analysis does have the benefit of hindsight, and I am not sure that these blunders were so obvious at the time. 
+From poll tax to the Millennium Dome, child support agency, exit from the ERM and many others. It feels like HS2, Brexit, and the COVID response will be in future editions. Whilst reflecting and learning from mistakes is good, the analysis does have the benefit of hindsight, and I am not sure that these blunders were so obvious at the time. 
 
 ### Chip War, Chris Miller  
 *November 2023*  
-Enjoyable read about the development of semiconductors. I had not realised the role defense budgets had in the development of chip manufacturing. The book majored on the history through 60s to early 2010s and the various countries and companies involved in chip manufacturing before concluding with a section on the Huawei sanctions and Taiwan. 
+An enjoyable read about the development of semiconductors. I had not realised the role defense budgets had in the development of chip manufacturing. The book majored in the history of the 60s to early 2010s and the various countries and companies involved in chip manufacturing before concluding with a section on the Huawei sanctions and Taiwan. 
 
 ### Latitude, Nicholas Crane  
 *November 2023*  
-In the 1700s a crew of French scientists plus a few Spanish make sail for South America and measure the distance of three degrees of latitude, thus determining that the earth is an oblate sphere. Astonishing how long the measurements took and how dysfunctional the team was. It's also amazing the variety of measurements they become involved with.  
+In the 1700s a crew of French scientists plus a few Spanish made sail for South America and measured the distance of three degrees of latitude, thus determining that the earth is an oblate sphere. Astonishing how long the measurements took and how dysfunctional the team was. It's also amazing the variety of measurements they become involved with. 
+
+### Moondust, Andrew Smith  
+*December 2023*  
+Musings about the men who went to the moon. More about the people involved than the technology. 
