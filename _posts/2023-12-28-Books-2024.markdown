@@ -1,0 +1,21 @@
+---
+title: Books 2024
+layout: post
+date: '2023-12-26 21:30'
+headerImage: false
+tag:
+  - books
+star: false
+category: post
+author: joshcarr
+description: 2023 Books
+published: true
+---
+
+## Summary:
+My goal for 2024 is to read 24 books. The stretch target remains 36. 
+
+
+### Template Name
+*Jan 2024*  
+Description
