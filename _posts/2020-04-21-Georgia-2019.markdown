@@ -32,37 +32,36 @@ published: true
 </div>
 
 <div markdown="1" class="contentCont" id="scroll">
-We flew Kutaisi with two steel 90s mountain bikes complete with with centre-pull brakes and 5 speed friction shifters in tow. Kutaisi airport has some surprisingly comfy sleeping areas, and once light a nice carpark for bike construction. 
+We flew Kutaisi with two steel 90s mountain bikes complete with center-pull brakes and 5-speed friction shifters in tow. Kutaisi airport has some surprisingly comfy sleeping areas, and once light a nice carpark for bike construction. 
 ![airport](/assets/images/georgia/airport.jpg){:class="img-responsive"}
 
-A short cycle to Samtredia then a serendipitous taxi ride meant we arrived in Jvari earlier than expected. Out of Jvari the road climed steeply into the Caucasus mountains.
+A short cycle to Samtredia and then a serendipitous taxi ride meant we arrived in Jvari earlier than expected. Out of Jvari, the road climbed steeply into the Caucasus mountains.
 ![steeds](/assets/images/georgia/steeds.jpg){:class="img-responsive"}
 
 Some evening rain forced us to stop for our third Kubdari of the day - and the local homebrew wine made it an overnight stop.
 
-The next town on the road was Mestia. It had swiss mountain town vibes to it and was an excellent lunch break. Our goal for the day was Ushguli, the highest settlement in the valley. Between Mestia and Ushguli we had our first mechanical. Nothing major, just the crank arm falling off. By complete chance the guilty nut was located.
+The next town on the road was Mestia. It had Swiss mountain town vibes to it and was an excellent lunch break. Our goal for the day was Ushguli, the highest settlement in the valley. Between Mestia and Ushguli we had our first mechanical. Nothing major, just the crank arm falling off. By complete chance, the guilty nut was located.
 
 The afternoon was a damp one, making our first sizeable descent a test of cold-hand grip strength. 
 ![rainy](/assets/images/georgia/rainy.jpg){:class="img-responsive"}
 
-When the paved road finally ended it marked both the start of real adventure and the end of rapid progress. What a dichotomy. At least we had bikes up for the job. More on the bikes - the one I had was universally excellent, boasting a triple chainring and a padded saddle. I had this by virtue of buying them both and selecting the better one. Jordan's one had a double chainring (=no granny gear) and a hard plastic saddle called the Unicator, but referred to as the eunuch-inator. I'm told that if you get through day 2 the eunuch-inator is actually very comfy.
+When the paved road finally ended it marked both the start of real adventure and the end of rapid progress. What a dichotomy. At least we had bikes up for the job. More on the bikes - the one I had was universally excellent, boasting a triple chainring and a padded saddle. I had this by virtue of buying them both and selecting the better one. Jordan's one had a double chainring (=no granny gear) and a hard plastic saddle called the Unicator but referred to as the eunuch-inator. I'm told that if you get through day 2 the eunuch-inator is actually very comfy.
 
 The final ramp in Ushguli had us walking the bikes up. Under the backdrop of Shkhara this wasn't too much of a hardship. We retreated to a (warm and dry) guest house.
 ![shkhara](/assets/images/georgia/shkhara.JPG){:class="img-responsive"}
 
-Uphill at2k+ altitude is hard work. Downhill off-road on these bikes was equally challenging. Luckily, compared to fellow tourers on much more expensive and nicer bikes (think 1by fat tyre type things), we didn't really care if they broke. It was an epic ~100km of descending out of the moutains - highlights were the muddy offroad sections for clogging the derailleurs, and the final sharp descent into Tskaltubo.       
+Uphill at 2k+ altitude is hard work. Downhill off-road on these bikes was equally challenging. Luckily, compared to fellow tourers on much more expensive and nicer bikes (think 1-by fat tyre type things), we didn't really care if they broke. It was an epic ~100km of descending out of the mountains - highlights were the muddy offroad sections for clogging the derailleurs, and the final sharp descent into Tskaltubo.       
 ![muddy descent](/assets/images/georgia/muddy.jpg){:class="img-responsive"}
 
-Tskaltubo was a Soviet spa resort, and was therefore a perfect spot to end a hard cycling trip. Bathhouse #6 still operates and the waterjet massage is highly recommended.
+Tskaltubo was a Soviet spa resort and was a perfect spot to end a hard cycling trip. Bathhouse #6 still operates and the waterjet massage is highly recommended.
 ![baths](/assets/images/georgia/baths.jpg){:class="img-responsive"}
 
 Cycling Tskaltubo - Kutaisi might have taken only an hour or so, but it seemed like a great chance to try out more soviet infrastructure. The train trundled along just as soon as all the livestock was off the track.
 ![train](/assets/images/georgia/train.JPG){:class="img-responsive"}
 
-Kutaisi was a cool city. Dinner was genuinely delicious - possibly because it wasn't another Kubdari. We brokered a deal to sell the bikes with some local shopkeepers who were very happy about their purchase. We assured them they were highly reliable and suitable for mountain travel.
+Kutaisi was a cool city. Dinner was genuinely delicious - possibly because it wasn't another Kubdari. We brokered a deal to sell the bikes to some local shopkeepers who were very happy about their purchase. We assured them they were highly reliable and suitable for mountain travel.
 ![deals](/assets/images/georgia/deals.jpg){:class="img-responsive"}
-
-At home the gpx file looked pretty cool. You can see the elevation trace above. So I 3d printed a version of it which came out quite nicely.
+At home, the gpx file looked pretty cool. You can see the elevation trace above. So I 3d printed a version of it which came out quite nicely.
 ![printy](/assets/images/georgia/printy.jpg){:class="img-responsive"}
 
 

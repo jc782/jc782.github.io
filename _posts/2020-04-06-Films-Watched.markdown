@@ -11,7 +11,7 @@ author: joshcarr
 description: List of films
 published: true
 ---
-Plane travel means more film watching. Starting this to keep track of films I've watched.
+More plane travel means more film-watching. Starting this to keep track of films I've watched.
 
 **The Matrix** *June 2022*  
 **Shaun of the Dead** *January 2023*  
@@ -29,9 +29,11 @@ Plane travel means more film watching. Starting this to keep track of films I've
 **The Godfather** *April 2023*   
 **American Sniper** *April 2023*  
 **Torn** *April 2023*  
+**Planes Trains and Automobiles** *November 2023*  
+**Oppenheimer** *August 2023*  
 
 
-## Certainly watched in the past but by no means a complete list
+## Certainly watched previously. By no means a complete list
 **The Shawshank Redemption**  
 **The Lord of the Rings x3**  
 **Pulp Fiction**  

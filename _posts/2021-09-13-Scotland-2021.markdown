@@ -14,17 +14,17 @@ published: true
 ---
 <div markdown="1" class="contentCont" id="scroll">
 
-The Highland 550 is a notorious off-road bikepacking race; racing it the full distance has been completed in <4days. Call it brave (or stupid), but in search of adventure we decided to attempt a large chunk of the route in a week.
+The Highland 550 is a notorious off-road bike packing race; racing it the full distance has been completed in < 4 days. Call it brave (or stupid), but in search of adventure, we decided to attempt a large chunk of the route in a week.
 
 ## Preparation & Kit
-We both rode hardtails, which I think were the right choice. For carrying kit we each had a handlebar bag and saddlebag plus a small rucksack. Avoiding the rucksack would have been nice but would have needed us to compromise on something else.
+We both rode hardtails, which I think were the right choice. For carrying kit we each had a handlebar bag and saddlebag plus a small rucksack. Avoiding the rucksack would have been nice but we would have needed to compromise on something else.
 
 ![start](/assets/images/scotland2021/start.JPG){:class="img-responsive"}
 <figcaption>Setting off from Tyndrum</figcaption>
 
 
 ## Day 1: Tyndrum to Ben Alder Bothy
-After a relaxed morning we made it to Tyndrum and found a spot to park. Final kit selection made, we cycled up to the Green Welly and onto the route which immediately climbs out of Tyndrum and within the first few K there is a short hike-a-bike section (more on hike-a-bike later). Early progress seemed slow and our target of ~50miles/day was going to be a challenge. Luckily day 1 the paths are almost entirely good double-track. There were a couple of river crossings but nothing too challenging. The path to the bothy becomes a bog for the last 2k and meant we finished in the dark. The bothy was already full so we pitched outside.
+After a relaxed morning, we made it to Tyndrum and found a spot to park. Final kit selection made, we cycled up to the Green Welly and onto the route that immediately climbs out of Tyndrum and within the first few K there is a short hike-a-bike section (more on hike-a-bike later). Early progress seemed slow and our target of ~50 miles/day was going to be a challenge. Luckily day 1 the paths are almost entirely good double-track. There were a couple of river crossings but nothing too challenging. The path to the bothy becomes a bog for the last 2k and means we finished in the dark. The bothy was already full so we pitched outside.
 ![river](/assets/images/scotland2021/river.jpg){:class="img-responsive"}
 <figcaption>So long dry feet</figcaption>
 
@@ -33,26 +33,26 @@ After a relaxed morning we made it to Tyndrum and found a spot to park. Final ki
 
 
 ## Day 2: Ben Alder Bothy to 'the windfarm after Fort Augustus'
-Our routine became: wake, eat, [(cycle, eat), repeat], review route, sleep. The route review showed day 2 had two big climbs. From the bothy the singletrack continued. I won 'first mechanical' with a puncture jumping a drainage ditch. We gradually got better and more confident with the drainage ditches though after the puncture the wider, sharper ones I generally stopped for. 
+Our routine became: wake, eat, [(cycle, eat), repeat], review route, sleep. The route review showed day 2 had two big climbs. From the bothy, the singletrack continued. I won 'first mechanical' with a puncture jumping a drainage ditch. We gradually got better and more confident with the drainage ditches though after the puncture the wider, sharper ones I generally stopped for. 
 
-The climb up to the Corriack pass was pretty epic, and the descent to Fort Augustus was, for us relatively novice MTB'ers, one of the best. In Fort Augustus we had completed half the first loop and now were heading out onto the larger and more daunting second loop. 
+The climb up to the Corriack pass was pretty epic, and the descent to Fort Augustus was, for us relatively novice MTB'ers, one of the best. In Fort Augustus, we had completed half the first loop and now were heading out onto the larger and more daunting second loop. 
 
 ![ulu](/assets/images/scotland2021/ulu.jpg){:class="img-responsive"}
 <figcaption>The 'ulu'</figcaption>
 
 
-## Day 3: 'the Windfarm' to 'Wilderness after Contin'
-Thankfully the wind kept the midges away for this night. We had a pretty cool view over the Loch and were camped on the beach. From the wind-farm it was a short climb followed by a nice long descent to Cannich (on the road section hitting 70kph!). A flowing 10miles following the river took us to Struy where we began the major ascent for the day. The ascent was almost entirely rideable, but I was unfortunate in snapping my seat post clamp M8 bolt. A 4x4 came past but, despite disassembling their van didn't have the right part. The guy maintaining the aqueduct helped to zip-tie the seat down to make the descent safer and suggested we head to the garage in Contin. Said garage was lovely, giving us a long M8 bolt and some washers to fix the problem. We had made good progress to Contin and restocked at the stores to carry us through to Ullapool which we expected would take about a day. We pushed on late, enjoying good weather and good doubletrack. We met some Highland cows and finally stopped just before Loch Vaich. It was another 100km day, and if not for the mechanical would likely have been our best day for cycling.
+## Day 3: 'The Windfarm' to 'Wilderness after Contin'
+Thankfully the wind kept the midges away for this night. We had a pretty cool view over the Loch and were camped on the beach. From the wind farm, it was a short climb followed by a nice long descent to Cannich (on the road section hitting 70kph!). A flowing 10miles following the river took us to Struy where we began the major ascent for the day. The ascent was almost entirely rideable, but I was unfortunate in snapping my seat post clamp M8 bolt. A 4x4 came past but, despite disassembling their van didn't have the right part. The guy maintaining the aqueduct helped to zip-tie the seat down to make the descent safer and suggested we head to the garage in Contin. The said garage was lovely, giving us a long M8 bolt and some washers to fix the problem. We had made good progress to Contin and restocked at the stores to carry us through to Ullapool which we expected would take about a day. We pushed on late, enjoying good weather and a good double track. We met some Highland cows and finally stopped just before Loch Vaich. It was another 100km day, and if not for the mechanical would likely have been our best day for cycling.
 
 ![cow](/assets/images/scotland2021/cow.jpg){:class="img-responsive"}
 <figcaption>We must be in the highlands</figcaption>
 
 ## Day 4: 'Wilderness after Contin' to 'Fisherfield Forest'
-We woke early and saw glimpses of sun. The doubletrack continued and we made quick progress, cover 40km by around 10am. The short road section at Croich was nice, and the sign suggesting there was a 'road' to Ullapool 30miles was welcomed. Initially the 'road' was good. It was fairly flat and mostly double track. Toward the top we made a small diversion to traverse the hillside at the point where the second loop met the third. It cut out a descent/ascent and was a good path. We passed the Schoolhouse bothy, which would have been an excellent stop, and were briefly joined by another cyclist who was attempting a munro. From this point progress slowed; initially by the gradient, and then by our first longer section of hike-a-bike to join up with the path to Ullapool. So much for the road. 
+We woke early and saw glimpses of the sun. The double track continued and we made quick progress, covering 40km by around 10 am. The short road section at Croich was nice, and the sign suggesting there was a 'road' to Ullapool 30 miles was welcomed. Initially the 'road' was good. It was fairly flat and mostly double-track. Toward the top, we made a small diversion to traverse the hillside at the point where the second loop met the third. It cut out a descent/ascent and was a good path. We passed the Schoolhouse bothy, which would have been an excellent stop, and were briefly joined by another cyclist who was attempting a Munro. From this point progress slowed; initially by the gradient, and then by our first longer section of hike-a-bike to join up with the path to Ullapool. So much for the road. 
 
-Once on the proper descent we made better progress, and cycled wearily (body and bike) into Ullapool around 3pm. First stop was to seek out Tesco for a refuel, and then the outdoor shop for bike lube / cleaning. Our gears needed some TLC.
+Once on the proper descent we made better progress and cycled wearily (body and bike) into Ullapool around 3 pm. The first stop was to seek out Tesco for a refuel, and then the outdoor shop for bike lube/cleaning. Our gears needed some TLC.
 
-Ullapool to Poolewe, one might plan as a 'rest day' between BnBs. Beware, this section is slow. At first you're lulled into optimism by a long fast road section, but reality strikes at 'Coffin Road', which frankly I don't think anyone rides up fully laden. The 10km section between roads took us 2hrs, and much of the descent was also un-rideable for us. Our dreams of a 100km day were dashed, but keen to camp high, where wind deters midges, we carried on till sunset up the climb into the Fisherfield section. This would probably be rideable if fresh.
+Ullapool to Poolewe, one might plan as a 'rest day' between BnBs. Beware, this section is slow. At first, you're lulled into optimism by a long fast road section, but reality strikes at 'Coffin Road', which frankly I don't think anyone rides up fully laden. The 10km section between roads took us 2 hours, and much of the descent was also un-rideable for us. Our dreams of a 100km day were dashed, but keen to camp high, where wind deters midges, we carried on till sunset up the climb into the Fisherfield section. This would probably be rideable if fresh.
 
 ![sunrise](/assets/images/scotland2021/sunrise.JPG){:class="img-responsive"}
 <figcaption>Sunrise</figcaption>
@@ -61,7 +61,7 @@ Ullapool to Poolewe, one might plan as a 'rest day' between BnBs. Beware, this s
 <figcaption>The hardtails did well</figcaption>
 
 ## Day 5: Fisherfield Forest to Kinlochewe
-Lol. What a day. Initially 'okay' with 8km descent taking around an hour. The river crossing was easy since there had been little rain. We knew this section might be tricky, but we hadn't appreciated just how far, or how slow, hike-a-bike was. I think we made 30km in 6hrs. There were occasional sections of descent that were fun, pushing our boundaries but doable. But largely we trudged, pushing bikes. Soul breaking.
+Lol. What a day. Initially 'okay' with an 8km descent taking around an hour. The river crossing was easy since there had been little rain. We knew this section might be tricky, but we hadn't appreciated just how far, or how slow, hike-a-bike was. I think we made 30km in 6hrs. There were occasional sections of descent that were fun, pushing our boundaries but doable. But largely we trudged, pushing bikes. Soul breaking.
 
 ![mountain](/assets/images/scotland2021/mountain.jpg){:class="img-responsive"}
 <figcaption>More 'ulu'</figcaption>
@@ -71,19 +71,19 @@ Lol. What a day. Initially 'okay' with 8km descent taking around an hour. The ri
 
 ![fisherfield](/assets/images/scotland2021/fisherfield.jpg){:class="img-responsive"}
 
-The last section to Poolewe was actually excellent. Playful singletrack down through the forest and a final quick few KM along the roads, the painful memories ebbed away. From Poolewe, as if Fisherfield wasn't enough for a day, we had another 10km off-road single track section which again took 2hrs. We'd done 50km in 8hrs.
+The last section into Poolewe was excellent. Playful singletrack down through the forest and a final quick few KM along the roads, the painful memories ebbed away. From Poolewe, as if Fisherfield wasn't enough for a day, we had another 10km off-road single track section which again took 2 hours. We'd done 50km in 8hrs.
 
 Along the road, in the blink of an eye, we were on 75km and in Kinlochewe. We were both toasted; our pitch was midge-infested as well. The best part of this spot was washing in the stream.
 
 ## Day 6: Kinlochewe to Invergarry
-In the tent we decided we deserved a night in a bed and a 'rest day'. It puts in perspective that our 'rest' day was 85miles, on MTBs, (on roads), mostly into a headwind and with some hefty climbs; and we still finished 5hrs earlier than most of the other days...!
+In the tent, we decided we deserved a night in a bed and a 'rest day'. It puts in perspective that our 'rest' day was 85miles, on MTBs, (on roads), mostly into a headwind and with some hefty climbs; and we still finished 5hrs earlier than most of the other days...!
 
-The roads were generally nice enough, and being able to stop at Cafe's more frequently was nice. I was in 'mission mode' so we didn't stop much. Rolling into Invergarry the legs finally decided they'd had enough. Bnb was nice. Food at the hotel was pleasant; too many onion rings.
+The roads were generally nice enough, and being able to stop at cafes more frequently was nice. I was in 'mission mode' so we didn't stop much. Rolling into Invergarry the legs finally decided they'd had enough. The BNB was nice. The food at the hotel was pleasant; too many onion rings.
 
-## Day 7: Invergarry to Fort William
-BnB meant Scottish fry up (fry up + haggis) - this is not a continental breakfast and my body could clearly tell. The section to Fort William was flat, along the great glen, but a slight struggle. From Fort William there were two key sections left if we were to finish that day. The first to get over to Kinlochleven, and then up-and-over Devil's staircase to Glencoe. There were hordes of walkers on the West Highland way. Largely the section to Kinlochleven was rideable but slow. The final descent was a bit steep for us. At the pub for lunch we thought it was possible to make it back. 
+## Day 7: Invergarry back
+BnB meant Scottish fry up (fry up + haggis) - this is not a continental breakfast and my body could tell. The section to Fort William was flat, along the great glen, but a slight struggle. From Fort William, there were two key sections left if we were to finish that day. The first to get over to Kinlochleven, and then up and over Devil's staircase to Glencoe. There were hordes of walkers on the West Highland Way. Largely the section to Kinlochleven was rideable but slow. The final descent was a bit steep for us. At the pub for lunch, we thought it was possible to make it back. 
 
-The climb of Devil's staircase was steep but rideable for the first 2/3rds on a wide doubletrack. After that it was intermittently rideable. The descent was notorious, and the section at the top was mostly walked; but I didn't think it was any worse than parts of Fisherfield. The descent is cut short as it ends on quite a high plateau. Meeting the A82, and later than we hoped, we cut down the road for a couple of sections before leaving the road at the Bridge of Orchy to complete the route off-road. It was great to be riding back to the car after such an epic week. 
+The climb of Devil's Staircase was steep but rideable for the first 2/3rds on a wide double track. After that, it was intermittently rideable. The descent was notorious, and the section at the top was mostly walked, but I didn't think it was any worse than parts of Fisherfield. The descent is cut short as it ends on quite a high plateau. Meeting the A82, and later than we hoped, we cut down the road for a couple of sections before leaving the road at the Bridge of Orchy to complete the route off-road. It was great to be riding back to the car after such an epic week. 
 
 The last section was probably the closest I came to a proper bonk, probably a lack of food after the pub. The Green Welly man didn't seem very understanding when I stocked up on sugar once we were finally back in Tyndrum. 
 
@@ -95,11 +95,11 @@ The last section was probably the closest I came to a proper bonk, probably a la
 
 It was epic. It was, physically, the hardest adventure we've done. We took good kit, and although it would be possible to travel lighter, it had a nice balance of comfort to weight. 
 
-I have no idea how those that race make it around the full route in 4days. 
+I have no idea how those who race make it around the full route in 4days. 
 
-We were lucky with the weather. We got wet twice but neither were detrimental. I'm not sure if it rained much overnight, mostly we were out for the count. 
+We were lucky with the weather. We got wet twice but neither was too detrimental. I'm not sure if it rained much overnight, mostly we were out for the count. 
 
-If not for COVID we probably wouldn't have done this route, but I'm glad to have done it. I'd definitely return although I'd try to seek out the rideable trails as hike-a-bike is tiresome. 
+If not for COVID we probably wouldn't have done this route, but I'm glad to have done it. I'd return although I'd try to seek out the rideable trails as hike-a-bike is tiresome. 
 
 
 
