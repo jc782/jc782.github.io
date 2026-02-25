@@ -1,0 +1,63 @@
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.hero {
+  margin-bottom: 2rem;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: #555;
+  max-width: 600px;
+}
+
+.page-content p {
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.page-content ul {
+  line-height: 1.6;
+  max-width: 700px;
+}
+.page-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Headings inside page content */
+.page-content h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.page-content h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}

@@ -1,8 +1,19 @@
 ---
 layout: default
 ---
-{% include header.html %}
 
-{{content}}
+<main class="page-container">
 
+    <header class="page-header">
+        {% if page.subtitle %}
+        <p class="page-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+    </header>
 
+   <main class="page-container">
+  <div class="prose prose-neutral max-w-2xl">
+    {{ content }}
+  </div>
+</main>
+
+</main>

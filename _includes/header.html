@@ -5,22 +5,78 @@
 %}{% assign showHeader = true %}{% endif %}
 
 {% if showHeader == true %}
-    <header class="header-home {% if site.animation %}animated{% endif %}">
-        {% if site.about %}
-            <a class="link" href="{{ site.url }}/about">
-                <img class="selfie" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
-            </a>
-        {% else %}
-            <span class="link">
-                <img class="selfie" alt="{{ site.name }}" src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
-            </span>
-        {% endif %}
+  <header class="mb-10 sm:mb-14 text-center">
 
-        <h1 class="title">{{ site.name }}</h1>
-        <h2 class="description">{{ site.bio }}</h2>
+    {% if site.about %}
+      <a href="{{ site.url }}/about" class="inline-block mb-5">
+        <img class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover shadow-md mx-auto"
+             alt="{{ site.name }}"
+             src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+      </a>
+    {% else %}
+      <span class="inline-block mb-5">
+        <img class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover shadow-md mx-auto"
+             alt="{{ site.name }}"
+             src="{% if site.external-image %}{{ site.picture }}{% else %}{{ site.url }}/{{ site.picture }}{% endif %}" />
+      </span>
+    {% endif %}
 
-        {% include social-links.html %}
-    </header>
+    <h1 class="font-serif text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ site.name }}</h1>
+    <p class="font-sans text-lg text-muted max-w-sm mx-auto leading-relaxed">{{ site.bio }}</p>
+
+    <div class="mt-4">
+      {% include social-links.html %}
+    </div>
+
+  </header>
 {% endif %}
 
-{% include nav.html %}
+<!-- Nav always renders, but styled bigger and centered on home, left-aligned elsewhere -->
+<nav class="{% if showHeader == true %}justify-center{% else %}justify-start{% endif %} flex mb-10 sm:mb-14 border-b border-warm pb-6">
+  <ul class="flex flex-wrap gap-x-6 gap-y-2 text-lg font-sans text-muted list-none m-0 p-0">
+
+    {% if page.title != "Home" %}
+      <li>
+        <a href="{{ site.url }}/" class="hover:text-accent transition-colors no-underline">Home</a>
+      </li>
+    {% endif %}
+
+    {% if site.blog == true %}
+      {% if page.title != "Blog" %}
+        <li>
+          <a href="{{ site.url }}/blog" class="hover:text-accent transition-colors no-underline">Posts</a>
+        </li>
+      {% endif %}
+    {% endif %}
+
+    {% if site.projects == true %}
+      {% if page.title != "Projects" %}
+        <li>
+          <a href="{{ site.url }}/projects" class="hover:text-accent transition-colors no-underline">Projects</a>
+        </li>
+      {% endif %}
+    {% endif %}
+
+    {% if site.about == true %}
+      {% if page.title != "About" %}
+        <li>
+          <a href="{{ site.url }}/about" class="hover:text-accent transition-colors no-underline">About</a>
+        </li>
+      {% endif %}
+    {% endif %}
+         <li>
+          <a href="{{ site.url }}/professional-services" class="hover:text-accent transition-colors no-underline">Services</a>
+        </li>
+
+    {% if site.resume == true %}
+      <li>
+        <a href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}"
+           class="hover:text-accent transition-colors no-underline"
+           {% if site.resume-external %}target="_blank" rel="noopener"{% endif %}>
+          Résumé
+        </a>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>

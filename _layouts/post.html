@@ -2,39 +2,66 @@
 layout: page
 ---
 
-{% if page.image and page.headerImage %}
-    <img class="title-image" src="{{ page.image }}" alt="{{ page.title }}">
-{% endif %}
+<article class="max-w-2xl mx-auto">
 
-<h1 class="title">{{ page.title }}</h1>
+  {% if page.image and page.headerImage %}
+    <img class="w-full rounded-xl shadow-sm mb-8 object-cover max-h-72"
+         src="{{ page.image }}"
+         alt="{{ page.title }}">
+  {% endif %}
 
-<span class="date">
-    <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%A. %B %d, %Y" }}</time>
-    {% if site.read-time %} - {% include read-time.html %}{% endif %}
-</span>
+  <!-- Post header -->
+  <header class="mb-10">
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight text-ink mb-4">
+      {{ page.title }}
+    </h1>
 
-{% if site.show-tags %}
-    <div class="post-tags">
-        {% for tag in page.tags %}
-            <a class="item" href="{{ site.url }}/tags/#{{ tag | slugify }}">{{ tag }}</a>
-        {% endfor %}
+    <div class="flex flex-wrap items-center gap-3 text-base text-muted font-sans">
+      <time datetime="{{ page.date | date: '%d-%m-%Y' }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+
+      {% if site.read-time %}
+        <span class="text-warm select-none">·</span>
+        <span>{% include read-time.html %}</span>
+      {% endif %}
     </div>
-{% endif %}
-<style>
-.post-content{
-    display:grid;
-    grid-template-columns: 1fr;
-  }
-</style>
-<div class="post-content" id="post-content">
-    {{content}}
-</div>
 
+    {% if site.show-tags and page.tags.size > 0 %}
+      <div class="flex flex-wrap gap-2 mt-4">
+        {% for tag in page.tags %}
+          <a href="{{ site.url }}/tags/#{{ tag | slugify }}"
+             class="inline-block px-3 py-1 rounded-full bg-paper text-sm text-muted
+                    hover:bg-warm hover:text-accent transition-colors no-underline border border-warm">
+            {{ tag }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
 
-{% if site.related %}
-    {% include related.html %}
-{% endif %}
+  <!-- Post body -->
+  <main class="page-container">
+  <div class="prose prose-neutral max-w-2xl">
+    {{ content }}
+  </div>
+</main>
 
-{% if site.disqus.categories contains page.category %}
-    {% include disqus.html %}
-{% endif %}
+  <!-- Related posts -->
+  {% if site.related %}
+    <aside class="mt-16 pt-10 border-t border-warm">
+      <h2 class="font-sans text-sm font-medium uppercase tracking-widest text-muted mb-6">
+        Related reading
+      </h2>
+      {% include related.html %}
+    </aside>
+  {% endif %}
+
+  <!-- Comments -->
+  {% if site.disqus.categories contains page.category %}
+    <div class="mt-16 pt-10 border-t border-warm">
+      {% include disqus.html %}
+    </div>
+  {% endif %}
+
+</article>

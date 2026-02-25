@@ -1,39 +1,48 @@
-<nav class="{% if page.title == "Home" %}nav-home{% else %}nav{% endif %}">
-    <ul class="list">
-        {% if page.title != "Home" %}
-            <li class="item">
-                <a class="link" href="{{ site.url }}/">Home</a>
-            </li>
-        {% endif %}
+<nav class="flex items-center">
+  <ul class="flex flex-wrap gap-x-6 gap-y-2 text-base font-sans text-muted list-none m-0 p-0">
 
-        {% if site.blog == true %}
-            {% if page.title != "Blog" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/blog">Posts</a>
-                </li>
-            {% endif %}
-        {% endif %}
+    {% if page.title != "Home" %}
+      <li>
+        <a href="{{ site.url }}/" class="hover:text-accent transition-colors no-underline">Home</a>
+      </li>
+    {% endif %}
 
-        {% if site.projects == true %}
-            {% if page.title != "Projects" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/projects">Projects</a>
-                </li>
-            {% endif %}
-        {% endif %}
+    {% if site.blog == true %}
+      {% if page.title != "Blog" %}
+        <li>
+          <a href="{{ site.url }}/blog" class="hover:text-accent transition-colors no-underline">Posts</a>
+        </li>
+      {% endif %}
+    {% endif %}
 
-        {% if site.about == true %}
-            {% if page.title != "About" %}
-                <li class="item">
-                    <a class="link" href="{{ site.url }}/about">About</a>
-                </li>
-            {% endif %}
-        {% endif %}
+    {% if site.projects == true %}
+      {% if page.title != "Projects" %}
+        <li>
+          <a href="{{ site.url }}/projects" class="hover:text-accent transition-colors no-underline">Projects</a>
+        </li>
+      {% endif %}
+    {% endif %}
 
-        {% if site.resume == true %}
-            <li class="item">
-                <a class="link" href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}">Résumé</a>
-            </li>
-        {% endif %}
-    </ul>
+    {% if site.about == true %}
+      {% if page.title != "About" %}
+        <li>
+          <a href="{{ site.url }}/about" class="hover:text-accent transition-colors no-underline">About</a>
+        </li>
+        <li>
+          <a href="{{ site.url }}/professional-services" class="hover:text-accent transition-colors no-underline">Services</a>
+        </li>
+      {% endif %}
+    {% endif %}
+
+    {% if site.resume == true %}
+      <li>
+        <a href="{% if site.resume-external %}{{ site.resume-url }}{% else %}{{ site.url }}/{{ site.resume-url }}{% endif %}"
+           class="hover:text-accent transition-colors no-underline"
+           {% if site.resume-external %}target="_blank" rel="noopener"{% endif %}>
+          Résumé
+        </a>
+      </li>
+    {% endif %}
+
+  </ul>
 </nav>

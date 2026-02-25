@@ -1,6 +1,39 @@
-<div class="item {% if post.star %}star{% endif %}">
-    <a class="url" href="{{ site.url }}{{ post.url }}">
-        <aside class="date"><time datetime="{{ post.date | date:"%d-%m-%Y" }}">{{ post.date | date: "%b %d %Y" }}</time></aside>
-        <h4 class="title">{{ post.title }}</h4>
-    </a>
-</div>
+<li class="group">
+  <a href="{{ site.url }}{{ post.url }}"
+     class="flex flex-col h-full bg-paper rounded-2xl p-6 sm:p-7
+            border border-warm hover:border-accent hover:shadow-md
+            transition-all duration-200 no-underline hover:no-underline">
+
+    <div class="flex items-center justify-between mb-4">
+      <time datetime="{{ post.date | date: '%d-%m-%Y' }}"
+            class="font-sans text-sm text-muted">
+        {{ post.date | date: "%b %-d, %Y" }}
+      </time>
+
+      {% if post.category == 'travel' %}
+        <span class="font-sans text-xs text-muted bg-warm px-2.5 py-1 rounded-full">✈ Travel</span>
+      {% endif %}
+
+      {% if post.star %}
+        <span class="text-accent text-sm" title="Favourite post">★ Favourite</span>
+      {% endif %}
+    </div>
+
+    <h4 class="font-serif text-xl sm:text-2xl font-semibold text-ink
+               group-hover:text-accent transition-colors leading-snug mb-3">
+      {{ post.title }}
+    </h4>
+
+    {% if post.description %}
+      <p class="font-sans text-base text-muted leading-relaxed flex-1">
+        {{ post.description }}
+      </p>
+    {% endif %}
+
+    <div class="mt-5 font-sans text-sm text-accent font-medium flex items-center gap-1
+                opacity-0 group-hover:opacity-100 transition-opacity">
+      Read post <span>→</span>
+    </div>
+
+  </a>
+</li>

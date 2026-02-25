@@ -1,44 +1,76 @@
 ---
 layout: page
 title: Blog
+show_title: false
 ---
-<section class="list">
-	{% if site.posts.size == 0 %}
-		<p class="text-center">Nothing published yet!</p>
-	{% elsif site.paginate %}
-		{% for post in paginator.posts %}
-			{% if post.category == 'post' %}
-				{% if post.hidden != true %}
-					{% include blog-post.html %}
-				{% endif %}
-			{% endif %}
-			{% if post.category == 'travel' %}
-				{% if post.hidden != true %}
-					{% include blog-post.html %}
-				{% endif %}
-			{% endif %}
-		{% endfor %}
 
-		{% include pagination.html%}
-	{% else %}
-		<h3>General Posts</h3>
-		<br>
-		{% for post in site.posts %}
-			{% if post.category == 'post' %}
-				{% if post.hidden != true %}
-					{% include blog-post.html %}
-				{% endif %}
-			{% endif %}
-		{% endfor %}
-		<h3>Travel</h3>
-		<br>
-		{% for post in site.posts %}
-		{% if post.category == 'travel' %}
-			{% if post.hidden != true %}
-				{% include blog-post.html %}
-			{% endif %}
-		{% endif %}
-	{% endfor %}
+<section>
 
-	{% endif %}
+  {% if site.posts.size == 0 %}
+    <p class="font-sans text-lg text-muted text-center py-12">Nothing published yet!</p>
+
+  {% elsif site.paginate %}
+    <ul class="list-none p-0 m-0 grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {% for post in paginator.posts %}
+        {% if post.hidden != true %}
+          {% if post.category == 'post' or post.category == 'travel' %}
+            {% include blog-post.html %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% include pagination.html %}
+
+  {% else %}
+
+	<div class="mb-10 border-b pb-4">
+
+  <nav class="flex gap-8 text-lg font-medium">
+
+    <a href="#general"
+       style="scroll-behavior: smooth;"
+       class="hover:text-black border-b-2 border-transparent hover:border-black pb-1 transition">
+      General
+    </a>
+
+    <a href="#travel"
+       style="scroll-behavior: smooth;"
+       class="hover:text-black border-b-2 border-transparent hover:border-black pb-1 transition">
+      Travel
+    </a>
+
+  </nav>
+
+</div>
+<div id="general" class="mb-14">
+  <h2 class="font-sans text-sm font-medium uppercase tracking-widest text-muted mb-5">
+    General
+  </h2>
+
+  <ul class="list-none p-0 m-0 grid grid-cols-1 sm:grid-cols-2 gap-5">
+    {% for post in site.posts %}
+      {% if post.category == 'post' and post.hidden != true %}
+        {% include blog-post.html %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+
+<div id="travel">
+  <h2 class="font-sans text-sm font-medium uppercase tracking-widest text-muted mb-5">
+    Travel
+  </h2>
+
+  <ul class="list-none p-0 m-0 grid grid-cols-1 sm:grid-cols-2 gap-5">
+    {% for post in site.posts %}
+      {% if post.category == 'travel' and post.hidden != true %}
+        {% include blog-post.html %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+  {% endif %}
+
 </section>
