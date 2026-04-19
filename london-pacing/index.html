@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>London Marathon — Weather Impact & Pacing Analysis</title>
+  <meta name="description"
+    content="How does race-day weather affect London Marathon performance? Analysis of 233,000+ finishers across 2014-2019 with percentile contour charts and a pacing calculator.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ══════════ TOKENS ══════════ */
+    :root {
+      --bg: #07090f;
+      --surface: rgba(255, 255, 255, 0.035);
+      --surface2: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.07);
+      --border2: rgba(255, 255, 255, 0.12);
+      --text: #dde4f0;
+      --muted: #6b7a92;
+      --accent: #4f80e2;
+      --accent2: #9b72f0;
+      --cool: #38bdf8;
+      --warm: #fb923c;
+      --hot: #ef4444;
+      --pink: #f472b6;
+      --rad: 14px;
+      --rad-sm: 9px;
+    }
+
+    /* ══════════ RESET ══════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 900px 600px at 15% 5%, rgba(79, 128, 226, .10) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 500px at 85% 85%, rgba(155, 114, 240, .08) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 300px at 55% 45%, rgba(251, 146, 60, .05) 0%, transparent 60%);
+    }
+
+    /* ══════════ LAYOUT ══════════ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ══════════ NAV ══════════ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 9, 15, .88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      height: 54px;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: .9rem;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .18s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* ══════════ HERO ══════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79, 128, 226, .12);
+      border: 1px solid rgba(79, 128, 226, .28);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(1.5)
+      }
+    }
+
+    h1.hero-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+
+    .hero-title .grad {
+      background: linear-gradient(130deg, var(--cool) 0%, var(--accent) 35%, var(--accent2) 65%, var(--warm) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 44px;
+    }
+
+    /* ══════════ STAT CARDS ══════════ */
+    .stats-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      flex: 1;
+      min-width: 130px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      padding: 18px 20px;
+      backdrop-filter: blur(14px);
+      transition: background .2s, transform .2s;
+    }
+
+    .stat-card:hover {
+      background: var(--surface2);
+      transform: translateY(-2px);
+    }
+
+    .stat-card .val {
+      font-size: 1.7rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-card .lbl {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* ══════════ YEAR CARDS ══════════ */
+    .year-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .year-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--rad-sm);
+      padding: 14px 16px;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+
+    .year-card:hover {
+      background: var(--surface2);
+      transform: translateY(-2px);
+      border-color: var(--border2);
+    }
+
+    .year-card .yn {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .year-card .yt {
+      font-size: .82rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+
+    .year-card .ym {
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .year-card .wi {
+      margin-top: 7px;
+      font-size: .95rem;
+    }
+
+    .cool .yt {
+      color: var(--cool);
+    }
+
+    .cool {
+      border-top: 3px solid var(--cool);
+    }
+
+    .mild .yt {
+      color: #a3e635;
+    }
+
+    .mild {
+      border-top: 3px solid #a3e635;
+    }
+
+    .warm .yt {
+      color: #facc15;
+    }
+
+    .warm {
+      border-top: 3px solid #facc15;
+    }
+
+    .hot .yt {
+      color: var(--hot);
+    }
+
+    .hot {
+      border-top: 3px solid var(--hot);
+    }
+
+    /* ══════════ SECTIONS ══════════ */
+    section {
+      padding: 76px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    section+section {
+      border-top: 1px solid var(--border);
+    }
+
+    .sec-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2.sec-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+
+    .sec-desc {
+      font-size: .95rem;
+      color: var(--muted);
+      max-width: 660px;
+      margin-bottom: 32px;
+    }
+
+    /* ══════════ GLASS ══════════ */
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--rad);
+      padding: 24px 28px;
+      backdrop-filter: blur(14px);
+    }
+
+    .glass-sm {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--rad-sm);
+      padding: 14px 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    /* ══════════ CHART CONTAINERS ══════════ */
+    .chart-wrap {
+      position: relative;
+    }
+
+    .chart-title {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .chart-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    /* ══════════ GENDER TABS ══════════ */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .18s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+      border-color: var(--border2);
+    }
+
+    .tab-btn.active {
+      background: rgba(79, 128, 226, .18);
+      border-color: rgba(79, 128, 226, .4);
+      color: var(--accent);
+    }
+
+    /* ══════════ TOGGLE BUTTON ══════════ */
+    .toggle-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .18s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--border2);
+      color: var(--text);
+    }
+
+    .toggle-btn.on {
+      background: rgba(79, 128, 226, .15);
+      border-color: rgba(79, 128, 226, .35);
+      color: var(--accent);
+    }
+
+    /* ══════════ D3 TOOLTIP ══════════ */
+    .d3tip {
+      position: fixed;
+      z-index: 9999;
+      pointer-events: none;
+      background: rgba(10, 14, 24, .96);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12px;
+      line-height: 1.7;
+      opacity: 0;
+      transition: opacity .12s;
+      max-width: 220px;
+    }
+
+    .d3tip strong {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .d3tip .tip-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .d3tip .tip-label {
+      color: var(--muted);
+    }
+
+    .d3tip .tip-val {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ══════════ INSIGHT PILLS ══════════ */
+    .insight-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .ipill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .ipill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ══════════ HEATMAP ══════════ */
+    .htable {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+
+    .htable th {
+      text-align: left;
+      padding: 9px 12px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .htable td {
+      padding: 9px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, .03);
+    }
+
+    .htable tr:hover td {
+      background: rgba(255, 255, 255, .02);
+    }
+
+    .hcell {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 11.5px;
+      white-space: nowrap;
+    }
+
+    /* ══════════ CALCULATOR ══════════ */
+    #calc-box {
+      background: linear-gradient(135deg, rgba(79, 128, 226, .07), rgba(155, 114, 240, .05));
+      border: 1px solid rgba(79, 128, 226, .18);
+      border-radius: 18px;
+      padding: 36px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 28px;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .fg label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .fg input[type="text"],
+    .fg select {
+      width: 100%;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: var(--rad-sm);
+      padding: 11px 14px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .fg input[type="text"]:focus,
+    .fg select:focus {
+      border-color: var(--accent);
+    }
+
+    .fg select option {
+      background: #141824;
+    }
+
+    .fg input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .range-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .range-val {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .range-cap {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .calc-btn {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none;
+      border-radius: var(--rad-sm);
+      padding: 13px 26px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .18s, transform .14s;
+      letter-spacing: -.01em;
+    }
+
+    .calc-btn:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .calc-result {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .rc {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: var(--rad-sm);
+      padding: 18px 20px;
+    }
+
+    .rc .rc-lbl {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .rc .rc-val {
+      font-size: 1.65rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .rc .rc-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .rc-main {
+      border-color: rgba(79, 128, 226, .3) !important;
+    }
+
+    .rc-heat {
+      border-color: rgba(251, 146, 60, .25) !important;
+    }
+
+    .rc-wind {
+      border-color: rgba(56, 189, 248, .25) !important;
+    }
+
+    .rc-total {
+      border-color: rgba(155, 114, 240, .3) !important;
+      background: rgba(155, 114, 240, .05) !important;
+    }
+
+    /* ══════════ WIND CHART ══════════ */
+    .wind-year-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .wind-year-lbl {
+      width: 36px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .wind-bar-track {
+      flex: 1;
+      height: 28px;
+      background: rgba(255, 255, 255, .04);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wind-bar-fill {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .wind-bar-mid {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(255, 255, 255, .15);
+    }
+
+    .wind-year-meta {
+      width: 120px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ══════════ LEGEND ══════════ */
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    .leg-line {
+      width: 22px;
+      height: 2px;
+    }
+
+    .leg-dash {
+      width: 22px;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .6) 0 5px, transparent 5px 9px);
+    }
+
+    /* ══════════ FOOTER ══════════ */
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 820px) {
+      .chart-grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links a:nth-child(n+3) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .stats-row {
+        flex-direction: column;
+      }
+
+      #calc-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- tooltip (shared by all D3 charts) -->
+  <div class="d3tip" id="d3tip"></div>
+
+  <!-- ───────── NAV ───────── -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">London <span>Marathon</span></div>
+      <div class="nav-links">
+        <a href="#finish-fan">Finish Times</a>
+        <a href="#slowdown-fan">Slowdown</a>
+        <a href="#gender">Gender</a>
+        <a href="#wind">Wind</a>
+        <a href="#calculator">Calculator</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ───────── HERO ───────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-badge"><span class="dot"></span>2014–2019 · 233,746 Mass Finishers</div>
+      <h1 class="hero-title">
+        How to Adjust Your<br>
+        <span class="grad">London Marathon</span>
+        <br> Pace for the Conditions
+      </h1>
+      <p class="hero-sub">
+        Six years of finish-time data reveal exactly how temperature changes pace for every ability level — from
+        sub-2:30 elites to 5h+ runners.
+      </p>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="val" id="s-runners">—</div>
+          <div class="lbl">Finishers Analysed</div>
+        </div>
+        <div class="stat-card">
+          <div class="val" id="s-hot-year">—</div>
+          <div class="lbl">Hottest Race Day (2018)</div>
+        </div>
+      </div>
+      <div class="year-cards" id="yearCards"></div>
+    </div>
+  </section>
+
+  <!-- ───────── SECTION 5: CALCULATOR ───────── -->
+  <section id="calculator">
+    <div class="container">
+      <div class="sec-label">Section 05 · Pacing Calculator</div>
+      <h2 class="sec-title">How will conditions affect your finish time?</h2>
+      <p class="sec-desc">
+        Enter your target time under good conditions (≈ cool, calm day), the forecast temperature, and any expected
+        wind. The calculator uses historical London Marathon data to project how much slower you should expect to be.
+      </p>
+
+      <div id="calc-box">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <h3 style="font-size:1.05rem;font-weight:800">Pacing Calculator</h3>
+          <span
+            style="background:rgba(79,128,226,.14);border:1px solid rgba(79,128,226,.3);border-radius:999px;padding:2px 11px;font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.1em">BETA</span>
+        </div>
+        <p style="color:var(--muted);font-size:12px;margin-top:5px">
+          Reference = cool London day (~10°C). Based on 2014–2019 mass-race data by ability tier.
+        </p>
+
+        <div class="calc-grid">
+          <div class="calc-inputs">
+
+            <div class="fg">
+              <label for="calcTime">Your target / PB in good conditions</label>
+              <input type="text" id="calcTime" value="3:00:00" placeholder="e.g. 3:00:00" oninput="runCalc()">
+            </div>
+
+            <div class="fg">
+              <label for="calcGender">Gender (for tier matching)</label>
+              <select id="calcGender" onchange="runCalc()">
+                <option value="all">All / Not specified</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div class="fg">
+              <label>Forecast race-day temperature</label>
+              <input type="range" id="calcTemp" min="5" max="28" step="0.5" value="14" oninput="onTempChange()">
+              <div class="range-hdr">
+                <span class="range-cap">5°C</span>
+                <span class="range-val" id="calcTempDisp">14°C</span>
+                <span class="range-cap">28°C</span>
+              </div>
+            </div>
+
+            <div class="fg">
+              <label>Forecast course wind (+ = tailwind from ESE, − = headwind)</label>
+              <input type="range" id="calcWind" min="-25" max="25" step="1" value="0" oninput="onWindChange()">
+              <div class="range-hdr">
+                <span class="range-cap" style="color:var(--hot)">25 km/h</span>
+                <span class="range-val" id="calcWindDisp">0 km/h</span>
+                <span class="range-cap" style="color:var(--cool)">+25 km/h</span>
+              </div>
+            </div>
+
+            <button class="calc-btn" onclick="runCalc()">Calculate My Expected Time →</button>
+          </div>
+
+          <div class="calc-result">
+            <div class="rc rc-main">
+              <div class="rc-lbl">Ability Tier</div>
+              <div class="rc-val" id="rc-tier" style="font-size:1rem;color:var(--accent)">—</div>
+              <div class="rc-sub" id="rc-tier-sub">Enter your time above and click Calculate</div>
+            </div>
+            <div class="rc rc-heat">
+              <div class="rc-lbl">Heat Effect (vs 10°C reference)</div>
+              <div class="rc-val" id="rc-heat" style="color:var(--warm)">—</div>
+              <div class="rc-sub" id="rc-heat-sub">—</div>
+            </div>
+            <div class="rc rc-wind">
+              <div class="rc-lbl">Wind Effect (course-aligned)</div>
+              <div class="rc-val" id="rc-wind" style="color:var(--cool)">—</div>
+              <div class="rc-sub" id="rc-wind-sub">—</div>
+            </div>
+            <div class="rc rc-total">
+              <div class="rc-lbl">Total Expected Finish Time</div>
+              <div class="rc-val" id="rc-total" style="color:var(--accent2);font-size:2rem">—</div>
+              <div class="rc-sub" id="rc-total-sub">—</div>
+            </div>
+            <div class="glass-sm" style="font-size:12px;color:var(--muted)" id="rc-strategy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── SECTION 1: FINISH TIME FAN ───────── -->
+  <section id="finish-fan">
+    <div class="container">
+      <div class="sec-label">Section 01 · Temperature vs Finish Time</div>
+      <h2 class="sec-title">When it's hot, everyone slows down</h2>
+      <p class="sec-desc">
+        Each band shows the range of finish times for a given percentile of runners. The top of the chart (p90–p95) is
+        the slowest runners; the bottom (p5–p10) captures the sub-3h zone. Both shift dramatically upward in 2018's 20°C
+        heat.
+      </p>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+        <div class="tab-bar" id="tabs-finish">
+          <button class="tab-btn active" data-grp="all">All runners</button>
+          <button class="tab-btn" data-grp="male">Male</button>
+          <button class="tab-btn" data-grp="female">Female</button>
+        </div>
+        <button class="toggle-btn" id="toggleZoom" onclick="toggleFinishZoom()">Sub-3:35 focus</button>
+      </div>
+      <div class="legend">
+        <div class="leg-item">
+          <div class="leg-dash"></div> p10 / p25 / p75 / p90 lines
+        </div>
+        <div class="leg-item">
+          <div class="leg-line" style="background:white;opacity:.9;height:2px;width:22px"></div> p50 median
+        </div>
+        <div class="leg-item" style="display:flex;align-items:center;gap:6px">
+          <div
+            style="width:36px;height:10px;background:linear-gradient(90deg,#313695,#74add1,#ffffbf,#f46d43,#a50026);border-radius:3px">
+          </div>
+          <span>Fast → Slow percentile</span>
+        </div>
+      </div>
+      <div class="glass chart-wrap">
+        <div id="chart-finish" style="width:100%"></div>
+      </div>
+      <div class="insight-row" id="finish-insights"></div>
+    </div>
+  </section>
+
+  <!-- ───────── SECTION 2: SLOWDOWN FAN ───────── -->
+  <section id="slowdown-fan">
+    <div class="container">
+      <div class="sec-label">Section 02 · Temperature vs Second-Half Slowdown</div>
+      <h2 class="sec-title">The hotter it is, the bigger the fade in the second half</h2>
+      <p class="sec-desc">
+        Slowdown % = how much slower the second half was vs the first half. Each of the 98 bands represents a
+        1-percentile slice of all runners.
+      </p>
+      <div class="tab-bar" id="tabs-slowdown">
+        <button class="tab-btn active" data-grp="all">All runners</button>
+        <button class="tab-btn" data-grp="male">Male</button>
+        <button class="tab-btn" data-grp="female">Female</button>
+      </div>
+      <div class="glass chart-wrap">
+        <div id="chart-slowdown" style="width:100%"></div>
+      </div>
+      <div class="insight-row" id="slowdown-insights"></div>
+    </div>
+  </section>
+
+  <!-- ───────── SECTION 3: GENDER COMPARISON ───────── -->
+  <section id="gender">
+    <div class="container">
+      <div class="sec-label">Section 03 · Gender Comparison</div>
+      <h2 class="sec-title">Do men and women respond differently to heat?</h2>
+      <p class="sec-desc">
+        Comparing the p10, p50, and p90 slowdown lines for male (blue) and female (pink) runners at the same percentile
+        rank within each group. A gap between lines would indicate one gender suffers more from heat.
+      </p>
+      <div class="glass chart-wrap">
+        <div id="chart-gender" style="width:100%"></div>
+      </div>
+      <div class="glass-sm" id="gender-finding" style="margin-top:16px;font-size:13px"></div>
+    </div>
+  </section>
+
+  <!-- ───────── SECTION 4: WIND ───────── -->
+  <section id="wind">
+    <div class="container">
+      <div class="sec-label">Section 04 · Wind Direction & Course Impact</div>
+      <h2 class="sec-title">London's course runs WNW. Most years face a headwind</h2>
+      <p class="sec-desc">
+        The London Marathon runs net west-northwest (Blackheath → The Mall, bearing ≈295°). A true tailwind would come
+        from ESE (115°). The chart below shows the course-aligned wind component for each year. Negative = headwind into
+        runners' faces.
+      </p>
+      <div class="glass" style="margin-bottom:18px">
+        <div class="chart-title">Course-Adjusted Wind Per Year (km/h, positive = tailwind from ESE)</div>
+        <div id="wind-bars"></div>
+      </div>
+      <div class="glass-sm" style="font-size:12.5px; color:var(--muted); line-height:1.7;">
+        <strong style="color:var(--text)">Interpretation note:</strong>
+        With only 6 race years, separating temperature and wind effects statistically is unreliable — 2018 was both the
+        hottest <em>and</em> had a moderate headwind, making it hard to isolate each factor. Wind is shown here for
+        context and is incorporated in the pacing calculator as a physics-based adjustment (~2 sec/km/m·s⁻¹ headwind
+        penalty).
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <p>London Marathon official results 2014–2019 · Weather: Open-Meteo Archive API · 233,746 finishers · Wind:
+        Open-Meteo hourly</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════════ -->
+  <script>
+    // ─── Global data (JSON inlined by build step) ──────────────────────────────
+    let DATA = null;
+
+    // ─── Helpers ──────────────────────────────────────────────────────────────
+    const fmtMin = m => {
+      const h = Math.floor(m / 60), mn = Math.round(m % 60);
+      return mn === 0 ? `${h}h` : `${h}h${String(mn).padStart(2, '0')}`;
+    };
+    const fmtMinFull = m => {
+      const h = Math.floor(m / 60), mn = Math.floor(m % 60), s = Math.round((m - Math.floor(m)) * 60);
+      return `${h}:${String(mn).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    };
+    const secToMin = s => s / 60;
+    const fmtSec = s => { s = Math.round(s); return `${Math.floor(s / 3600)}:${String(Math.floor((s % 3600) / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`; };
+    const parseHMS = str => {
+      const m = str.trim().match(/^(\d{1,2}):(\d{2}):(\d{2})$/);
+      return m ? +m[1] * 3600 + +m[2] * 60 + +m[3] : null;
+    };
+
+    function tempColor(t) {
+      if (t < 8) return '#38bdf8';
+      if (t < 12) return '#6ee7b7';
+      if (t < 15) return '#a3e635';
+      if (t < 18) return '#facc15';
+      if (t < 21) return '#fb923c';
+      return '#ef4444';
+    }
+    function tempClass(t) {
+      if (t < 10) return 'cool';
+      if (t < 15) return 'mild';
+      if (t < 18) return 'warm';
+      return 'hot';
+    }
+    function slowColor(s) {
+      if (s < 10) return { bg: 'rgba(56,189,248,.12)', text: '#38bdf8' };
+      if (s < 13) return { bg: 'rgba(110,231,183,.12)', text: '#6ee7b7' };
+      if (s < 15) return { bg: 'rgba(250,204,21,.12)', text: '#facc15' };
+      if (s < 18) return { bg: 'rgba(251,146,60,.15)', text: '#fb923c' };
+      return { bg: 'rgba(239,68,68,.15)', text: '#ef4444' };
+    }
+
+    function animCount(el, target, suffix, dur = 1200, dec = 0) {
+      const t0 = Date.now();
+      const tick = () => {
+        const p = Math.min((Date.now() - t0) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (dec > 0 ? (e * target).toFixed(dec) : Math.round(e * target).toLocaleString()) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      tick();
+    }
+
+    // ─── D3 Fan Chart ─────────────────────────────────────────────────────────
+    let finishZoomed = false;       // default: full view — toggle brings sub-3:35 focus
+    let finishGroup = 'all';
+    let slowdownGroup = 'all';
+
+    const TIP = document.getElementById('d3tip');
+    function showTip(html, event) {
+      TIP.innerHTML = html;
+      TIP.style.opacity = 1;
+      moveTip(event);
+    }
+    function moveTip(event) {
+      const x = event.clientX + 14, y = event.clientY - 14;
+      TIP.style.left = `${Math.min(x, window.innerWidth - 240)}px`;
+      TIP.style.top = `${Math.max(y, 8)}px`;
+    }
+    function hideTip() { TIP.style.opacity = 0; }
+
+    function drawFanChart(containerId, fanData, {
+      metric,              // 'finish' (seconds→minutes) | 'slowdown' (%)
+      yMin, yMax,          // axis domain
+      yLabel,
+      yFmt,
+      labeledPs = [10, 25, 50, 75, 90],
+      height = 420,
+    }) {
+      const el = document.getElementById(containerId);
+      if (!el || !fanData || fanData.length < 2) return;
+      d3.select('#' + containerId).selectAll('svg').remove();
+
+      const sorted = [...fanData].sort((a, b) => a.temp - b.temp);
+      const key = metric === 'finish' ? 'finish_p' : 'slowdown_p';
+      const toY = metric === 'finish'
+        ? (d, i) => secToMin(d[key][i])
+        : (d, i) => d[key][i];
+
+      const margin = { top: 18, right: 68, bottom: 54, left: 72 };
+      const W = el.clientWidth || 700;
+      const H = height;
+      const w = W - margin.left - margin.right;
+      const h = H - margin.top - margin.bottom;
+
+      const svg = d3.select('#' + containerId).append('svg')
+        .attr('width', W).attr('height', H)
+        .append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+
+      // Clip
+      const clipId = 'clip_' + containerId;
+      svg.append('defs').append('clipPath').attr('id', clipId)
+        .append('rect').attr('width', w).attr('height', h);
+
+      const temps = sorted.map(d => d.temp);
+      const xSc = d3.scaleLinear()
+        .domain([d3.min(temps) - 0.4, d3.max(temps) + 0.4])
+        .range([0, w]);
+      const ySc = d3.scaleLinear()
+        .domain([yMin, yMax]).range([h, 0]).clamp(true);
+
+      // Color scale: blue (fast/low) → yellow → red (slow/high)
+      const clr = d3.scaleSequential()
+        .domain([0, 97])
+        .interpolator(t => d3.interpolateRdYlBu(1 - t));
+
+      // H-grid
+      svg.selectAll('.hg').data(ySc.ticks(7)).join('line')
+        .attr('class', 'hg').attr('x1', 0).attr('x2', w)
+        .attr('y1', d => ySc(d)).attr('y2', d => ySc(d))
+        .attr('stroke', 'rgba(255,255,255,.035)').attr('stroke-dasharray', '3,4');
+
+      // V-grid (year lines)
+      svg.selectAll('.vg').data(sorted).join('line')
+        .attr('class', 'vg')
+        .attr('x1', d => xSc(d.temp)).attr('x2', d => xSc(d.temp))
+        .attr('y1', 0).attr('y2', h)
+        .attr('stroke', 'rgba(255,255,255,.025)');
+
+      const cg = svg.append('g').attr('clip-path', `url(#${clipId})`);
+
+      // 98 filled bands (p1-p2, …, p98-p99)
+      for (let i = 0; i < 98; i++) {
+        const aFn = d3.area()
+          .x(d => xSc(d.temp))
+          .y0(d => ySc(Math.max(yMin, Math.min(yMax + 20, toY(d, i)))))
+          .y1(d => ySc(Math.max(yMin, Math.min(yMax + 20, toY(d, i + 1)))))
+          .curve(d3.curveMonotoneX);
+        cg.append('path').datum(sorted)
+          .attr('d', aFn)
+          .attr('fill', clr(i))
+          .attr('opacity', 0.38);
+      }
+
+      // Labeled percentile lines
+      labeledPs.forEach(p => {
+        const idx = p - 1;
+        const lFn = d3.line()
+          .x(d => xSc(d.temp))
+          .y(d => ySc(Math.max(yMin, Math.min(yMax, toY(d, idx)))))
+          .curve(d3.curveMonotoneX);
+        cg.append('path').datum(sorted)
+          .attr('d', lFn).attr('fill', 'none')
+          .attr('stroke', 'rgba(255,255,255,.9)')
+          .attr('stroke-width', p === 50 ? 2.2 : 1.3)
+          .attr('stroke-dasharray', p === 50 ? 'none' : (p < 50 ? '6,3' : '3,3'));
+
+        // Right label
+        const last = sorted[sorted.length - 1];
+        const yv = ySc(Math.max(yMin, Math.min(yMax, toY(last, idx))));
+        if (yv >= -8 && yv <= h + 8) {
+          svg.append('text').attr('x', w + 4).attr('y', yv + 4)
+            .attr('fill', 'rgba(255,255,255,.65)').attr('font-size', '10px')
+            .attr('font-family', 'Inter,sans-serif').text(`p${p}`);
+        }
+      });
+
+      // Year label dots on p50 line
+      sorted.forEach(d => {
+        const idx = 49;
+        const yv = ySc(Math.max(yMin, Math.min(yMax, toY(d, idx))));
+        const xv = xSc(d.temp);
+        if (yv >= 0 && yv <= h) {
+          cg.append('circle').attr('cx', xv).attr('cy', yv).attr('r', 3.5)
+            .attr('fill', 'white').attr('opacity', .7);
+          cg.append('text').attr('x', xv).attr('y', yv - 9)
+            .attr('text-anchor', 'middle').attr('fill', 'rgba(255,255,255,.55)')
+            .attr('font-size', '9px').attr('font-family', 'Inter,sans-serif')
+            .text(d.year);
+        }
+      });
+
+      // Axes
+      const styAx = g => {
+        g.select('.domain').attr('stroke', 'rgba(255,255,255,.12)');
+        g.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,.12)');
+        g.selectAll('.tick text').attr('fill', '#6b7a92').attr('font-size', '11px').attr('font-family', 'Inter,sans-serif');
+      };
+      svg.append('g').attr('transform', `translate(0,${h})`).call(d3.axisBottom(xSc).ticks(6).tickFormat(d => `${d}°C`)).call(styAx);
+      svg.append('g').call(d3.axisLeft(ySc).ticks(7).tickFormat(yFmt)).call(styAx);
+
+      svg.append('text').attr('x', w / 2).attr('y', h + 46)
+        .attr('text-anchor', 'middle').attr('fill', '#6b7a92').attr('font-size', '11.5px').attr('font-family', 'Inter,sans-serif')
+        .text('Average Race-Day Temperature (°C)');
+      svg.append('text').attr('transform', 'rotate(-90)').attr('x', -h / 2).attr('y', -56)
+        .attr('text-anchor', 'middle').attr('fill', '#6b7a92').attr('font-size', '11.5px').attr('font-family', 'Inter,sans-serif')
+        .text(yLabel);
+
+      // Interactive crosshair
+      const bisect = d3.bisector(d => d.temp).left;
+      const vline = svg.append('line').attr('y1', 0).attr('y2', h)
+        .attr('stroke', 'rgba(255,255,255,.25)').attr('stroke-dasharray', '4,3').attr('opacity', 0);
+
+      svg.append('rect').attr('width', w).attr('height', h)
+        .attr('fill', 'none').attr('pointer-events', 'all')
+        .on('mousemove', function (ev) {
+          const mx = d3.pointer(ev)[0];
+          const temp = xSc.invert(mx);
+          const i = bisect(sorted, temp, 1);
+          if (i <= 0 || i >= sorted.length) return;
+          const d = (temp - sorted[i - 1].temp) < (sorted[i].temp - temp) ? sorted[i - 1] : sorted[i];
+          vline.attr('x1', xSc(d.temp)).attr('x2', xSc(d.temp)).attr('opacity', .7);
+          const rows = labeledPs.map(p => {
+            const v = toY(d, p - 1);
+            const disp = metric === 'finish' ? fmtMin(v) : `${v.toFixed(1)}%`;
+            return `<div class="tip-row"><span class="tip-label">p${p}</span><span class="tip-val">${disp}</span></div>`;
+          }).join('');
+          showTip(`<strong>${d.year} · ${d.temp}°C</strong>${rows}`, ev);
+        })
+        .on('mouseleave', () => { vline.attr('opacity', 0); hideTip(); });
+    }
+
+    // ─── Gender comparison chart ───────────────────────────────────────────────────
+    function drawGenderChart() {
+      const mData = DATA.fan_data.male;
+      const fData = DATA.fan_data.female;
+      if (!mData || !fData) return;
+
+      const el = document.getElementById('chart-gender');
+      d3.select('#chart-gender').selectAll('svg').remove();
+      const sorted_m = [...mData].sort((a, b) => a.temp - b.temp);
+      const sorted_f = [...fData].sort((a, b) => a.temp - b.temp);
+
+      const yMin = 0, yMax = 38;
+      const margin = { top: 18, right: 68, bottom: 54, left: 72 };
+      const W = el.clientWidth || 700;
+      const H = 360;
+      const w = W - margin.left - margin.right;
+      const h = H - margin.top - margin.bottom;
+
+      const svg = d3.select('#chart-gender').append('svg')
+        .attr('width', W).attr('height', H).append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
+
+      const allTemps = [...new Set([...sorted_m, ...sorted_f].map(d => d.temp))].sort((a, b) => a - b);
+      const xSc = d3.scaleLinear().domain([d3.min(allTemps) - .4, d3.max(allTemps) + .4]).range([0, w]);
+      const ySc = d3.scaleLinear().domain([yMin, yMax]).range([h, 0]).clamp(true);
+
+      svg.selectAll('.hg').data(ySc.ticks(6)).join('line').attr('class', 'hg')
+        .attr('x1', 0).attr('x2', w).attr('y1', d => ySc(d)).attr('y2', d => ySc(d))
+        .attr('stroke', 'rgba(255,255,255,.035)').attr('stroke-dasharray', '3,4');
+
+      const clipId = 'clip_gender';
+      svg.append('defs').append('clipPath').attr('id', clipId).append('rect').attr('width', w).attr('height', h);
+      const cg = svg.append('g').attr('clip-path', `url(#${clipId})`);
+
+      const mColor = '#4f80e2', fColor = '#f472b6';
+
+      [[sorted_m, mColor, 'M'], [sorted_f, fColor, 'F']].forEach(([ds, color, lbl]) => {
+        [10, 50, 90].forEach((p, pi) => {
+          const idx = p - 1;
+          const lFn = d3.line()
+            .x(d => xSc(d.temp))
+            .y(d => ySc(Math.max(yMin, Math.min(yMax, d.slowdown_p[idx]))))
+            .curve(d3.curveMonotoneX);
+          cg.append('path').datum(ds)
+            .attr('d', lFn).attr('fill', 'none')
+            .attr('stroke', color)
+            .attr('stroke-width', p === 50 ? 2.2 : 1.4)
+            .attr('stroke-dasharray', p === 50 ? 'none' : p === 10 ? '6,3' : '3,3')
+            .attr('opacity', p === 50 ? 1 : 0.65);
+
+          if (pi === 0) {
+            const last = ds[ds.length - 1];
+            const yv = ySc(Math.max(yMin, Math.min(yMax, last.slowdown_p[idx])));
+            svg.append('text').attr('x', w + 4).attr('y', yv + 4)
+              .attr('fill', color).attr('font-size', '10px').attr('font-family', 'Inter,sans-serif')
+              .text(`${lbl} p${p}`);
+          }
+        });
+      });
+
+      const styAx = g => {
+        g.select('.domain').attr('stroke', 'rgba(255,255,255,.12)');
+        g.selectAll('.tick line').attr('stroke', 'rgba(255,255,255,.12)');
+        g.selectAll('.tick text').attr('fill', '#6b7a92').attr('font-size', '11px').attr('font-family', 'Inter,sans-serif');
+      };
+      svg.append('g').attr('transform', `translate(0,${h})`).call(d3.axisBottom(xSc).ticks(6).tickFormat(d => `${d}°C`)).call(styAx);
+      svg.append('g').call(d3.axisLeft(ySc).ticks(6).tickFormat(d => `${d}%`)).call(styAx);
+
+      svg.append('text').attr('x', w / 2).attr('y', h + 46).attr('text-anchor', 'middle')
+        .attr('fill', '#6b7a92').attr('font-size', '11.5px').attr('font-family', 'Inter,sans-serif')
+        .text('Average Race-Day Temperature (°C)');
+      svg.append('text').attr('transform', 'rotate(-90)').attr('x', -h / 2).attr('y', -56)
+        .attr('text-anchor', 'middle').attr('fill', '#6b7a92').attr('font-size', '11.5px').attr('font-family', 'Inter,sans-serif')
+        .text('Second-Half Slowdown (%)');
+
+      // Legend
+      const legData = [
+        { color: mColor, label: 'Male', dash: 'none' },
+        { color: fColor, label: 'Female', dash: 'none' },
+      ];
+      const leg = svg.append('g').attr('transform', `translate(${w - 160},8)`);
+      leg.append('rect').attr('x', -8).attr('y', -8).attr('width', 168).attr('height', 52)
+        .attr('fill', 'rgba(0,0,0,.3)').attr('rx', 6);
+      legData.forEach(({ color, label }, i) => {
+        const g = leg.append('g').attr('transform', `translate(0,${i * 22})`);
+        g.append('line').attr('x1', 0).attr('x2', 18).attr('stroke', color).attr('stroke-width', 2);
+        g.append('text').attr('x', 23).attr('y', 4).attr('fill', color).attr('font-size', '11px')
+          .attr('font-family', 'Inter,sans-serif').text(label);
+      });
+      leg.append('text').attr('x', 0).attr('y', 50).attr('fill', '#6b7a92').attr('font-size', '9.5px')
+        .attr('font-family', 'Inter,sans-serif').text('solid=p50  dash=p10/p90');
+
+      // Compute finding
+      const gf = document.getElementById('gender-finding');
+      const yr18m = sorted_m.find(d => d.year === 2018);
+      const yr18f = sorted_f.find(d => d.year === 2018);
+      const yr16m = sorted_m.find(d => d.year === 2016);
+      const yr16f = sorted_f.find(d => d.year === 2016);
+      if (yr18m && yr16m && yr18f && yr16f) {
+        const m50_18 = yr18m.slowdown_p[49], m50_16 = yr16m.slowdown_p[49];
+        const f50_18 = yr18f.slowdown_p[49], f50_16 = yr16f.slowdown_p[49];
+        const mDiff = (m50_18 - m50_16).toFixed(1), fDiff = (f50_18 - f50_16).toFixed(1);
+        const more = parseFloat(fDiff) > parseFloat(mDiff) ? 'female' : 'male';
+        gf.innerHTML = `<strong style="color:var(--text)">Data finding (2016 cool vs 2018 hot):</strong>
+      Male p50 slowdown grew <strong style="color:${mColor}">+${mDiff}pp</strong> (${m50_16}% → ${m50_18}%).
+      Female p50 slowdown grew <strong style="color:${fColor}">+${fDiff}pp</strong> (${f50_16}% → ${f50_18}%).
+      The <strong>${more}</strong> group showed a slightly larger increase in heat slowdown at the median. Note: with 6 data points, this difference may not be statistically meaningful.`;
+      }
+    }
+
+    // ─── Wind bars ────────────────────────────────────────────────────────────────
+    function drawWindBars() {
+      const container = document.getElementById('wind-bars');
+      if (!container) return;
+      const years = Object.keys(DATA.years).sort();
+      const vals = years.map(y => ({
+        year: y,
+        tailwind: DATA.years[y].weather.course_tailwind_kmh,
+        temp: DATA.years[y].weather.avg_temp_c,
+        windDir: DATA.years[y].weather.avg_wind_dir_deg,
+        windSpd: DATA.years[y].weather.avg_wind_kmh,
+      }));
+      const maxAbs = Math.max(...vals.map(v => Math.abs(v.tailwind)));
+
+      container.innerHTML = vals.map(v => {
+        const pct = Math.abs(v.tailwind) / maxAbs * 45;
+        const isTail = v.tailwind >= 0;
+        const color = isTail ? '#38bdf8' : '#ef4444';
+        const label = `${isTail ? '+' : ''}${v.tailwind.toFixed(1)} km/h`;
+        const fill = isTail
+          ? `left:50%; width:${pct}%; background:${color}30; color:${color};`
+          : `right:50%; width:${pct}%; background:${color}30; color:${color}; text-align:right;`;
+        return `
+      <div class="wind-year-bar">
+        <div class="wind-year-lbl">${v.year}</div>
+        <div class="wind-bar-track">
+          <div class="wind-bar-mid"></div>
+          <div class="wind-bar-fill" style="${fill}">${label}</div>
+        </div>
+        <div class="wind-year-meta">Dir: ${Math.round(v.windDir)}° · Speed: ${v.windSpd} km/h · Temp: ${v.temp}°C</div>
+      </div>`;
+      }).join('');
+    }
+
+    // ─── Hero ─────────────────────────────────────────────────────────────────────
+    function buildHero() {
+      const years = Object.keys(DATA.years).sort();
+      const ydata = years.map(y => DATA.years[y]);
+      const total = ydata.reduce((s, d) => s + (d.mass?.total_runners || 0), 0);
+      const yr2018 = DATA.years['2018'];
+      const yr2016 = DATA.years['2016'];
+
+      animCount(document.getElementById('s-runners'), total, '');
+      document.getElementById('s-hot-year').textContent = yr2018.weather.max_temp_c + '°C';
+
+      // Sub-3h zone: p5 of all mass, 2016 vs 2018
+      const fan16 = DATA.fan_data.all.find(f => f.year === 2016);
+      const fan18 = DATA.fan_data.all.find(f => f.year === 2018);
+      if (fan16 && fan18) {
+        const diff = (fan18.finish_p[4] - fan16.finish_p[4]) / 60;
+        const el3 = document.getElementById('s-sub3-diff');
+        if (el3) animCount(el3, diff, ' min', 1200, 0);
+      }
+      if (yr2016 && yr2018) {
+        const diff = (yr2018.mass.median_finish_s - yr2016.mass.median_finish_s) / 60;
+        const elM = document.getElementById('s-median-diff');
+        if (elM) animCount(elM, diff, ' min', 1200, 0);
+      }
+
+      // Year cards
+      const wemoji = d => {
+        let s = '';
+        if (d.weather.avg_temp_c >= 18) s += '🔥';
+        else if (d.weather.avg_temp_c >= 14) s += '☀️';
+        else s += '🌤️';
+        if (d.weather.total_precip_mm > 1) s += '🌧️';
+        if (Math.abs(d.weather.course_tailwind_kmh) > 10)
+          s += d.weather.course_tailwind_kmh > 0 ? '↗️' : '💨';
+        return s;
+      };
+
+      const c = document.getElementById('yearCards');
+      years.forEach(y => {
+        const d = DATA.years[y];
+        const t = d.weather.avg_temp_c;
+        const med = d.mass ? fmtMin(d.mass.median_finish_s / 60) : '—';
+        c.innerHTML += `<div class="year-card ${tempClass(t)}">
+      <div class="yn">${y}</div>
+      <div class="yt">${t}°C avg</div>
+      <div class="ym">${(d.mass?.total_runners || 0).toLocaleString()} runners · ${med} median</div>
+      <div class="wi">${winja(d.weather)}</div>
+    </div>`;
+      });
+    }
+
+    function winja(w) {
+      let s = '';
+      const t = w.avg_temp_c;
+      if (t < 10) s += '🌤️';
+      else if (t < 15) s += '🌤️';
+      else if (t < 19) s += '☀️';
+      else s += '🔥';
+      if (w.total_precip_mm > 1) s += '🌧️';
+      if (w.course_tailwind_kmh < -8) s += '💨';
+      else if (w.course_tailwind_kmh > 5) s += '↗️';
+      return s;
+    }
+
+    // ─── Insights ─────────────────────────────────────────────────────────────────
+    function buildInsights() {
+      const fanAll = DATA.fan_data.all;
+      const byTemp = [...fanAll].sort((a, b) => a.temp - b.temp);
+      const cool = byTemp[0], hot = byTemp[byTemp.length - 1];
+
+      function ins(containerId, pills) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        el.innerHTML = pills.map(({ color, text }) =>
+          `<div class="ipill"><span class="dot" style="background:${color}"></span>${text}</div>`
+        ).join('');
+      }
+
+      const p5diff = Math.round((hot.finish_p[4] - cool.finish_p[4]) / 60);
+      const p50diff = Math.round((hot.finish_p[49] - cool.finish_p[49]) / 60);
+      const p90diff = Math.round((hot.finish_p[89] - cool.finish_p[89]) / 60);
+      ins('finish-insights', [
+        { color: '#38bdf8', text: `p5 runners (sub-3h): ${cool.temp}°C → ${hot.temp}°C adds ~${p5diff} min` },
+        { color: '#facc15', text: `p50 (median): adds ~${p50diff} min in the heat` },
+        { color: '#ef4444', text: `p90 (back-of-pack): adds ~${p90diff} min in the heat` },
+      ]);
+
+      const s5diff = (hot.slowdown_p[4] - cool.slowdown_p[4]).toFixed(1);
+      const s50diff = (hot.slowdown_p[49] - cool.slowdown_p[49]).toFixed(1);
+      const s90diff = (hot.slowdown_p[89] - cool.slowdown_p[89]).toFixed(1);
+      ins('slowdown-insights', [
+        { color: '#38bdf8', text: `Fast runners (p5): slowdown grew +${s5diff}pp in the heat` },
+        { color: '#facc15', text: `Median runners (p50): slowdown grew +${s50diff}pp` },
+        { color: '#ef4444', text: `Slower runners (p90): slowdown grew +${s90diff}pp` },
+      ]);
+    }
+
+    // ─── Tab wiring ────────────────────────────────────────────────────────────────
+    function wireTabBar(barId, onSelect) {
+      document.getElementById(barId).querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById(barId).querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          onSelect(btn.dataset.grp);
+        });
+      });
+    }
+
+    // ─── Finish chart rendering ────────────────────────────────────────────────────
+    function renderFinishChart(grp) {
+      const yMin = 88;
+      const yMax = finishZoomed ? 215 : 332;  // 215 min = 3:35, 332 min = 5:32
+      drawFanChart('chart-finish', DATA.fan_data[grp], {
+        metric: 'finish',
+        yMin, yMax,
+        yLabel: 'Finish Time',
+        yFmt: d => fmtMin(d),
+        height: finishZoomed ? 400 : 480,
+      });
+    }
+
+    function toggleFinishZoom() {
+      finishZoomed = !finishZoomed;
+      const btn = document.getElementById('toggleZoom');
+      btn.textContent = finishZoomed ? 'Sub-3:35 focus ON' : 'Sub-3:35 focus';
+      btn.classList.toggle('on', finishZoomed);
+      renderFinishChart(finishGroup);
+    }
+
+    // ─── Calculator ────────────────────────────────────────────────────────────────
+    const FINE_TIERS = [
+      ["Sub-2:30", 0, 9000], ["2:30-2:45", 9000, 9900], ["2:45-3:00", 9900, 10800],
+      ["3:00-3:15", 10800, 11700], ["3:15-3:30", 11700, 12600], ["3:30-3:45", 12600, 13500],
+      ["3:45-4:00", 13500, 14400], ["4:00-4:30", 14400, 16200],
+      ["4:30-5:00", 16200, 18000], ["5h+", 18000, 99999]
+    ];
+
+    function findTier(s) {
+      for (const [nm, lo, hi] of FINE_TIERS) if (s >= lo && s < hi) return nm;
+      return '5h+';
+    }
+
+    const WIND_COEFF = 2.0;  // sec/km per m/s headwind (Olds et al. 1995)
+    const COURSE_KM = 42.195;
+    const REF_TEMP = 10;   // °C — "perfect conditions" reference
+
+    function runCalc() {
+      const timeStr = document.getElementById('calcTime').value;
+      const gender = document.getElementById('calcGender').value;
+      const tempC = parseFloat(document.getElementById('calcTemp').value);
+      const windKmh = parseFloat(document.getElementById('calcWind').value);
+
+      const idealSec = parseHMS(timeStr);
+      if (!idealSec || idealSec <= 0) {
+        document.getElementById('rc-tier').textContent = 'Invalid time format';
+        return;
+      }
+
+      const tierName = findTier(idealSec);
+      const lookup = DATA.fine_pacing_lookup[tierName];
+      const reg = lookup?.regression;
+
+      document.getElementById('rc-tier').textContent = tierName;
+      document.getElementById('rc-tier-sub').textContent =
+        `${lookup?.data_points?.reduce((s, p) => s + p.count, 0)?.toLocaleString() || '—'} runners in this tier across 6 years`;
+
+      if (!reg) {
+        document.getElementById('rc-heat').textContent = 'No data';
+        return;
+      }
+
+      // Heat adjustment
+      const sRef = reg.intercept + reg.slope * REF_TEMP;   // slowdown % at 10°C
+      const sT = reg.intercept + reg.slope * tempC;      // slowdown % at forecast T
+      const heatFactor = (2 + sT / 100) / (2 + sRef / 100);
+      const heatAdjSec = idealSec * heatFactor - idealSec;
+      const heatSign = heatAdjSec >= 0 ? '+' : '−';
+      const heatColor = heatAdjSec > 60 ? 'var(--hot)' : heatAdjSec > 0 ? 'var(--warm)' : '#6ee7b7';
+
+      document.getElementById('rc-heat').textContent = `${heatSign}${fmtSec(Math.abs(heatAdjSec))}`;
+      document.getElementById('rc-heat').style.color = heatColor;
+      document.getElementById('rc-heat-sub').textContent =
+        `At ${tempC}°C, ${tierName} runners avg ${Math.max(0, sT).toFixed(1)}% 2nd-half slowdown vs ${sRef.toFixed(1)}% at 10°C reference`;
+
+      // Wind adjustment (physics-based)
+      // tailwindKmh positive = runner helped; negative = headwind penalty
+      const headwindMs = -(windKmh / 3.6);             // positive = headwind
+      const windDeltaSec = headwindMs * WIND_COEFF * COURSE_KM;
+      const windSign = windDeltaSec >= 0 ? '+' : '−';
+      const windColor = windDeltaSec > 60 ? 'var(--hot)' : windDeltaSec > 0 ? 'var(--warm)' : 'var(--cool)';
+      const windLabel = windKmh > 2 ? `${windKmh} km/h tailwind` : windKmh < -2 ? `${-windKmh} km/h headwind` : 'near-calm';
+
+      document.getElementById('rc-wind').textContent = `${windSign}${fmtSec(Math.abs(windDeltaSec))}`;
+      document.getElementById('rc-wind').style.color = windColor;
+      document.getElementById('rc-wind-sub').textContent =
+        `${windLabel} · Using 2.0 sec/km/m·s⁻¹ empirical coefficient`;
+
+      // Total
+      const totalSec = idealSec + heatAdjSec + windDeltaSec;
+      const diffSec = totalSec - idealSec;
+      const diffSign = diffSec >= 0 ? '+' : '−';
+
+      document.getElementById('rc-total').textContent = fmtSec(Math.max(0, totalSec));
+      document.getElementById('rc-total-sub').textContent =
+        `${diffSign}${fmtSec(Math.abs(diffSec))} vs your ${timeStr} reference · Heat: ${heatSign}${fmtSec(Math.abs(heatAdjSec))} · Wind: ${windSign}${fmtSec(Math.abs(windDeltaSec))}`;
+
+      // Strategy advice
+      const isHot = tempC >= 18;
+      const isWarm = tempC >= 14;
+      const isHead = windKmh < -5;
+      const isTail = windKmh > 5;
+      let advice = '';
+      if (isHot) advice = `🔥 Tough day ahead. Consider starting slower in the first half than you would normally.`;
+      else if (isWarm) advice = `☀️ Warm conditions. Aim for an even or slightly conservative first half. `;
+      else advice = `🌤️ Near-ideal conditions. Your expected finish is close to your reference time.${isTail ? ' The tailwind should provide a small but real benefit.' : ''}`;
+      if (isHead && !isHot) advice += ` The headwind will make the course feel harder than expected — brace for exposed sections on the Embankment.`;
+      document.getElementById('rc-strategy').textContent = advice;
+    }
+
+    function onTempChange() {
+      const t = parseFloat(document.getElementById('calcTemp').value);
+      const el = document.getElementById('calcTempDisp');
+      el.textContent = `${t}°C`;
+      el.style.color = tempColor(t);
+    }
+    function onWindChange() {
+      const w = parseFloat(document.getElementById('calcWind').value);
+      const el = document.getElementById('calcWindDisp');
+      el.textContent = `${w > 0 ? '+' : ''}${w} km/h`;
+      el.style.color = w < -5 ? 'var(--hot)' : w > 5 ? 'var(--cool)' : 'var(--muted)';
+    }
+
+    // ─── Init ──────────────────────────────────────────────────────────────────────
+    function init() {
+      buildHero();
+
+      // Finish chart
+      wireTabBar('tabs-finish', grp => {
+        finishGroup = grp;
+        renderFinishChart(grp);
+      });
+      const toggleBtn = document.getElementById('toggleZoom');
+      toggleBtn.classList.toggle('on', finishZoomed);
+      renderFinishChart('all');
+
+      // Slowdown chart
+      wireTabBar('tabs-slowdown', grp => {
+        slowdownGroup = grp;
+        renderSlowdownChart(grp);
+      });
+      renderSlowdownChart('all');
+
+      // Gender comparison
+      drawGenderChart();
+
+      // Wind
+      drawWindBars();
+
+      // Insights
+      buildInsights();
+
+      // Calc initial state
+      onTempChange();
+      onWindChange();
+      runCalc();
+    }
+
+    function renderSlowdownChart(grp) {
+      drawFanChart('chart-slowdown', DATA.fan_data[grp], {
+        metric: 'slowdown',
+        yMin: 0,
+        yMax: 40,
+        yLabel: '2nd-Half Slowdown (%)',
+        yFmt: d => `${d}%`,
+        height: 400,
+      });
+    }
+
+    // ─── Data loading ──────────────────────────────────────────────────────────────
+    function loadData() {
+      DATA = { "years": { "2014": { "weather": { "date": "2014-04-13", "avg_temp_c": 12.7, "max_temp_c": 14.5, "min_temp_c": 9.7, "avg_humidity_pct": 55.2, "avg_wind_kmh": 12.9, "avg_wind_dir_deg": 291.1, "course_tailwind_kmh": -12.84, "total_precip_mm": 0.0, "hourly_temps": [9.7, 10.5, 11.4, 12.4, 13.2, 14.1, 14.2, 14.5, 14.4], "hourly_wind_speed": [12.3, 13.4, 10.0, 10.7, 11.5, 13.0, 14.4, 15.1, 15.4], "hourly_wind_dir": [310, 306, 300, 290, 284, 284, 283, 282, 281], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 30, "median_finish_s": 8307, "median_finish": "2:18:27", "median_slowdown_pct": 3.46, "pct_positive_split": 86.7, "male_count": 18, "female_count": 12, "male_median_s": 7782, "female_median_s": 8736, "tiers": { "Sub-3h": { "count": 30, "median_finish_s": 8307, "median_slowdown_pct": 3.46, "avg_slowdown_pct": 4.61 } }, "fine_tiers": { "Sub-2:30": { "count": 26, "median_finish_s": 8038, "median_slowdown_pct": 3.46, "avg_slowdown_pct": 4.57 }, "2:30-2:45": { "count": 4, "median_finish_s": 9220, "median_slowdown_pct": 4.92, "avg_slowdown_pct": 4.88 } } }, "mass": { "total_runners": 35792, "median_finish_s": 15941, "median_finish": "4:25:41", "median_slowdown_pct": 13.51, "pct_positive_split": 96.0, "male_count": 22551, "female_count": 13241, "male_median_s": 15217, "female_median_s": 17232, "tiers": { "Sub-3h": { "count": 1389, "median_finish_s": 10344, "median_slowdown_pct": 4.11, "avg_slowdown_pct": 5.19 }, "3h-3:30": { "count": 3680, "median_finish_s": 11866, "median_slowdown_pct": 7.35, "avg_slowdown_pct": 8.56 }, "3:30-4h": { "count": 6724, "median_finish_s": 13659, "median_slowdown_pct": 8.05, "avg_slowdown_pct": 9.83 }, "4h-4:30": { "count": 7200, "median_finish_s": 15346, "median_slowdown_pct": 12.48, "avg_slowdown_pct": 14.0 }, "4:30-5h": { "count": 6712, "median_finish_s": 17098, "median_slowdown_pct": 16.41, "avg_slowdown_pct": 18.16 }, "5h+": { "count": 10087, "median_finish_s": 20042, "median_slowdown_pct": 21.36, "avg_slowdown_pct": 23.55 } }, "fine_tiers": { "Sub-2:30": { "count": 40, "median_finish_s": 8828, "median_slowdown_pct": 2.97, "avg_slowdown_pct": 3.83 }, "2:30-2:45": { "count": 329, "median_finish_s": 9634, "median_slowdown_pct": 4.15, "avg_slowdown_pct": 5.24 }, "2:45-3:00": { "count": 1020, "median_finish_s": 10504, "median_slowdown_pct": 4.16, "avg_slowdown_pct": 5.23 }, "3:00-3:15": { "count": 1542, "median_finish_s": 11327, "median_slowdown_pct": 7.29, "avg_slowdown_pct": 8.11 }, "3:15-3:30": { "count": 2138, "median_finish_s": 12227, "median_slowdown_pct": 7.49, "avg_slowdown_pct": 8.88 }, "3:30-3:45": { "count": 2765, "median_finish_s": 13102, "median_slowdown_pct": 7.79, "avg_slowdown_pct": 9.43 }, "3:45-4:00": { "count": 3959, "median_finish_s": 13995, "median_slowdown_pct": 8.24, "avg_slowdown_pct": 10.12 }, "4:00-4:30": { "count": 7200, "median_finish_s": 15346, "median_slowdown_pct": 12.48, "avg_slowdown_pct": 14.0 }, "4:30-5:00": { "count": 6712, "median_finish_s": 17098, "median_slowdown_pct": 16.41, "avg_slowdown_pct": 18.16 }, "5h+": { "count": 10087, "median_finish_s": 20042, "median_slowdown_pct": 21.36, "avg_slowdown_pct": 23.55 } } }, "combined": { "total_runners": 35822, "median_finish_s": 15938, "median_finish": "4:25:38", "median_slowdown_pct": 13.49, "pct_positive_split": 96.0, "male_count": 22569, "female_count": 13253, "male_median_s": 15214, "female_median_s": 17225, "tiers": { "Sub-3h": { "count": 1419, "median_finish_s": 10326, "median_slowdown_pct": 4.11, "avg_slowdown_pct": 5.18 }, "3h-3:30": { "count": 3680, "median_finish_s": 11866, "median_slowdown_pct": 7.35, "avg_slowdown_pct": 8.56 }, "3:30-4h": { "count": 6724, "median_finish_s": 13659, "median_slowdown_pct": 8.05, "avg_slowdown_pct": 9.83 }, "4h-4:30": { "count": 7200, "median_finish_s": 15346, "median_slowdown_pct": 12.48, "avg_slowdown_pct": 14.0 }, "4:30-5h": { "count": 6712, "median_finish_s": 17098, "median_slowdown_pct": 16.41, "avg_slowdown_pct": 18.16 }, "5h+": { "count": 10087, "median_finish_s": 20042, "median_slowdown_pct": 21.36, "avg_slowdown_pct": 23.55 } }, "fine_tiers": { "Sub-2:30": { "count": 66, "median_finish_s": 8666, "median_slowdown_pct": 3.18, "avg_slowdown_pct": 4.12 }, "2:30-2:45": { "count": 333, "median_finish_s": 9632, "median_slowdown_pct": 4.15, "avg_slowdown_pct": 5.24 }, "2:45-3:00": { "count": 1020, "median_finish_s": 10504, "median_slowdown_pct": 4.16, "avg_slowdown_pct": 5.23 }, "3:00-3:15": { "count": 1542, "median_finish_s": 11327, "median_slowdown_pct": 7.29, "avg_slowdown_pct": 8.11 }, "3:15-3:30": { "count": 2138, "median_finish_s": 12227, "median_slowdown_pct": 7.49, "avg_slowdown_pct": 8.88 }, "3:30-3:45": { "count": 2765, "median_finish_s": 13102, "median_slowdown_pct": 7.79, "avg_slowdown_pct": 9.43 }, "3:45-4:00": { "count": 3959, "median_finish_s": 13995, "median_slowdown_pct": 8.24, "avg_slowdown_pct": 10.12 }, "4:00-4:30": { "count": 7200, "median_finish_s": 15346, "median_slowdown_pct": 12.48, "avg_slowdown_pct": 14.0 }, "4:30-5:00": { "count": 6712, "median_finish_s": 17098, "median_slowdown_pct": 16.41, "avg_slowdown_pct": 18.16 }, "5h+": { "count": 10087, "median_finish_s": 20042, "median_slowdown_pct": 21.36, "avg_slowdown_pct": 23.55 } } }, "split_distribution": { "<0.95": 0.4, "0.95-1.00": 3.6, "1.00-1.05": 14.8, "1.05-1.10": 18.7, "1.10-1.15": 17.4, "1.15-1.20": 14.6, "1.20-1.30": 18.4, ">1.30": 12.0 }, "mass_split_distribution": { "<0.95": 0.4, "0.95-1.00": 3.6, "1.00-1.05": 14.8, "1.05-1.10": 18.7, "1.10-1.15": 17.5, "1.15-1.20": 14.7, "1.20-1.30": 18.4, ">1.30": 12.0 } }, "2015": { "weather": { "date": "2015-04-26", "avg_temp_c": 9.3, "max_temp_c": 10.4, "min_temp_c": 7.5, "avg_humidity_pct": 75.7, "avg_wind_kmh": 13.0, "avg_wind_dir_deg": 27.3, "course_tailwind_kmh": 0.53, "total_precip_mm": 0.3, "hourly_temps": [7.5, 7.7, 8.1, 9.1, 9.9, 10.1, 10.2, 10.3, 10.4], "hourly_wind_speed": [14.0, 15.1, 12.3, 11.8, 12.6, 12.8, 13.2, 12.6, 12.6], "hourly_wind_dir": [26, 33, 38, 27, 20, 22, 26, 27, 27], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 39, "median_finish_s": 8491, "median_finish": "2:21:31", "median_slowdown_pct": 2.21, "pct_positive_split": 87.2, "male_count": 21, "female_count": 18, "male_median_s": 7854, "female_median_s": 8786, "tiers": { "Sub-3h": { "count": 39, "median_finish_s": 8491, "median_slowdown_pct": 2.21, "avg_slowdown_pct": 2.83 } }, "fine_tiers": { "Sub-2:30": { "count": 35, "median_finish_s": 8166, "median_slowdown_pct": 1.32, "avg_slowdown_pct": 2.61 }, "2:30-2:45": { "count": 4, "median_finish_s": 9302, "median_slowdown_pct": 4.68, "avg_slowdown_pct": 4.78 } } }, "mass": { "total_runners": 37424, "median_finish_s": 15528, "median_finish": "4:18:47", "median_slowdown_pct": 10.14, "pct_positive_split": 92.4, "male_count": 23144, "female_count": 14280, "male_median_s": 14664, "female_median_s": 16768, "tiers": { "Sub-3h": { "count": 1885, "median_finish_s": 10339, "median_slowdown_pct": 2.6, "avg_slowdown_pct": 3.59 }, "3h-3:30": { "count": 4355, "median_finish_s": 11873, "median_slowdown_pct": 5.04, "avg_slowdown_pct": 6.32 }, "3:30-4h": { "count": 7764, "median_finish_s": 13657, "median_slowdown_pct": 5.81, "avg_slowdown_pct": 7.61 }, "4h-4:30": { "count": 7786, "median_finish_s": 15342, "median_slowdown_pct": 9.49, "avg_slowdown_pct": 11.3 }, "4:30-5h": { "count": 6926, "median_finish_s": 17046, "median_slowdown_pct": 13.31, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 8708, "median_finish_s": 19884, "median_slowdown_pct": 20.22, "avg_slowdown_pct": 22.03 } }, "fine_tiers": { "Sub-2:30": { "count": 56, "median_finish_s": 8788, "median_slowdown_pct": 3.21, "avg_slowdown_pct": 3.62 }, "2:30-2:45": { "count": 442, "median_finish_s": 9560, "median_slowdown_pct": 3.31, "avg_slowdown_pct": 4.05 }, "2:45-3:00": { "count": 1387, "median_finish_s": 10511, "median_slowdown_pct": 2.44, "avg_slowdown_pct": 3.44 }, "3:00-3:15": { "count": 1804, "median_finish_s": 11326, "median_slowdown_pct": 5.28, "avg_slowdown_pct": 6.11 }, "3:15-3:30": { "count": 2551, "median_finish_s": 12232, "median_slowdown_pct": 4.83, "avg_slowdown_pct": 6.47 }, "3:30-3:45": { "count": 3201, "median_finish_s": 13114, "median_slowdown_pct": 5.3, "avg_slowdown_pct": 7.09 }, "3:45-4:00": { "count": 4563, "median_finish_s": 14012, "median_slowdown_pct": 6.21, "avg_slowdown_pct": 7.97 }, "4:00-4:30": { "count": 7786, "median_finish_s": 15342, "median_slowdown_pct": 9.49, "avg_slowdown_pct": 11.3 }, "4:30-5:00": { "count": 6926, "median_finish_s": 17046, "median_slowdown_pct": 13.31, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 8708, "median_finish_s": 19884, "median_slowdown_pct": 20.22, "avg_slowdown_pct": 22.03 } } }, "combined": { "total_runners": 37463, "median_finish_s": 15523, "median_finish": "4:18:43", "median_slowdown_pct": 10.13, "pct_positive_split": 92.4, "male_count": 23165, "female_count": 14298, "male_median_s": 14659, "female_median_s": 16762, "tiers": { "Sub-3h": { "count": 1924, "median_finish_s": 10322, "median_slowdown_pct": 2.59, "avg_slowdown_pct": 3.57 }, "3h-3:30": { "count": 4355, "median_finish_s": 11873, "median_slowdown_pct": 5.04, "avg_slowdown_pct": 6.32 }, "3:30-4h": { "count": 7764, "median_finish_s": 13657, "median_slowdown_pct": 5.81, "avg_slowdown_pct": 7.61 }, "4h-4:30": { "count": 7786, "median_finish_s": 15342, "median_slowdown_pct": 9.49, "avg_slowdown_pct": 11.3 }, "4:30-5h": { "count": 6926, "median_finish_s": 17046, "median_slowdown_pct": 13.31, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 8708, "median_finish_s": 19884, "median_slowdown_pct": 20.22, "avg_slowdown_pct": 22.03 } }, "fine_tiers": { "Sub-2:30": { "count": 91, "median_finish_s": 8671, "median_slowdown_pct": 2.91, "avg_slowdown_pct": 3.23 }, "2:30-2:45": { "count": 446, "median_finish_s": 9556, "median_slowdown_pct": 3.36, "avg_slowdown_pct": 4.06 }, "2:45-3:00": { "count": 1387, "median_finish_s": 10511, "median_slowdown_pct": 2.44, "avg_slowdown_pct": 3.44 }, "3:00-3:15": { "count": 1804, "median_finish_s": 11326, "median_slowdown_pct": 5.28, "avg_slowdown_pct": 6.11 }, "3:15-3:30": { "count": 2551, "median_finish_s": 12232, "median_slowdown_pct": 4.83, "avg_slowdown_pct": 6.47 }, "3:30-3:45": { "count": 3201, "median_finish_s": 13114, "median_slowdown_pct": 5.3, "avg_slowdown_pct": 7.09 }, "3:45-4:00": { "count": 4563, "median_finish_s": 14012, "median_slowdown_pct": 6.21, "avg_slowdown_pct": 7.97 }, "4:00-4:30": { "count": 7786, "median_finish_s": 15342, "median_slowdown_pct": 9.49, "avg_slowdown_pct": 11.3 }, "4:30-5:00": { "count": 6926, "median_finish_s": 17046, "median_slowdown_pct": 13.31, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 8708, "median_finish_s": 19884, "median_slowdown_pct": 20.22, "avg_slowdown_pct": 22.03 } } }, "split_distribution": { "<0.95": 0.7, "0.95-1.00": 6.9, "1.00-1.05": 21.2, "1.05-1.10": 20.7, "1.10-1.15": 15.8, "1.15-1.20": 12.2, "1.20-1.30": 14.3, ">1.30": 8.2 }, "mass_split_distribution": { "<0.95": 0.7, "0.95-1.00": 6.9, "1.00-1.05": 21.2, "1.05-1.10": 20.7, "1.10-1.15": 15.8, "1.15-1.20": 12.3, "1.20-1.30": 14.3, ">1.30": 8.2 } }, "2016": { "weather": { "date": "2016-04-24", "avg_temp_c": 7.7, "max_temp_c": 9.3, "min_temp_c": 4.4, "avg_humidity_pct": 55.8, "avg_wind_kmh": 19.2, "avg_wind_dir_deg": 341.9, "course_tailwind_kmh": -13.12, "total_precip_mm": 0.1, "hourly_temps": [4.4, 5.5, 6.7, 8.0, 8.2, 9.3, 9.2, 9.1, 8.9], "hourly_wind_speed": [16.2, 19.5, 19.8, 21.1, 21.1, 19.4, 19.1, 19.7, 17.0], "hourly_wind_dir": [348, 348, 348, 346, 346, 345, 340, 332, 324], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 44, "median_finish_s": 8402, "median_finish": "2:20:02", "median_slowdown_pct": 4.28, "pct_positive_split": 93.2, "male_count": 25, "female_count": 19, "male_median_s": 7956, "female_median_s": 8933, "tiers": { "Sub-3h": { "count": 44, "median_finish_s": 8402, "median_slowdown_pct": 4.28, "avg_slowdown_pct": 5.27 } }, "fine_tiers": { "Sub-2:30": { "count": 36, "median_finish_s": 8170, "median_slowdown_pct": 4.28, "avg_slowdown_pct": 5.5 }, "2:30-2:45": { "count": 8, "median_finish_s": 9154, "median_slowdown_pct": 3.34, "avg_slowdown_pct": 4.21 } } }, "mass": { "total_runners": 38860, "median_finish_s": 15632, "median_finish": "4:20:32", "median_slowdown_pct": 10.44, "pct_positive_split": 92.6, "male_count": 23871, "female_count": 14989, "male_median_s": 14762, "female_median_s": 16989, "tiers": { "Sub-3h": { "count": 2084, "median_finish_s": 10360, "median_slowdown_pct": 2.72, "avg_slowdown_pct": 3.81 }, "3h-3:30": { "count": 4447, "median_finish_s": 11849, "median_slowdown_pct": 5.4, "avg_slowdown_pct": 6.81 }, "3:30-4h": { "count": 7710, "median_finish_s": 13655, "median_slowdown_pct": 5.69, "avg_slowdown_pct": 7.61 }, "4h-4:30": { "count": 7644, "median_finish_s": 15326, "median_slowdown_pct": 9.52, "avg_slowdown_pct": 11.25 }, "4:30-5h": { "count": 7137, "median_finish_s": 17074, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 9838, "median_finish_s": 20024, "median_slowdown_pct": 19.36, "avg_slowdown_pct": 21.0 } }, "fine_tiers": { "Sub-2:30": { "count": 72, "median_finish_s": 8814, "median_slowdown_pct": 2.5, "avg_slowdown_pct": 3.47 }, "2:30-2:45": { "count": 479, "median_finish_s": 9612, "median_slowdown_pct": 2.91, "avg_slowdown_pct": 3.75 }, "2:45-3:00": { "count": 1533, "median_finish_s": 10532, "median_slowdown_pct": 2.66, "avg_slowdown_pct": 3.85 }, "3:00-3:15": { "count": 1871, "median_finish_s": 11326, "median_slowdown_pct": 5.58, "avg_slowdown_pct": 6.59 }, "3:15-3:30": { "count": 2576, "median_finish_s": 12216, "median_slowdown_pct": 5.25, "avg_slowdown_pct": 6.96 }, "3:30-3:45": { "count": 3197, "median_finish_s": 13091, "median_slowdown_pct": 5.59, "avg_slowdown_pct": 7.38 }, "3:45-4:00": { "count": 4513, "median_finish_s": 14004, "median_slowdown_pct": 5.75, "avg_slowdown_pct": 7.77 }, "4:00-4:30": { "count": 7644, "median_finish_s": 15326, "median_slowdown_pct": 9.52, "avg_slowdown_pct": 11.25 }, "4:30-5:00": { "count": 7137, "median_finish_s": 17074, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 9838, "median_finish_s": 20024, "median_slowdown_pct": 19.36, "avg_slowdown_pct": 21.0 } } }, "combined": { "total_runners": 38904, "median_finish_s": 15626, "median_finish": "4:20:26", "median_slowdown_pct": 10.43, "pct_positive_split": 92.6, "male_count": 23896, "female_count": 15008, "male_median_s": 14758, "female_median_s": 16984, "tiers": { "Sub-3h": { "count": 2128, "median_finish_s": 10341, "median_slowdown_pct": 2.75, "avg_slowdown_pct": 3.84 }, "3h-3:30": { "count": 4447, "median_finish_s": 11849, "median_slowdown_pct": 5.4, "avg_slowdown_pct": 6.81 }, "3:30-4h": { "count": 7710, "median_finish_s": 13655, "median_slowdown_pct": 5.69, "avg_slowdown_pct": 7.61 }, "4h-4:30": { "count": 7644, "median_finish_s": 15326, "median_slowdown_pct": 9.52, "avg_slowdown_pct": 11.25 }, "4:30-5h": { "count": 7137, "median_finish_s": 17074, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 9838, "median_finish_s": 20024, "median_slowdown_pct": 19.36, "avg_slowdown_pct": 21.0 } }, "fine_tiers": { "Sub-2:30": { "count": 108, "median_finish_s": 8707, "median_slowdown_pct": 3.43, "avg_slowdown_pct": 4.15 }, "2:30-2:45": { "count": 487, "median_finish_s": 9597, "median_slowdown_pct": 2.91, "avg_slowdown_pct": 3.75 }, "2:45-3:00": { "count": 1533, "median_finish_s": 10532, "median_slowdown_pct": 2.66, "avg_slowdown_pct": 3.85 }, "3:00-3:15": { "count": 1871, "median_finish_s": 11326, "median_slowdown_pct": 5.58, "avg_slowdown_pct": 6.59 }, "3:15-3:30": { "count": 2576, "median_finish_s": 12216, "median_slowdown_pct": 5.25, "avg_slowdown_pct": 6.96 }, "3:30-3:45": { "count": 3197, "median_finish_s": 13091, "median_slowdown_pct": 5.59, "avg_slowdown_pct": 7.38 }, "3:45-4:00": { "count": 4513, "median_finish_s": 14004, "median_slowdown_pct": 5.75, "avg_slowdown_pct": 7.77 }, "4:00-4:30": { "count": 7644, "median_finish_s": 15326, "median_slowdown_pct": 9.52, "avg_slowdown_pct": 11.25 }, "4:30-5:00": { "count": 7137, "median_finish_s": 17074, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 15.22 }, "5h+": { "count": 9838, "median_finish_s": 20024, "median_slowdown_pct": 19.36, "avg_slowdown_pct": 21.0 } } }, "split_distribution": { "<0.95": 0.7, "0.95-1.00": 6.7, "1.00-1.05": 20.7, "1.05-1.10": 20.4, "1.10-1.15": 16.5, "1.15-1.20": 12.5, "1.20-1.30": 14.5, ">1.30": 8.0 }, "mass_split_distribution": { "<0.95": 0.7, "0.95-1.00": 6.7, "1.00-1.05": 20.7, "1.05-1.10": 20.4, "1.10-1.15": 16.5, "1.15-1.20": 12.5, "1.20-1.30": 14.5, ">1.30": 8.0 } }, "2017": { "weather": { "date": "2017-04-23", "avg_temp_c": 12.2, "max_temp_c": 14.2, "min_temp_c": 8.7, "avg_humidity_pct": 57.4, "avg_wind_kmh": 9.7, "avg_wind_dir_deg": 239.7, "course_tailwind_kmh": -5.53, "total_precip_mm": 0.6, "hourly_temps": [8.7, 9.9, 10.6, 12.3, 13.0, 13.6, 14.2, 14.0, 13.4], "hourly_wind_speed": [7.6, 9.2, 12.4, 10.9, 7.9, 6.3, 8.6, 11.5, 13.0], "hourly_wind_dir": [161, 201, 216, 236, 254, 257, 272, 272, 267], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 50, "median_finish_s": 8330, "median_finish": "2:18:50", "median_slowdown_pct": 5.67, "pct_positive_split": 100.0, "male_count": 25, "female_count": 25, "male_median_s": 8092, "female_median_s": 8931, "tiers": { "Sub-3h": { "count": 50, "median_finish_s": 8330, "median_slowdown_pct": 5.67, "avg_slowdown_pct": 7.1 } }, "fine_tiers": { "Sub-2:30": { "count": 40, "median_finish_s": 8224, "median_slowdown_pct": 5.4, "avg_slowdown_pct": 6.99 }, "2:30-2:45": { "count": 10, "median_finish_s": 9460, "median_slowdown_pct": 6.81, "avg_slowdown_pct": 7.52 } } }, "mass": { "total_runners": 39211, "median_finish_s": 15993, "median_finish": "4:26:33", "median_slowdown_pct": 12.86, "pct_positive_split": 95.4, "male_count": 23787, "female_count": 15424, "male_median_s": 15127, "female_median_s": 17250, "tiers": { "Sub-3h": { "count": 1930, "median_finish_s": 10304, "median_slowdown_pct": 3.75, "avg_slowdown_pct": 4.89 }, "3h-3:30": { "count": 4397, "median_finish_s": 11823, "median_slowdown_pct": 6.76, "avg_slowdown_pct": 8.23 }, "3:30-4h": { "count": 7034, "median_finish_s": 13637, "median_slowdown_pct": 7.7, "avg_slowdown_pct": 9.72 }, "4h-4:30": { "count": 7178, "median_finish_s": 15356, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 13.61 }, "4:30-5h": { "count": 7272, "median_finish_s": 17081, "median_slowdown_pct": 14.92, "avg_slowdown_pct": 16.95 }, "5h+": { "count": 11400, "median_finish_s": 20084, "median_slowdown_pct": 20.54, "avg_slowdown_pct": 22.3 } }, "fine_tiers": { "Sub-2:30": { "count": 55, "median_finish_s": 8796, "median_slowdown_pct": 3.16, "avg_slowdown_pct": 3.67 }, "2:30-2:45": { "count": 495, "median_finish_s": 9580, "median_slowdown_pct": 4.08, "avg_slowdown_pct": 4.7 }, "2:45-3:00": { "count": 1380, "median_finish_s": 10490, "median_slowdown_pct": 3.61, "avg_slowdown_pct": 5.01 }, "3:00-3:15": { "count": 1873, "median_finish_s": 11321, "median_slowdown_pct": 6.84, "avg_slowdown_pct": 7.78 }, "3:15-3:30": { "count": 2524, "median_finish_s": 12200, "median_slowdown_pct": 6.73, "avg_slowdown_pct": 8.57 }, "3:30-3:45": { "count": 3002, "median_finish_s": 13085, "median_slowdown_pct": 7.21, "avg_slowdown_pct": 9.18 }, "3:45-4:00": { "count": 4032, "median_finish_s": 14012, "median_slowdown_pct": 8.04, "avg_slowdown_pct": 10.12 }, "4:00-4:30": { "count": 7178, "median_finish_s": 15356, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 13.61 }, "4:30-5:00": { "count": 7272, "median_finish_s": 17081, "median_slowdown_pct": 14.92, "avg_slowdown_pct": 16.95 }, "5h+": { "count": 11400, "median_finish_s": 20084, "median_slowdown_pct": 20.54, "avg_slowdown_pct": 22.3 } } }, "combined": { "total_runners": 39261, "median_finish_s": 15988, "median_finish": "4:26:28", "median_slowdown_pct": 12.85, "pct_positive_split": 95.4, "male_count": 23812, "female_count": 15449, "male_median_s": 15122, "female_median_s": 17242, "tiers": { "Sub-3h": { "count": 1980, "median_finish_s": 10290, "median_slowdown_pct": 3.79, "avg_slowdown_pct": 4.95 }, "3h-3:30": { "count": 4397, "median_finish_s": 11823, "median_slowdown_pct": 6.76, "avg_slowdown_pct": 8.23 }, "3:30-4h": { "count": 7034, "median_finish_s": 13637, "median_slowdown_pct": 7.7, "avg_slowdown_pct": 9.72 }, "4h-4:30": { "count": 7178, "median_finish_s": 15356, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 13.61 }, "4:30-5h": { "count": 7272, "median_finish_s": 17081, "median_slowdown_pct": 14.92, "avg_slowdown_pct": 16.95 }, "5h+": { "count": 11400, "median_finish_s": 20084, "median_slowdown_pct": 20.54, "avg_slowdown_pct": 22.3 } }, "fine_tiers": { "Sub-2:30": { "count": 95, "median_finish_s": 8604, "median_slowdown_pct": 4.02, "avg_slowdown_pct": 5.07 }, "2:30-2:45": { "count": 505, "median_finish_s": 9572, "median_slowdown_pct": 4.09, "avg_slowdown_pct": 4.76 }, "2:45-3:00": { "count": 1380, "median_finish_s": 10490, "median_slowdown_pct": 3.61, "avg_slowdown_pct": 5.01 }, "3:00-3:15": { "count": 1873, "median_finish_s": 11321, "median_slowdown_pct": 6.84, "avg_slowdown_pct": 7.78 }, "3:15-3:30": { "count": 2524, "median_finish_s": 12200, "median_slowdown_pct": 6.73, "avg_slowdown_pct": 8.57 }, "3:30-3:45": { "count": 3002, "median_finish_s": 13085, "median_slowdown_pct": 7.21, "avg_slowdown_pct": 9.18 }, "3:45-4:00": { "count": 4032, "median_finish_s": 14012, "median_slowdown_pct": 8.04, "avg_slowdown_pct": 10.12 }, "4:00-4:30": { "count": 7178, "median_finish_s": 15356, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 13.61 }, "4:30-5:00": { "count": 7272, "median_finish_s": 17081, "median_slowdown_pct": 14.92, "avg_slowdown_pct": 16.95 }, "5h+": { "count": 11400, "median_finish_s": 20084, "median_slowdown_pct": 20.54, "avg_slowdown_pct": 22.3 } } }, "split_distribution": { "<0.95": 0.4, "0.95-1.00": 4.1, "1.00-1.05": 16.1, "1.05-1.10": 19.0, "1.10-1.15": 17.6, "1.15-1.20": 14.3, "1.20-1.30": 17.8, ">1.30": 10.7 }, "mass_split_distribution": { "<0.95": 0.4, "0.95-1.00": 4.1, "1.00-1.05": 16.1, "1.05-1.10": 19.0, "1.10-1.15": 17.6, "1.15-1.20": 14.3, "1.20-1.30": 17.8, ">1.30": 10.7 } }, "2018": { "weather": { "date": "2018-04-22", "avg_temp_c": 19.6, "max_temp_c": 21.6, "min_temp_c": 16.6, "avg_humidity_pct": 66.4, "avg_wind_kmh": 18.6, "avg_wind_dir_deg": 228.5, "course_tailwind_kmh": -7.43, "total_precip_mm": 2.5, "hourly_temps": [16.6, 18.0, 19.4, 20.2, 21.6, 21.6, 21.5, 19.6, 17.5], "hourly_wind_speed": [15.5, 14.6, 16.8, 19.7, 20.4, 18.8, 21.5, 21.9, 18.6], "hourly_wind_dir": [216, 220, 227, 230, 224, 223, 218, 247, 252], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 31, "median_finish_s": 8413, "median_finish": "2:20:13", "median_slowdown_pct": 7.39, "pct_positive_split": 100.0, "male_count": 18, "female_count": 13, "male_median_s": 7920, "female_median_s": 8865, "tiers": { "Sub-3h": { "count": 31, "median_finish_s": 8413, "median_slowdown_pct": 7.39, "avg_slowdown_pct": 9.66 } }, "fine_tiers": { "Sub-2:30": { "count": 24, "median_finish_s": 8207, "median_slowdown_pct": 7.19, "avg_slowdown_pct": 7.71 }, "2:30-2:45": { "count": 7, "median_finish_s": 9301, "median_slowdown_pct": 7.7, "avg_slowdown_pct": 16.34 } } }, "mass": { "total_runners": 40032, "median_finish_s": 17259, "median_finish": "4:47:39", "median_slowdown_pct": 17.8, "pct_positive_split": 98.8, "male_count": 23651, "female_count": 16381, "male_median_s": 16335, "female_median_s": 18661, "tiers": { "Sub-3h": { "count": 1110, "median_finish_s": 10360, "median_slowdown_pct": 7.36, "avg_slowdown_pct": 8.4 }, "3h-3:30": { "count": 3242, "median_finish_s": 11883, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 12.94 }, "3:30-4h": { "count": 5334, "median_finish_s": 13628, "median_slowdown_pct": 13.56, "avg_slowdown_pct": 15.4 }, "4h-4:30": { "count": 6189, "median_finish_s": 15372, "median_slowdown_pct": 17.3, "avg_slowdown_pct": 18.6 }, "4:30-5h": { "count": 7156, "median_finish_s": 17119, "median_slowdown_pct": 20.66, "avg_slowdown_pct": 22.09 }, "5h+": { "count": 17001, "median_finish_s": 20549, "median_slowdown_pct": 19.92, "avg_slowdown_pct": 22.3 } }, "fine_tiers": { "Sub-2:30": { "count": 27, "median_finish_s": 8859, "median_slowdown_pct": 5.24, "avg_slowdown_pct": 5.61 }, "2:30-2:45": { "count": 250, "median_finish_s": 9624, "median_slowdown_pct": 7.0, "avg_slowdown_pct": 7.71 }, "2:45-3:00": { "count": 833, "median_finish_s": 10520, "median_slowdown_pct": 7.5, "avg_slowdown_pct": 8.7 }, "3:00-3:15": { "count": 1316, "median_finish_s": 11310, "median_slowdown_pct": 10.11, "avg_slowdown_pct": 11.2 }, "3:15-3:30": { "count": 1926, "median_finish_s": 12207, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 14.13 }, "3:30-3:45": { "count": 2331, "median_finish_s": 13064, "median_slowdown_pct": 13.02, "avg_slowdown_pct": 14.78 }, "3:45-4:00": { "count": 3003, "median_finish_s": 13995, "median_slowdown_pct": 13.99, "avg_slowdown_pct": 15.89 }, "4:00-4:30": { "count": 6189, "median_finish_s": 15372, "median_slowdown_pct": 17.3, "avg_slowdown_pct": 18.6 }, "4:30-5:00": { "count": 7156, "median_finish_s": 17119, "median_slowdown_pct": 20.66, "avg_slowdown_pct": 22.09 }, "5h+": { "count": 17001, "median_finish_s": 20549, "median_slowdown_pct": 19.92, "avg_slowdown_pct": 22.3 } } }, "combined": { "total_runners": 40063, "median_finish_s": 17255, "median_finish": "4:47:35", "median_slowdown_pct": 17.79, "pct_positive_split": 98.8, "male_count": 23669, "female_count": 16394, "male_median_s": 16332, "female_median_s": 18658, "tiers": { "Sub-3h": { "count": 1141, "median_finish_s": 10347, "median_slowdown_pct": 7.36, "avg_slowdown_pct": 8.44 }, "3h-3:30": { "count": 3242, "median_finish_s": 11883, "median_slowdown_pct": 11.79, "avg_slowdown_pct": 12.94 }, "3:30-4h": { "count": 5334, "median_finish_s": 13628, "median_slowdown_pct": 13.56, "avg_slowdown_pct": 15.4 }, "4h-4:30": { "count": 6189, "median_finish_s": 15372, "median_slowdown_pct": 17.3, "avg_slowdown_pct": 18.6 }, "4:30-5h": { "count": 7156, "median_finish_s": 17119, "median_slowdown_pct": 20.66, "avg_slowdown_pct": 22.09 }, "5h+": { "count": 17001, "median_finish_s": 20549, "median_slowdown_pct": 19.92, "avg_slowdown_pct": 22.3 } }, "fine_tiers": { "Sub-2:30": { "count": 51, "median_finish_s": 8650, "median_slowdown_pct": 6.2, "avg_slowdown_pct": 6.6 }, "2:30-2:45": { "count": 257, "median_finish_s": 9611, "median_slowdown_pct": 7.01, "avg_slowdown_pct": 7.95 }, "2:45-3:00": { "count": 833, "median_finish_s": 10520, "median_slowdown_pct": 7.5, "avg_slowdown_pct": 8.7 }, "3:00-3:15": { "count": 1316, "median_finish_s": 11310, "median_slowdown_pct": 10.11, "avg_slowdown_pct": 11.2 }, "3:15-3:30": { "count": 1926, "median_finish_s": 12207, "median_slowdown_pct": 13.42, "avg_slowdown_pct": 14.13 }, "3:30-3:45": { "count": 2331, "median_finish_s": 13064, "median_slowdown_pct": 13.02, "avg_slowdown_pct": 14.78 }, "3:45-4:00": { "count": 3003, "median_finish_s": 13995, "median_slowdown_pct": 13.99, "avg_slowdown_pct": 15.89 }, "4:00-4:30": { "count": 6189, "median_finish_s": 15372, "median_slowdown_pct": 17.3, "avg_slowdown_pct": 18.6 }, "4:30-5:00": { "count": 7156, "median_finish_s": 17119, "median_slowdown_pct": 20.66, "avg_slowdown_pct": 22.09 }, "5h+": { "count": 17001, "median_finish_s": 20549, "median_slowdown_pct": 19.92, "avg_slowdown_pct": 22.3 } } }, "split_distribution": { "<0.95": 0.3, "0.95-1.00": 0.9, "1.00-1.05": 5.6, "1.05-1.10": 13.0, "1.10-1.15": 18.8, "1.15-1.20": 19.7, "1.20-1.30": 26.1, ">1.30": 15.6 }, "mass_split_distribution": { "<0.95": 0.3, "0.95-1.00": 0.9, "1.00-1.05": 5.6, "1.05-1.10": 13.0, "1.10-1.15": 18.8, "1.15-1.20": 19.7, "1.20-1.30": 26.2, ">1.30": 15.6 } }, "2019": { "weather": { "date": "2019-04-28", "avg_temp_c": 12.0, "max_temp_c": 13.2, "min_temp_c": 9.6, "avg_humidity_pct": 59.1, "avg_wind_kmh": 21.1, "avg_wind_dir_deg": 331.3, "course_tailwind_kmh": -17.01, "total_precip_mm": 1.0, "hourly_temps": [9.6, 10.7, 11.6, 12.1, 12.1, 12.7, 13.2, 12.9, 13.2], "hourly_wind_speed": [24.2, 22.7, 21.6, 21.9, 21.3, 19.2, 20.9, 19.4, 18.7], "hourly_wind_dir": [312, 313, 314, 324, 336, 343, 345, 345, 349], "hours": ["9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"] }, "elite": { "total_runners": 46, "median_finish_s": 8099, "median_finish": "2:14:59", "median_slowdown_pct": 2.68, "pct_positive_split": 82.6, "male_count": 25, "female_count": 21, "male_median_s": 7855, "female_median_s": 8766, "tiers": { "Sub-3h": { "count": 46, "median_finish_s": 8099, "median_slowdown_pct": 2.68, "avg_slowdown_pct": 2.91 } }, "fine_tiers": { "Sub-2:30": { "count": 40, "median_finish_s": 8040, "median_slowdown_pct": 2.45, "avg_slowdown_pct": 2.38 }, "2:30-2:45": { "count": 6, "median_finish_s": 9312, "median_slowdown_pct": 6.6, "avg_slowdown_pct": 6.48 } } }, "mass": { "total_runners": 42427, "median_finish_s": 15882, "median_finish": "4:24:42", "median_slowdown_pct": 12.23, "pct_positive_split": 95.3, "male_count": 24704, "female_count": 17723, "male_median_s": 14968, "female_median_s": 17134, "tiers": { "Sub-3h": { "count": 2258, "median_finish_s": 10250, "median_slowdown_pct": 3.16, "avg_slowdown_pct": 4.24 }, "3h-3:30": { "count": 4511, "median_finish_s": 11908, "median_slowdown_pct": 5.72, "avg_slowdown_pct": 7.27 }, "3:30-4h": { "count": 8064, "median_finish_s": 13632, "median_slowdown_pct": 7.4, "avg_slowdown_pct": 9.27 }, "4h-4:30": { "count": 7866, "median_finish_s": 15313, "median_slowdown_pct": 12.07, "avg_slowdown_pct": 13.77 }, "4:30-5h": { "count": 7603, "median_finish_s": 17077, "median_slowdown_pct": 14.97, "avg_slowdown_pct": 16.92 }, "5h+": { "count": 12125, "median_finish_s": 20193, "median_slowdown_pct": 19.82, "avg_slowdown_pct": 21.47 } }, "fine_tiers": { "Sub-2:30": { "count": 83, "median_finish_s": 8839, "median_slowdown_pct": 1.9, "avg_slowdown_pct": 2.76 }, "2:30-2:45": { "count": 639, "median_finish_s": 9583, "median_slowdown_pct": 2.83, "avg_slowdown_pct": 3.81 }, "2:45-3:00": { "count": 1536, "median_finish_s": 10490, "median_slowdown_pct": 3.35, "avg_slowdown_pct": 4.5 }, "3:00-3:15": { "count": 1764, "median_finish_s": 11310, "median_slowdown_pct": 6.04, "avg_slowdown_pct": 7.05 }, "3:15-3:30": { "count": 2747, "median_finish_s": 12227, "median_slowdown_pct": 5.51, "avg_slowdown_pct": 7.41 }, "3:30-3:45": { "count": 3489, "median_finish_s": 13078, "median_slowdown_pct": 7.18, "avg_slowdown_pct": 8.75 }, "3:45-4:00": { "count": 4575, "median_finish_s": 14012, "median_slowdown_pct": 7.62, "avg_slowdown_pct": 9.66 }, "4:00-4:30": { "count": 7866, "median_finish_s": 15313, "median_slowdown_pct": 12.07, "avg_slowdown_pct": 13.77 }, "4:30-5:00": { "count": 7603, "median_finish_s": 17077, "median_slowdown_pct": 14.97, "avg_slowdown_pct": 16.92 }, "5h+": { "count": 12125, "median_finish_s": 20193, "median_slowdown_pct": 19.82, "avg_slowdown_pct": 21.47 } } }, "combined": { "total_runners": 42473, "median_finish_s": 15875, "median_finish": "4:24:35", "median_slowdown_pct": 12.21, "pct_positive_split": 95.3, "male_count": 24729, "female_count": 17744, "male_median_s": 14965, "female_median_s": 17129, "tiers": { "Sub-3h": { "count": 2304, "median_finish_s": 10238, "median_slowdown_pct": 3.14, "avg_slowdown_pct": 4.21 }, "3h-3:30": { "count": 4511, "median_finish_s": 11908, "median_slowdown_pct": 5.72, "avg_slowdown_pct": 7.27 }, "3:30-4h": { "count": 8064, "median_finish_s": 13632, "median_slowdown_pct": 7.4, "avg_slowdown_pct": 9.27 }, "4h-4:30": { "count": 7866, "median_finish_s": 15313, "median_slowdown_pct": 12.07, "avg_slowdown_pct": 13.77 }, "4:30-5h": { "count": 7603, "median_finish_s": 17077, "median_slowdown_pct": 14.97, "avg_slowdown_pct": 16.92 }, "5h+": { "count": 12125, "median_finish_s": 20193, "median_slowdown_pct": 19.82, "avg_slowdown_pct": 21.47 } }, "fine_tiers": { "Sub-2:30": { "count": 123, "median_finish_s": 8738, "median_slowdown_pct": 2.24, "avg_slowdown_pct": 2.63 }, "2:30-2:45": { "count": 645, "median_finish_s": 9582, "median_slowdown_pct": 2.87, "avg_slowdown_pct": 3.83 }, "2:45-3:00": { "count": 1536, "median_finish_s": 10490, "median_slowdown_pct": 3.35, "avg_slowdown_pct": 4.5 }, "3:00-3:15": { "count": 1764, "median_finish_s": 11310, "median_slowdown_pct": 6.04, "avg_slowdown_pct": 7.05 }, "3:15-3:30": { "count": 2747, "median_finish_s": 12227, "median_slowdown_pct": 5.51, "avg_slowdown_pct": 7.41 }, "3:30-3:45": { "count": 3489, "median_finish_s": 13078, "median_slowdown_pct": 7.18, "avg_slowdown_pct": 8.75 }, "3:45-4:00": { "count": 4575, "median_finish_s": 14012, "median_slowdown_pct": 7.62, "avg_slowdown_pct": 9.66 }, "4:00-4:30": { "count": 7866, "median_finish_s": 15313, "median_slowdown_pct": 12.07, "avg_slowdown_pct": 13.77 }, "4:30-5:00": { "count": 7603, "median_finish_s": 17077, "median_slowdown_pct": 14.97, "avg_slowdown_pct": 16.92 }, "5h+": { "count": 12125, "median_finish_s": 20193, "median_slowdown_pct": 19.82, "avg_slowdown_pct": 21.47 } } }, "split_distribution": { "<0.95": 0.4, "0.95-1.00": 4.3, "1.00-1.05": 17.5, "1.05-1.10": 19.7, "1.10-1.15": 17.3, "1.15-1.20": 13.7, "1.20-1.30": 17.2, ">1.30": 9.9 }, "mass_split_distribution": { "<0.95": 0.4, "0.95-1.00": 4.3, "1.00-1.05": 17.5, "1.05-1.10": 19.7, "1.10-1.15": 17.3, "1.15-1.20": 13.7, "1.20-1.30": 17.2, ">1.30": 9.9 } } }, "fan_data": { "all": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "n": 35792, "finish_p": [9891, 10370, 10656, 10831, 11097, 11323, 11512, 11669, 11861, 12032, 12200, 12345, 12475, 12584, 12704, 12838, 12974, 13098, 13205, 13320, 13413, 13509, 13604, 13699, 13787, 13880, 13960, 14044, 14123, 14190, 14263, 14330, 14403, 14496, 14605, 14697, 14797, 14891, 14977, 15073, 15168, 15258, 15345, 15429, 15514, 15596, 15679, 15772, 15857, 15941, 16028, 16110, 16194, 16292, 16385, 16477, 16578, 16681, 16776, 16864, 16966, 17057, 17149, 17246, 17346, 17439, 17529, 17637, 17725, 17817, 17909, 18026, 18153, 18272, 18404, 18531, 18665, 18793, 18928, 19074, 19212, 19374, 19523, 19688, 19869, 20064, 20234, 20433, 20656, 20890, 21137, 21395, 21725, 22091, 22513, 22977, 23620, 24409, 25499], "slowdown_p": [-2.92, -1.4, -0.59, 0.0, 0.49, 0.98, 1.34, 1.67, 2.02, 2.36, 2.67, 2.99, 3.31, 3.61, 3.93, 4.23, 4.52, 4.78, 5.05, 5.3, 5.56, 5.84, 6.1, 6.38, 6.64, 6.89, 7.17, 7.45, 7.73, 7.98, 8.24, 8.49, 8.75, 9.02, 9.27, 9.55, 9.84, 10.12, 10.4, 10.68, 10.94, 11.21, 11.48, 11.75, 12.0, 12.29, 12.61, 12.91, 13.22, 13.51, 13.82, 14.11, 14.39, 14.71, 15.01, 15.32, 15.62, 15.93, 16.24, 16.55, 16.89, 17.26, 17.62, 17.96, 18.3, 18.65, 19.03, 19.39, 19.77, 20.13, 20.54, 20.95, 21.38, 21.83, 22.28, 22.74, 23.22, 23.68, 24.16, 24.71, 25.2, 25.83, 26.46, 27.05, 27.76, 28.45, 29.18, 29.97, 30.85, 31.73, 32.84, 33.95, 35.41, 36.86, 38.52, 40.78, 43.42, 47.72, 55.98] }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "n": 37424, "finish_p": [9747, 10182, 10478, 10672, 10793, 11027, 11236, 11425, 11587, 11724, 11902, 12059, 12201, 12332, 12443, 12538, 12639, 12769, 12892, 13009, 13122, 13230, 13321, 13403, 13482, 13567, 13654, 13737, 13817, 13903, 13985, 14063, 14126, 14192, 14252, 14316, 14374, 14450, 14535, 14638, 14739, 14830, 14922, 15011, 15101, 15192, 15277, 15355, 15445, 15528, 15612, 15699, 15780, 15866, 15949, 16032, 16106, 16180, 16265, 16353, 16450, 16541, 16628, 16721, 16803, 16911, 16999, 17091, 17195, 17293, 17406, 17507, 17616, 17715, 17815, 17922, 18034, 18161, 18300, 18455, 18603, 18756, 18901, 19056, 19233, 19410, 19588, 19799, 20036, 20265, 20526, 20802, 21116, 21435, 21863, 22345, 22984, 23728, 24809], "slowdown_p": [-4.13, -2.67, -1.85, -1.3, -0.89, -0.5, -0.17, 0.11, 0.4, 0.67, 0.93, 1.18, 1.42, 1.67, 1.88, 2.13, 2.36, 2.59, 2.82, 3.06, 3.28, 3.48, 3.71, 3.94, 4.15, 4.35, 4.59, 4.84, 5.05, 5.28, 5.51, 5.75, 5.99, 6.22, 6.43, 6.65, 6.89, 7.13, 7.36, 7.58, 7.81, 8.05, 8.29, 8.58, 8.84, 9.11, 9.36, 9.62, 9.87, 10.14, 10.43, 10.72, 10.99, 11.31, 11.6, 11.91, 12.21, 12.53, 12.84, 13.18, 13.52, 13.86, 14.2, 14.53, 14.9, 15.27, 15.65, 16.03, 16.41, 16.82, 17.19, 17.61, 18.02, 18.43, 18.83, 19.28, 19.73, 20.24, 20.74, 21.27, 21.78, 22.31, 22.88, 23.49, 24.19, 24.86, 25.57, 26.34, 27.17, 28.09, 29.14, 30.24, 31.4, 32.94, 34.62, 36.8, 39.52, 43.38, 50.27] }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "n": 38860, "finish_p": [9729, 10144, 10451, 10634, 10752, 10969, 11175, 11366, 11525, 11674, 11841, 11984, 12145, 12289, 12418, 12528, 12618, 12737, 12857, 12982, 13099, 13207, 13317, 13409, 13497, 13586, 13680, 13768, 13851, 13934, 14018, 14101, 14174, 14238, 14295, 14355, 14426, 14516, 14615, 14724, 14814, 14900, 15003, 15104, 15199, 15287, 15369, 15461, 15548, 15632, 15718, 15802, 15896, 15992, 16081, 16174, 16256, 16348, 16432, 16532, 16634, 16728, 16828, 16933, 17033, 17121, 17215, 17317, 17433, 17530, 17629, 17733, 17827, 17925, 18044, 18175, 18302, 18454, 18610, 18758, 18902, 19061, 19228, 19393, 19560, 19752, 19953, 20155, 20395, 20642, 20914, 21199, 21479, 21861, 22342, 22878, 23470, 24337, 25386], "slowdown_p": [-4.2, -2.65, -1.89, -1.29, -0.81, -0.46, -0.12, 0.18, 0.49, 0.78, 1.05, 1.3, 1.55, 1.8, 2.03, 2.28, 2.53, 2.76, 2.98, 3.2, 3.43, 3.65, 3.87, 4.09, 4.31, 4.55, 4.76, 4.99, 5.19, 5.41, 5.65, 5.88, 6.12, 6.36, 6.59, 6.84, 7.08, 7.32, 7.55, 7.8, 8.05, 8.3, 8.56, 8.81, 9.09, 9.35, 9.63, 9.89, 10.18, 10.44, 10.7, 10.98, 11.27, 11.58, 11.86, 12.14, 12.47, 12.78, 13.11, 13.38, 13.71, 14.03, 14.35, 14.66, 15.02, 15.36, 15.75, 16.1, 16.42, 16.78, 17.15, 17.55, 17.98, 18.4, 18.88, 19.34, 19.76, 20.23, 20.74, 21.21, 21.7, 22.27, 22.88, 23.53, 24.16, 24.81, 25.49, 26.27, 27.07, 27.93, 28.88, 29.98, 31.18, 32.64, 34.31, 36.24, 38.72, 42.5, 49.85] }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "n": 39211, "finish_p": [9717, 10156, 10451, 10675, 10818, 11042, 11267, 11443, 11615, 11740, 11896, 12053, 12210, 12360, 12478, 12582, 12723, 12850, 12971, 13090, 13200, 13316, 13427, 13522, 13626, 13730, 13831, 13932, 14019, 14101, 14184, 14256, 14325, 14395, 14500, 14615, 14727, 14840, 14942, 15046, 15145, 15244, 15332, 15433, 15528, 15618, 15711, 15802, 15898, 15993, 16081, 16163, 16258, 16348, 16456, 16550, 16644, 16741, 16826, 16924, 17020, 17112, 17203, 17304, 17412, 17514, 17611, 17705, 17802, 17910, 18010, 18135, 18254, 18379, 18512, 18635, 18773, 18910, 19042, 19186, 19336, 19486, 19654, 19828, 19990, 20203, 20390, 20629, 20846, 21104, 21379, 21616, 21952, 22331, 22768, 23264, 23980, 24796, 25736], "slowdown_p": [-3.16, -1.87, -0.96, -0.33, 0.17, 0.58, 0.95, 1.31, 1.61, 1.95, 2.27, 2.56, 2.86, 3.15, 3.45, 3.74, 4.01, 4.27, 4.55, 4.82, 5.09, 5.36, 5.62, 5.89, 6.13, 6.39, 6.66, 6.89, 7.16, 7.4, 7.66, 7.94, 8.19, 8.46, 8.71, 9.02, 9.29, 9.57, 9.83, 10.09, 10.35, 10.62, 10.89, 11.16, 11.43, 11.71, 11.97, 12.28, 12.58, 12.86, 13.14, 13.42, 13.71, 14.02, 14.34, 14.64, 14.95, 15.27, 15.58, 15.89, 16.23, 16.56, 16.87, 17.2, 17.57, 17.94, 18.31, 18.68, 19.03, 19.44, 19.83, 20.2, 20.61, 20.99, 21.47, 21.91, 22.38, 22.86, 23.37, 23.9, 24.44, 25.01, 25.59, 26.21, 26.8, 27.52, 28.21, 28.98, 29.77, 30.64, 31.67, 32.8, 33.97, 35.26, 37.0, 39.03, 41.71, 45.64, 52.83] }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "n": 40032, "finish_p": [10156, 10612, 10864, 11191, 11454, 11682, 11918, 12126, 12297, 12473, 12625, 12795, 12951, 13096, 13253, 13398, 13551, 13683, 13818, 13939, 14060, 14170, 14275, 14382, 14512, 14661, 14790, 14904, 15027, 15151, 15266, 15380, 15482, 15591, 15709, 15826, 15933, 16035, 16133, 16235, 16344, 16455, 16558, 16661, 16761, 16866, 16969, 17063, 17160, 17259, 17361, 17466, 17560, 17664, 17761, 17858, 17948, 18059, 18166, 18278, 18392, 18512, 18623, 18737, 18871, 18981, 19085, 19187, 19289, 19402, 19524, 19650, 19776, 19902, 20030, 20172, 20303, 20454, 20585, 20719, 20867, 21026, 21182, 21345, 21497, 21668, 21870, 22069, 22282, 22536, 22801, 23046, 23351, 23693, 24128, 24558, 25140, 25819, 26805], "slowdown_p": [-0.43, 1.26, 2.41, 3.23, 3.94, 4.58, 5.14, 5.66, 6.12, 6.57, 6.96, 7.34, 7.73, 8.1, 8.45, 8.81, 9.13, 9.44, 9.74, 10.07, 10.36, 10.63, 10.91, 11.21, 11.49, 11.77, 12.04, 12.3, 12.56, 12.84, 13.08, 13.32, 13.59, 13.85, 14.1, 14.36, 14.59, 14.87, 15.1, 15.36, 15.59, 15.82, 16.09, 16.32, 16.56, 16.8, 17.06, 17.3, 17.56, 17.8, 18.05, 18.28, 18.54, 18.81, 19.11, 19.39, 19.64, 19.91, 20.2, 20.51, 20.77, 21.05, 21.36, 21.63, 21.92, 22.23, 22.56, 22.89, 23.2, 23.57, 23.96, 24.33, 24.7, 25.07, 25.46, 25.86, 26.28, 26.72, 27.16, 27.62, 28.12, 28.7, 29.25, 29.77, 30.37, 31.07, 31.78, 32.54, 33.34, 34.26, 35.24, 36.33, 37.58, 39.18, 40.97, 42.91, 46.02, 50.23, 59.2] }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "n": 42427, "finish_p": [9608, 10035, 10343, 10597, 10755, 10981, 11216, 11436, 11623, 11791, 11965, 12129, 12262, 12396, 12514, 12605, 12729, 12851, 12955, 13071, 13172, 13278, 13384, 13481, 13588, 13697, 13781, 13872, 13966, 14050, 14129, 14204, 14272, 14338, 14402, 14494, 14601, 14706, 14803, 14901, 15006, 15114, 15211, 15293, 15385, 15492, 15599, 15701, 15797, 15882, 15972, 16061, 16153, 16243, 16345, 16449, 16546, 16650, 16745, 16850, 16941, 17037, 17132, 17243, 17341, 17442, 17543, 17638, 17747, 17847, 17951, 18078, 18215, 18364, 18490, 18628, 18767, 18912, 19061, 19211, 19371, 19534, 19690, 19871, 20056, 20251, 20472, 20666, 20887, 21126, 21355, 21639, 21964, 22351, 22778, 23254, 23860, 24692, 25882], "slowdown_p": [-2.88, -1.64, -0.85, -0.3, 0.14, 0.52, 0.87, 1.19, 1.51, 1.78, 2.06, 2.34, 2.61, 2.85, 3.12, 3.37, 3.65, 3.93, 4.19, 4.44, 4.7, 4.96, 5.21, 5.45, 5.7, 5.95, 6.2, 6.46, 6.7, 6.96, 7.24, 7.49, 7.74, 7.99, 8.24, 8.5, 8.74, 9.03, 9.27, 9.51, 9.78, 10.03, 10.29, 10.57, 10.83, 11.11, 11.39, 11.66, 11.94, 12.23, 12.51, 12.82, 13.12, 13.41, 13.7, 14.01, 14.32, 14.61, 14.94, 15.27, 15.59, 15.94, 16.26, 16.61, 16.94, 17.28, 17.63, 18.0, 18.42, 18.79, 19.19, 19.59, 20.02, 20.45, 20.85, 21.29, 21.76, 22.21, 22.66, 23.14, 23.68, 24.22, 24.84, 25.44, 26.04, 26.68, 27.38, 28.12, 28.99, 29.89, 30.76, 32.03, 33.31, 34.75, 36.47, 38.45, 40.99, 44.52, 51.12] }], "male": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "n": 22551, "finish_p": [9692, 10056, 10354, 10541, 10710, 10824, 11026, 11189, 11334, 11472, 11605, 11721, 11869, 11997, 12129, 12257, 12374, 12473, 12569, 12663, 12768, 12882, 13001, 13098, 13188, 13288, 13376, 13459, 13545, 13627, 13709, 13791, 13871, 13944, 14019, 14087, 14154, 14213, 14280, 14341, 14412, 14495, 14599, 14685, 14782, 14870, 14947, 15035, 15128, 15217, 15298, 15385, 15472, 15551, 15630, 15719, 15805, 15894, 15978, 16063, 16145, 16228, 16332, 16427, 16530, 16631, 16736, 16821, 16918, 17023, 17126, 17233, 17342, 17453, 17568, 17679, 17777, 17891, 18016, 18169, 18308, 18457, 18612, 18791, 18942, 19107, 19298, 19472, 19666, 19914, 20131, 20373, 20672, 20963, 21312, 21793, 22470, 23293, 24630], "slowdown_p": [-2.92, -1.38, -0.58, -0.01, 0.47, 0.96, 1.32, 1.62, 1.96, 2.33, 2.63, 2.98, 3.32, 3.63, 3.95, 4.28, 4.56, 4.84, 5.1, 5.36, 5.64, 5.92, 6.19, 6.5, 6.77, 7.05, 7.35, 7.66, 7.95, 8.23, 8.52, 8.79, 9.08, 9.35, 9.66, 9.98, 10.29, 10.6, 10.91, 11.19, 11.51, 11.82, 12.09, 12.45, 12.77, 13.1, 13.4, 13.77, 14.08, 14.41, 14.75, 15.08, 15.43, 15.76, 16.08, 16.43, 16.81, 17.18, 17.6, 17.95, 18.33, 18.72, 19.1, 19.49, 19.94, 20.35, 20.73, 21.14, 21.6, 22.05, 22.48, 22.93, 23.39, 23.81, 24.27, 24.8, 25.26, 25.85, 26.38, 26.89, 27.52, 28.12, 28.79, 29.42, 30.16, 30.89, 31.58, 32.41, 33.32, 34.41, 35.52, 36.78, 38.11, 39.79, 41.64, 43.68, 46.73, 51.44, 60.24] }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "n": 23144, "finish_p": [9477, 9878, 10159, 10355, 10515, 10651, 10739, 10841, 11009, 11150, 11308, 11433, 11551, 11649, 11770, 11900, 12012, 12140, 12241, 12346, 12445, 12527, 12601, 12718, 12814, 12919, 13027, 13118, 13218, 13296, 13369, 13443, 13508, 13578, 13653, 13724, 13790, 13865, 13935, 14013, 14077, 14133, 14191, 14241, 14297, 14349, 14400, 14478, 14570, 14664, 14755, 14850, 14936, 15026, 15115, 15203, 15282, 15355, 15444, 15531, 15616, 15719, 15799, 15891, 15976, 16064, 16135, 16224, 16322, 16431, 16526, 16625, 16723, 16815, 16941, 17047, 17166, 17280, 17404, 17523, 17647, 17769, 17895, 18035, 18201, 18381, 18576, 18779, 18979, 19194, 19412, 19703, 20019, 20362, 20764, 21227, 21821, 22755, 24000], "slowdown_p": [-4.2, -2.7, -1.9, -1.39, -0.99, -0.63, -0.29, 0.0, 0.25, 0.51, 0.77, 1.0, 1.24, 1.48, 1.71, 1.93, 2.15, 2.38, 2.6, 2.83, 3.06, 3.29, 3.5, 3.75, 3.98, 4.18, 4.38, 4.63, 4.86, 5.11, 5.34, 5.58, 5.83, 6.07, 6.31, 6.54, 6.76, 7.01, 7.26, 7.5, 7.72, 7.97, 8.24, 8.54, 8.84, 9.13, 9.39, 9.68, 9.94, 10.24, 10.58, 10.88, 11.23, 11.53, 11.85, 12.19, 12.54, 12.88, 13.24, 13.61, 14.0, 14.36, 14.75, 15.18, 15.53, 15.97, 16.38, 16.8, 17.19, 17.64, 18.07, 18.48, 18.91, 19.38, 19.86, 20.38, 20.91, 21.44, 21.94, 22.46, 23.08, 23.7, 24.38, 25.0, 25.71, 26.48, 27.27, 28.15, 29.18, 30.16, 31.15, 32.36, 33.68, 35.25, 37.01, 39.2, 42.19, 46.09, 53.8] }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "n": 23871, "finish_p": [9512, 9834, 10111, 10310, 10488, 10603, 10692, 10766, 10914, 11057, 11210, 11353, 11462, 11578, 11686, 11807, 11923, 12046, 12178, 12290, 12398, 12495, 12574, 12665, 12769, 12879, 12992, 13099, 13189, 13284, 13370, 13448, 13520, 13605, 13681, 13758, 13843, 13916, 13990, 14063, 14126, 14191, 14249, 14296, 14348, 14405, 14483, 14580, 14678, 14762, 14847, 14938, 15034, 15124, 15218, 15299, 15376, 15468, 15550, 15636, 15726, 15813, 15911, 16003, 16088, 16176, 16266, 16364, 16461, 16565, 16669, 16789, 16905, 17023, 17128, 17242, 17360, 17490, 17598, 17721, 17846, 17959, 18109, 18262, 18450, 18638, 18811, 18992, 19214, 19441, 19661, 19947, 20225, 20563, 20996, 21431, 22096, 23025, 24406], "slowdown_p": [-4.07, -2.6, -1.88, -1.3, -0.85, -0.48, -0.15, 0.13, 0.42, 0.69, 0.95, 1.19, 1.46, 1.7, 1.93, 2.18, 2.42, 2.64, 2.87, 3.09, 3.32, 3.54, 3.78, 4.0, 4.21, 4.46, 4.68, 4.91, 5.14, 5.37, 5.6, 5.85, 6.11, 6.35, 6.61, 6.89, 7.15, 7.4, 7.65, 7.9, 8.18, 8.48, 8.71, 9.03, 9.31, 9.62, 9.88, 10.18, 10.45, 10.75, 11.08, 11.39, 11.68, 11.99, 12.34, 12.71, 13.03, 13.33, 13.71, 14.05, 14.41, 14.74, 15.12, 15.54, 15.9, 16.3, 16.64, 17.05, 17.51, 17.94, 18.36, 18.87, 19.36, 19.82, 20.26, 20.8, 21.28, 21.84, 22.39, 22.95, 23.61, 24.19, 24.82, 25.46, 26.11, 26.8, 27.56, 28.34, 29.21, 30.14, 31.18, 32.4, 33.77, 35.16, 36.77, 39.04, 41.87, 45.98, 54.54] }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "n": 23787, "finish_p": [9488, 9836, 10110, 10312, 10478, 10633, 10731, 10824, 10981, 11128, 11273, 11384, 11520, 11633, 11717, 11828, 11947, 12070, 12192, 12306, 12420, 12510, 12591, 12720, 12831, 12948, 13054, 13153, 13266, 13370, 13457, 13548, 13637, 13732, 13829, 13926, 14001, 14084, 14152, 14217, 14281, 14347, 14412, 14516, 14622, 14729, 14832, 14930, 15037, 15127, 15226, 15303, 15391, 15483, 15579, 15661, 15757, 15848, 15951, 16054, 16137, 16226, 16320, 16426, 16533, 16625, 16727, 16816, 16921, 17028, 17127, 17229, 17342, 17462, 17561, 17668, 17787, 17904, 18021, 18165, 18327, 18486, 18639, 18804, 18990, 19169, 19351, 19526, 19749, 19952, 20207, 20473, 20788, 21163, 21528, 21994, 22643, 23507, 24852], "slowdown_p": [-3.24, -1.91, -1.02, -0.41, 0.09, 0.45, 0.84, 1.19, 1.49, 1.83, 2.15, 2.46, 2.77, 3.08, 3.37, 3.65, 3.94, 4.21, 4.48, 4.77, 5.04, 5.33, 5.61, 5.91, 6.18, 6.43, 6.71, 6.99, 7.26, 7.56, 7.84, 8.12, 8.45, 8.72, 9.05, 9.34, 9.68, 9.99, 10.29, 10.63, 10.91, 11.2, 11.51, 11.8, 12.11, 12.43, 12.79, 13.12, 13.42, 13.74, 14.09, 14.46, 14.8, 15.14, 15.53, 15.88, 16.2, 16.55, 16.92, 17.31, 17.73, 18.1, 18.51, 18.88, 19.25, 19.64, 20.04, 20.45, 20.83, 21.26, 21.7, 22.18, 22.61, 23.06, 23.58, 24.05, 24.57, 25.06, 25.61, 26.19, 26.74, 27.31, 27.94, 28.59, 29.22, 29.88, 30.67, 31.51, 32.38, 33.26, 34.2, 35.19, 36.56, 38.08, 39.74, 41.86, 44.75, 48.97, 55.62] }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "n": 23651, "finish_p": [9834, 10267, 10550, 10727, 10884, 11107, 11296, 11455, 11616, 11759, 11925, 12073, 12204, 12331, 12458, 12563, 12694, 12818, 12948, 13063, 13178, 13328, 13458, 13587, 13702, 13824, 13936, 14051, 14152, 14248, 14340, 14443, 14574, 14707, 14818, 14936, 15042, 15156, 15262, 15366, 15462, 15561, 15667, 15760, 15867, 15963, 16053, 16141, 16235, 16335, 16440, 16537, 16635, 16735, 16833, 16926, 17031, 17120, 17222, 17310, 17414, 17514, 17614, 17717, 17808, 17902, 17988, 18119, 18228, 18341, 18471, 18590, 18706, 18856, 18986, 19107, 19218, 19352, 19494, 19631, 19782, 19944, 20108, 20268, 20454, 20604, 20782, 20977, 21176, 21396, 21610, 21896, 22185, 22537, 22926, 23350, 23908, 24771, 25909], "slowdown_p": [-0.43, 1.25, 2.45, 3.26, 4.08, 4.82, 5.46, 6.03, 6.56, 7.02, 7.46, 7.93, 8.37, 8.85, 9.26, 9.69, 10.11, 10.48, 10.83, 11.23, 11.62, 11.96, 12.29, 12.65, 12.99, 13.31, 13.65, 13.98, 14.32, 14.62, 14.94, 15.26, 15.58, 15.84, 16.14, 16.45, 16.75, 17.0, 17.27, 17.54, 17.82, 18.1, 18.36, 18.67, 18.97, 19.25, 19.53, 19.79, 20.12, 20.4, 20.7, 20.97, 21.27, 21.51, 21.79, 22.06, 22.35, 22.64, 22.93, 23.24, 23.57, 23.92, 24.25, 24.59, 24.89, 25.19, 25.53, 25.85, 26.2, 26.55, 26.91, 27.29, 27.66, 28.06, 28.49, 28.92, 29.36, 29.75, 30.16, 30.69, 31.21, 31.79, 32.35, 32.96, 33.56, 34.24, 34.98, 35.81, 36.62, 37.56, 38.69, 39.92, 41.17, 42.56, 44.43, 46.78, 49.47, 53.81, 64.25] }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "n": 24704, "finish_p": [9403, 9693, 9941, 10169, 10349, 10517, 10648, 10744, 10859, 11035, 11197, 11344, 11497, 11644, 11769, 11908, 12039, 12171, 12277, 12389, 12487, 12566, 12659, 12780, 12881, 12975, 13076, 13166, 13256, 13358, 13440, 13538, 13622, 13717, 13791, 13874, 13966, 14042, 14111, 14180, 14240, 14294, 14346, 14402, 14493, 14590, 14685, 14788, 14882, 14968, 15067, 15159, 15246, 15314, 15404, 15510, 15615, 15712, 15799, 15879, 15968, 16058, 16152, 16241, 16349, 16464, 16565, 16676, 16785, 16895, 16997, 17093, 17211, 17324, 17443, 17569, 17685, 17802, 17908, 18035, 18187, 18371, 18537, 18715, 18894, 19073, 19269, 19484, 19691, 19914, 20179, 20494, 20758, 21088, 21476, 21976, 22676, 23475, 25001], "slowdown_p": [-2.98, -1.64, -0.82, -0.3, 0.15, 0.52, 0.86, 1.17, 1.49, 1.77, 2.03, 2.31, 2.59, 2.84, 3.12, 3.37, 3.66, 3.96, 4.25, 4.5, 4.78, 5.06, 5.31, 5.56, 5.82, 6.11, 6.38, 6.65, 6.94, 7.23, 7.48, 7.75, 8.03, 8.33, 8.62, 8.91, 9.21, 9.47, 9.74, 10.03, 10.31, 10.6, 10.92, 11.21, 11.53, 11.83, 12.15, 12.49, 12.82, 13.17, 13.47, 13.81, 14.14, 14.47, 14.85, 15.21, 15.55, 15.92, 16.26, 16.65, 17.01, 17.38, 17.77, 18.22, 18.62, 19.03, 19.47, 19.91, 20.37, 20.77, 21.19, 21.65, 22.11, 22.54, 23.03, 23.54, 24.05, 24.59, 25.12, 25.73, 26.26, 26.83, 27.44, 28.03, 28.76, 29.41, 30.15, 30.89, 31.95, 32.86, 33.93, 35.02, 36.47, 37.91, 39.65, 41.55, 44.11, 47.77, 55.83] }], "female": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "n": 13241, "finish_p": [11233, 11735, 12127, 12371, 12559, 12748, 12947, 13132, 13296, 13425, 13539, 13659, 13776, 13884, 13985, 14098, 14192, 14274, 14363, 14456, 14566, 14683, 14786, 14901, 15002, 15101, 15198, 15295, 15396, 15473, 15559, 15652, 15730, 15826, 15902, 15990, 16086, 16169, 16250, 16345, 16437, 16524, 16628, 16719, 16813, 16896, 16993, 17073, 17148, 17232, 17318, 17399, 17469, 17546, 17624, 17698, 17779, 17852, 17926, 18030, 18131, 18222, 18324, 18437, 18527, 18626, 18727, 18819, 18936, 19057, 19166, 19276, 19406, 19517, 19650, 19776, 19897, 20048, 20174, 20321, 20448, 20611, 20780, 20952, 21122, 21295, 21480, 21704, 21912, 22127, 22348, 22665, 22919, 23334, 23689, 24068, 24607, 25279, 26123], "slowdown_p": [-2.9, -1.43, -0.59, 0.02, 0.53, 1.01, 1.38, 1.73, 2.11, 2.44, 2.72, 3.02, 3.31, 3.59, 3.88, 4.18, 4.44, 4.69, 4.96, 5.21, 5.46, 5.71, 5.96, 6.18, 6.43, 6.67, 6.91, 7.16, 7.43, 7.67, 7.89, 8.09, 8.31, 8.53, 8.75, 9.0, 9.23, 9.45, 9.71, 10.0, 10.21, 10.45, 10.68, 10.9, 11.15, 11.35, 11.57, 11.79, 12.02, 12.27, 12.53, 12.82, 13.05, 13.34, 13.62, 13.87, 14.13, 14.36, 14.62, 14.9, 15.16, 15.42, 15.66, 15.93, 16.2, 16.49, 16.79, 17.1, 17.42, 17.72, 18.03, 18.32, 18.62, 18.99, 19.31, 19.61, 19.91, 20.3, 20.73, 21.11, 21.52, 22.0, 22.51, 22.99, 23.51, 24.09, 24.65, 25.23, 25.96, 26.76, 27.63, 28.49, 29.42, 30.52, 32.17, 33.86, 36.29, 38.8, 44.07] }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "n": 14280, "finish_p": [11067, 11622, 11955, 12221, 12404, 12533, 12710, 12870, 13021, 13178, 13305, 13409, 13519, 13653, 13769, 13883, 13984, 14077, 14160, 14250, 14327, 14414, 14504, 14617, 14730, 14814, 14915, 15005, 15094, 15189, 15281, 15371, 15460, 15541, 15623, 15692, 15772, 15847, 15932, 16001, 16076, 16146, 16209, 16289, 16361, 16441, 16531, 16607, 16689, 16768, 16835, 16914, 16991, 17069, 17151, 17233, 17317, 17405, 17487, 17577, 17657, 17725, 17809, 17893, 17969, 18061, 18158, 18261, 18375, 18487, 18589, 18698, 18803, 18915, 19030, 19137, 19278, 19417, 19535, 19655, 19805, 19967, 20118, 20269, 20435, 20611, 20810, 20994, 21188, 21424, 21663, 21932, 22185, 22542, 22969, 23392, 23926, 24573, 25271], "slowdown_p": [-4.01, -2.6, -1.75, -1.15, -0.69, -0.29, 0.03, 0.35, 0.69, 0.95, 1.22, 1.48, 1.74, 1.98, 2.25, 2.5, 2.72, 2.96, 3.19, 3.37, 3.61, 3.8, 4.01, 4.21, 4.46, 4.7, 4.92, 5.13, 5.33, 5.56, 5.77, 6.0, 6.22, 6.4, 6.61, 6.84, 7.09, 7.27, 7.48, 7.72, 7.94, 8.14, 8.37, 8.6, 8.84, 9.09, 9.29, 9.54, 9.8, 10.01, 10.26, 10.5, 10.74, 10.96, 11.28, 11.55, 11.82, 12.07, 12.32, 12.62, 12.89, 13.23, 13.49, 13.77, 14.09, 14.38, 14.7, 15.01, 15.32, 15.67, 16.01, 16.39, 16.75, 17.08, 17.48, 17.85, 18.27, 18.63, 19.01, 19.48, 19.91, 20.38, 20.85, 21.39, 21.92, 22.54, 23.02, 23.63, 24.41, 25.15, 25.86, 26.74, 27.71, 28.73, 30.16, 31.63, 33.91, 37.38, 42.63] }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "n": 14989, "finish_p": [11170, 11613, 11929, 12167, 12398, 12545, 12676, 12832, 12986, 13120, 13268, 13408, 13525, 13637, 13756, 13848, 13949, 14057, 14155, 14234, 14316, 14410, 14510, 14614, 14746, 14841, 14944, 15057, 15161, 15260, 15348, 15441, 15530, 15615, 15702, 15786, 15865, 15959, 16061, 16156, 16232, 16317, 16392, 16477, 16574, 16659, 16737, 16818, 16900, 16989, 17065, 17134, 17215, 17304, 17397, 17481, 17563, 17642, 17721, 17792, 17873, 17953, 18054, 18163, 18261, 18358, 18490, 18598, 18712, 18826, 18944, 19062, 19188, 19303, 19430, 19553, 19682, 19814, 19957, 20094, 20248, 20417, 20583, 20752, 20920, 21091, 21286, 21472, 21680, 21918, 22207, 22514, 22871, 23198, 23572, 24066, 24610, 25137, 25969], "slowdown_p": [-4.42, -2.72, -1.89, -1.28, -0.76, -0.43, -0.06, 0.32, 0.64, 0.9, 1.21, 1.46, 1.69, 1.95, 2.19, 2.49, 2.71, 2.91, 3.13, 3.38, 3.58, 3.8, 4.04, 4.23, 4.46, 4.7, 4.89, 5.06, 5.26, 5.47, 5.68, 5.92, 6.14, 6.36, 6.58, 6.78, 7.01, 7.23, 7.41, 7.65, 7.88, 8.09, 8.31, 8.57, 8.8, 9.03, 9.27, 9.49, 9.75, 10.01, 10.27, 10.52, 10.74, 10.98, 11.25, 11.53, 11.79, 12.0, 12.29, 12.58, 12.84, 13.15, 13.4, 13.67, 13.91, 14.21, 14.53, 14.79, 15.13, 15.43, 15.77, 16.09, 16.37, 16.69, 17.03, 17.42, 17.76, 18.14, 18.55, 18.98, 19.39, 19.77, 20.27, 20.75, 21.21, 21.66, 22.22, 22.87, 23.56, 24.29, 24.93, 25.82, 26.84, 27.92, 29.22, 30.89, 32.77, 35.66, 40.4] }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "n": 15424, "finish_p": [11338, 11769, 12083, 12331, 12522, 12689, 12852, 12987, 13121, 13260, 13397, 13505, 13644, 13766, 13877, 13979, 14083, 14188, 14278, 14356, 14449, 14589, 14713, 14837, 14951, 15046, 15155, 15269, 15381, 15482, 15579, 15685, 15773, 15865, 15945, 16032, 16111, 16195, 16287, 16379, 16487, 16566, 16660, 16752, 16831, 16918, 16998, 17085, 17162, 17250, 17343, 17436, 17526, 17614, 17686, 17764, 17853, 17940, 18031, 18135, 18223, 18321, 18406, 18514, 18614, 18721, 18833, 18921, 19017, 19122, 19237, 19353, 19476, 19605, 19737, 19859, 19996, 20151, 20289, 20447, 20610, 20747, 20910, 21093, 21281, 21448, 21625, 21836, 22060, 22306, 22581, 22873, 23197, 23565, 24047, 24527, 25039, 25563, 26438], "slowdown_p": [-3.06, -1.78, -0.85, -0.17, 0.32, 0.75, 1.14, 1.46, 1.8, 2.09, 2.44, 2.7, 2.99, 3.25, 3.56, 3.85, 4.1, 4.35, 4.62, 4.87, 5.15, 5.41, 5.63, 5.87, 6.08, 6.32, 6.57, 6.78, 7.02, 7.24, 7.46, 7.67, 7.93, 8.13, 8.34, 8.59, 8.81, 9.06, 9.33, 9.55, 9.76, 9.97, 10.19, 10.39, 10.59, 10.82, 11.07, 11.29, 11.56, 11.8, 12.07, 12.33, 12.56, 12.81, 13.04, 13.26, 13.51, 13.78, 14.05, 14.3, 14.57, 14.81, 15.07, 15.35, 15.6, 15.89, 16.21, 16.51, 16.75, 17.02, 17.34, 17.66, 17.99, 18.33, 18.69, 19.02, 19.44, 19.82, 20.17, 20.59, 20.98, 21.46, 21.92, 22.39, 22.92, 23.47, 24.11, 24.72, 25.41, 26.09, 26.82, 27.8, 28.75, 29.84, 31.13, 32.94, 35.23, 38.28, 43.9] }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "n": 16381, "finish_p": [11767, 12237, 12607, 12894, 13106, 13315, 13492, 13668, 13820, 13958, 14095, 14210, 14340, 14482, 14661, 14807, 14937, 15074, 15209, 15333, 15469, 15592, 15738, 15864, 15997, 16115, 16236, 16353, 16481, 16595, 16705, 16805, 16914, 17020, 17117, 17227, 17340, 17436, 17538, 17629, 17730, 17830, 17921, 18027, 18124, 18226, 18347, 18447, 18559, 18661, 18768, 18881, 18973, 19063, 19156, 19245, 19318, 19408, 19511, 19607, 19724, 19821, 19918, 20015, 20134, 20247, 20344, 20467, 20571, 20682, 20790, 20896, 21030, 21146, 21257, 21380, 21490, 21607, 21739, 21891, 22022, 22172, 22327, 22502, 22670, 22833, 22992, 23218, 23429, 23670, 23906, 24196, 24425, 24770, 25160, 25589, 26017, 26610, 27439], "slowdown_p": [-0.43, 1.28, 2.35, 3.2, 3.8, 4.33, 4.82, 5.28, 5.66, 6.08, 6.47, 6.76, 7.1, 7.39, 7.7, 8.0, 8.27, 8.56, 8.81, 9.03, 9.26, 9.52, 9.72, 9.98, 10.2, 10.41, 10.61, 10.81, 11.03, 11.25, 11.45, 11.67, 11.85, 12.07, 12.25, 12.44, 12.63, 12.85, 13.03, 13.22, 13.41, 13.61, 13.79, 13.97, 14.19, 14.37, 14.56, 14.78, 14.97, 15.13, 15.34, 15.51, 15.71, 15.91, 16.11, 16.29, 16.51, 16.68, 16.91, 17.13, 17.34, 17.57, 17.77, 17.98, 18.18, 18.41, 18.65, 18.89, 19.17, 19.44, 19.68, 19.93, 20.2, 20.5, 20.76, 21.08, 21.38, 21.71, 22.04, 22.41, 22.75, 23.14, 23.57, 24.02, 24.48, 25.02, 25.55, 26.15, 26.77, 27.47, 28.19, 29.17, 30.27, 31.47, 32.93, 34.52, 36.62, 40.59, 47.36] }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "n": 17723, "finish_p": [11060, 11578, 11862, 12110, 12300, 12484, 12615, 12758, 12888, 13031, 13159, 13289, 13413, 13538, 13670, 13776, 13881, 13978, 14084, 14177, 14276, 14366, 14454, 14561, 14678, 14781, 14888, 15019, 15140, 15248, 15347, 15460, 15569, 15677, 15789, 15877, 15972, 16061, 16150, 16240, 16333, 16421, 16511, 16612, 16698, 16778, 16875, 16958, 17044, 17134, 17236, 17324, 17406, 17483, 17564, 17644, 17737, 17820, 17921, 18021, 18134, 18256, 18370, 18473, 18566, 18687, 18795, 18903, 19024, 19132, 19246, 19372, 19493, 19620, 19736, 19877, 20016, 20150, 20295, 20443, 20599, 20742, 20900, 21078, 21223, 21385, 21571, 21773, 21993, 22250, 22490, 22784, 23084, 23415, 23830, 24323, 24808, 25488, 26450], "slowdown_p": [-2.77, -1.65, -0.9, -0.29, 0.12, 0.52, 0.88, 1.21, 1.53, 1.8, 2.09, 2.37, 2.62, 2.86, 3.11, 3.36, 3.63, 3.87, 4.13, 4.37, 4.6, 4.83, 5.08, 5.29, 5.55, 5.77, 5.99, 6.21, 6.45, 6.66, 6.89, 7.18, 7.41, 7.64, 7.84, 8.07, 8.29, 8.52, 8.72, 8.95, 9.18, 9.37, 9.64, 9.87, 10.09, 10.33, 10.58, 10.81, 11.05, 11.29, 11.53, 11.75, 12.01, 12.25, 12.5, 12.76, 13.01, 13.26, 13.51, 13.81, 14.09, 14.34, 14.61, 14.89, 15.18, 15.47, 15.78, 16.07, 16.38, 16.7, 17.01, 17.29, 17.61, 17.94, 18.3, 18.66, 19.01, 19.37, 19.76, 20.15, 20.56, 20.99, 21.47, 21.94, 22.43, 22.85, 23.31, 23.98, 24.6, 25.27, 25.93, 26.75, 27.68, 28.94, 30.17, 31.96, 34.31, 37.16, 42.17] }] }, "meta": { "description": "London Marathon weather impact & pacing analysis (2014-2019)", "course_bearing_deg": 295, "tailwind_from_deg": 115, "tiers": ["Sub-3h", "3h-3:30", "3:30-4h", "4h-4:30", "4:30-5h", "5h+"], "fine_tiers": ["Sub-2:30", "2:30-2:45", "2:45-3:00", "3:00-3:15", "3:15-3:30", "3:30-3:45", "3:45-4:00", "4:00-4:30", "4:30-5:00", "5h+"], "notes": { "wind": "course_tailwind_kmh >0 = tailwind (ESE), <0 = headwind (WNW)", "2020": "Excluded: elite-only COVID bubble, half-split timing unavailable" } }, "regression": { "all": { "finish": { "intercepts": [9341.22809, 9743.989346, 10090.406356, 10169.835016, 10185.20746, 10406.335165, 10594.343609, 10768.549196, 10929.714658, 11048.891172, 11235.720533, 11369.45845, 11514.121572, 11644.915945, 11732.631878, 11799.349682, 11859.079256, 11975.349304, 12079.119342, 12199.087002, 12303.167493, 12409.124998, 12510.149073, 12584.36858, 12635.445447, 12674.58295, 12730.348926, 12794.188104, 12841.556764, 12887.494832, 12939.816297, 12986.488799, 13025.427823, 13054.088257, 13072.443416, 13102.316765, 13150.182827, 13228.348985, 13318.684908, 13426.041858, 13510.470299, 13583.871338, 13674.846307, 13761.271223, 13847.115638, 13925.061075, 13996.861083, 14080.624052, 14163.521815, 14235.403748, 14306.922835, 14374.093474, 14459.073162, 14539.753968, 14624.241671, 14709.929805, 14786.921282, 14855.293984, 14922.501444, 15003.869447, 15088.688114, 15157.011948, 15235.84336, 15325.197204, 15384.500707, 15470.051198, 15552.910946, 15646.71665, 15760.71195, 15845.784157, 15932.73738, 16024.58058, 16114.881753, 16205.205588, 16309.822172, 16416.087002, 16535.532449, 16667.028656, 16827.867694, 16992.293367, 17138.7419, 17293.700818, 17453.65904, 17619.310831, 17810.131927, 18016.812554, 18201.643746, 18416.266045, 18669.439612, 18898.28118, 19159.323914, 19464.026306, 19765.575383, 20145.119561, 20611.64275, 21185.280323, 21844.058944, 22784.514149, 23923.766434], "slopes": [38.103829, 41.293387, 36.742338, 48.720951, 62.010275, 62.394408, 64.733855, 66.0368, 67.070912, 69.940857, 68.226895, 70.044208, 70.194157, 70.57829, 73.662704, 77.454448, 82.714619, 83.481689, 84.67053, 84.577932, 84.99313, 85.105442, 85.266742, 86.935898, 90.875202, 96.238127, 99.508931, 101.930223, 105.491965, 108.898381, 111.647649, 114.49071, 117.407253, 121.434972, 126.916184, 131.824482, 135.468069, 136.978314, 137.318239, 136.880937, 138.138479, 140.105741, 140.434315, 140.998268, 141.568791, 142.865763, 144.528347, 145.173547, 145.902981, 147.245953, 148.713782, 150.427744, 150.837565, 151.924846, 152.810204, 153.475118, 154.509827, 156.833144, 158.84342, 160.24195, 161.508453, 163.876576, 165.278093, 166.432881, 170.054364, 171.261127, 172.306589, 172.717008, 171.792222, 173.119661, 174.592867, 176.619272, 178.934823, 181.302945, 182.803632, 184.577932, 185.453133, 186.147321, 184.473386, 182.982854, 183.109505, 183.330545, 183.075453, 183.199116, 181.553856, 180.232989, 180.913436, 180.318418, 178.032141, 179.228747, 178.993966, 175.684927, 176.782962, 175.3916, 173.090388, 165.500926, 163.12444, 150.665512, 143.869407] }, "slowdown": { "intercepts": [-7.007199, -5.749605, -5.271017, -4.906896, -4.681526, -4.540582, -4.397303, -4.291749, -4.12576, -3.983513, -3.813827, -3.661899, -3.525339, -3.374466, -3.236147, -3.07415, -2.886147, -2.71047, -2.533605, -2.383818, -2.198268, -2.012815, -1.824288, -1.65222, -1.479142, -1.292924, -1.093892, -0.868058, -0.688247, -0.502176, -0.254534, -0.01286, 0.205655, 0.431764, 0.641174, 0.879625, 1.138976, 1.363766, 1.606058, 1.831745, 2.094771, 2.362465, 2.604153, 2.907866, 3.203433, 3.498169, 3.77895, 4.071896, 4.366955, 4.663724, 4.963353, 5.301899, 5.608228, 5.95752, 6.23633, 6.546885, 6.921092, 7.271116, 7.620016, 7.918729, 8.319067, 8.700278, 9.04363, 9.416598, 9.839846, 10.2313, 10.657245, 11.051933, 11.448524, 11.840087, 12.205514, 12.640545, 13.109644, 13.567212, 14.061872, 14.56289, 15.025753, 15.543631, 16.096065, 16.631599, 17.143339, 17.68026, 18.319699, 19.042515, 19.736687, 20.367378, 21.048903, 21.832239, 22.670745, 23.52399, 24.520348, 25.67022, 26.838077, 28.184026, 29.77225, 31.903596, 34.017601, 37.482258, 42.995658], "slopes": [0.330928, 0.347315, 0.379539, 0.400699, 0.423526, 0.448211, 0.467943, 0.488034, 0.502103, 0.517158, 0.528204, 0.539883, 0.552817, 0.56363, 0.575196, 0.585101, 0.592066, 0.599086, 0.605873, 0.614869, 0.620539, 0.625808, 0.630826, 0.637732, 0.643467, 0.648402, 0.652835, 0.654944, 0.660129, 0.665076, 0.665404, 0.665948, 0.668654, 0.670876, 0.673374, 0.675405, 0.674777, 0.678332, 0.678553, 0.680674, 0.67961, 0.678302, 0.679933, 0.676773, 0.673869, 0.67185, 0.671378, 0.669777, 0.668684, 0.666635, 0.664896, 0.660117, 0.658104, 0.654352, 0.65581, 0.654812, 0.648754, 0.644943, 0.64204, 0.643097, 0.636675, 0.63263, 0.631268, 0.62708, 0.620557, 0.616901, 0.612062, 0.60923, 0.606243, 0.605299, 0.607169, 0.603901, 0.599349, 0.595466, 0.590459, 0.585614, 0.5847, 0.580656, 0.574879, 0.57225, 0.572244, 0.574945, 0.571181, 0.561019, 0.556461, 0.56035, 0.56213, 0.560906, 0.560075, 0.563212, 0.563373, 0.562023, 0.569001, 0.578583, 0.588524, 0.582155, 0.629584, 0.667979, 0.833688] } }, "male": { "finish": { "intercepts": [9190.133361, 9460.751698, 9730.391202, 9952.803194, 10136.534102, 10183.5483, 10202.531792, 10232.762272, 10375.468586, 10524.171137, 10666.766254, 10786.972559, 10898.930263, 11001.146703, 11101.352291, 11244.908517, 11348.549654, 11473.042814, 11577.655874, 11681.272955, 11776.232093, 11812.909493, 11849.778123, 11935.105263, 12023.514348, 12116.570504, 12221.310353, 12304.19583, 12393.778442, 12479.374037, 12551.097338, 12610.705876, 12631.082283, 12666.030946, 12712.759862, 12752.687536, 12805.094231, 12842.955812, 12882.704562, 12927.099687, 12961.067985, 12989.524703, 13008.522472, 13031.176295, 13057.427126, 13095.933887, 13154.570763, 13248.86869, 13347.163311, 13424.556345, 13499.842902, 13585.146245, 13669.215166, 13744.891491, 13830.28572, 13910.627298, 13973.273135, 14057.169962, 14130.04835, 14216.465958, 14288.518569, 14373.829699, 14458.335345, 14542.463508, 14632.325866, 14722.365514, 14810.467252, 14872.846546, 14963.366589, 15064.019077, 15137.618874, 15236.640341, 15341.047315, 15413.022204, 15510.671366, 15614.438816, 15737.152478, 15847.42394, 15936.962124, 16052.331541, 16166.432762, 16266.335643, 16393.523508, 16542.170082, 16712.915586, 16924.96075, 17114.636159, 17301.235538, 17525.282076, 17748.592747, 17987.784217, 18274.755899, 18571.20515, 18899.543422, 19324.547743, 19809.546608, 20534.872314, 21478.448474, 23017.748691], "slopes": [30.819045, 38.088297, 38.675548, 36.696338, 35.439393, 43.996057, 53.289922, 60.169066, 60.682836, 60.625485, 61.461258, 62.396798, 64.07372, 65.647888, 66.950833, 65.218352, 66.635402, 66.391063, 67.19816, 67.610371, 68.552482, 73.884939, 78.71199, 81.052632, 82.230121, 83.450027, 83.444053, 84.637075, 85.215365, 85.806201, 86.78117, 89.071629, 94.496684, 99.140331, 102.23729, 105.971085, 108.37326, 111.813131, 114.745206, 117.243563, 120.157716, 123.58982, 128.066193, 132.148874, 136.931119, 140.549615, 142.484019, 142.296433, 142.136328, 143.206285, 144.679491, 145.049286, 145.560667, 146.444232, 146.901846, 147.676683, 150.01852, 150.394289, 151.88721, 152.02999, 153.399845, 153.945875, 154.802557, 155.785292, 156.32714, 156.84091, 157.199952, 160.311847, 161.289802, 161.889599, 164.493697, 165.158612, 165.75124, 169.45397, 170.924786, 171.773702, 171.021566, 171.897365, 174.411255, 175.918514, 178.20957, 182.149471, 184.202163, 185.333055, 185.761993, 182.615449, 182.30181, 182.620228, 181.26949, 181.216919, 180.589044, 180.101559, 179.860804, 180.663122, 177.61515, 175.696876, 168.772328, 162.657267, 145.462692] }, "slowdown": { "intercepts": [-6.975093, -5.721779, -5.332311, -5.011282, -4.915853, -4.877854, -4.808199, -4.765565, -4.704812, -4.589237, -4.478406, -4.422089, -4.308544, -4.265464, -4.16943, -4.08774, -4.000455, -3.87983, -3.742729, -3.658077, -3.551373, -3.404059, -3.251817, -3.112051, -2.981617, -2.814023, -2.686419, -2.510468, -2.355267, -2.147522, -1.98053, -1.788851, -1.570115, -1.327858, -1.092874, -0.862265, -0.635478, -0.366959, -0.116328, 0.136318, 0.384444, 0.669939, 0.932848, 1.242685, 1.533853, 1.860881, 2.136325, 2.487111, 2.718027, 3.052876, 3.414524, 3.773457, 4.11315, 4.492104, 4.897822, 5.333252, 5.708592, 6.071604, 6.515618, 6.920714, 7.338396, 7.689305, 8.127997, 8.621085, 9.04859, 9.56474, 9.981428, 10.485331, 10.989523, 11.50014, 11.985159, 12.532069, 13.075695, 13.584357, 14.083483, 14.692232, 15.24956, 15.932936, 16.574209, 17.146147, 17.860899, 18.463081, 19.186608, 19.832481, 20.585697, 21.323346, 22.113579, 22.915317, 23.978266, 24.932461, 25.856474, 26.99899, 28.46039, 30.020124, 31.542836, 33.567743, 36.598506, 40.361891, 46.294332], "slopes": [0.326674, 0.344907, 0.38427, 0.407043, 0.44143, 0.474927, 0.501894, 0.526985, 0.549645, 0.567149, 0.583135, 0.604116, 0.620425, 0.641807, 0.657913, 0.67519, 0.691738, 0.704612, 0.715461, 0.730999, 0.745146, 0.755433, 0.764502, 0.776086, 0.786935, 0.794886, 0.806374, 0.814732, 0.824512, 0.830002, 0.838138, 0.844668, 0.850349, 0.85207, 0.856425, 0.861001, 0.866025, 0.866282, 0.868272, 0.870369, 0.872698, 0.872794, 0.873917, 0.874067, 0.875196, 0.873397, 0.87513, 0.872209, 0.877848, 0.876092, 0.873236, 0.870058, 0.868995, 0.86323, 0.857865, 0.850075, 0.846646, 0.844495, 0.837637, 0.833819, 0.830199, 0.831077, 0.826286, 0.818687, 0.814129, 0.803967, 0.80138, 0.793034, 0.785889, 0.778356, 0.772776, 0.764729, 0.75627, 0.750529, 0.748151, 0.739274, 0.733777, 0.720168, 0.709588, 0.707934, 0.697342, 0.696075, 0.68844, 0.6866, 0.680351, 0.677006, 0.673857, 0.675076, 0.663815, 0.663881, 0.673893, 0.675865, 0.666635, 0.661623, 0.680041, 0.689844, 0.673863, 0.705968, 0.904953] } }, "female": { "finish": { "intercepts": [10578.840731, 11083.424099, 11361.314216, 11575.901249, 11775.821694, 11870.918573, 12000.049764, 12136.888484, 12283.561523, 12429.884481, 12565.911166, 12697.478941, 12803.721827, 12905.593126, 12967.686959, 13030.462831, 13105.727881, 13173.008264, 13227.721349, 13276.47693, 13314.584224, 13387.539538, 13441.774797, 13536.358564, 13646.773563, 13716.310333, 13803.001513, 13900.820658, 13978.570126, 14061.499273, 14135.492622, 14226.660454, 14300.260509, 14370.776988, 14448.448354, 14501.572933, 14555.227254, 14632.173646, 14717.501065, 14799.039767, 14862.349204, 14924.503316, 14987.054026, 15055.045244, 15131.414202, 15197.097119, 15249.311628, 15311.395862, 15365.359918, 15436.082263, 15487.764203, 15531.994763, 15601.261027, 15678.946333, 15757.758647, 15833.151224, 15927.883067, 16003.868889, 16068.90095, 16143.505964, 16200.917598, 16271.058725, 16365.481052, 16469.439035, 16533.707151, 16619.988749, 16751.379493, 16837.658024, 16959.342653, 17072.793317, 17188.067168, 17312.06223, 17417.086982, 17533.854213, 17667.457634, 17784.669614, 17940.742139, 18096.891371, 18232.75351, 18352.840811, 18524.607384, 18695.234423, 18860.41243, 19017.753291, 19183.562778, 19362.504252, 19586.657068, 19746.527849, 19948.64516, 20185.656252, 20473.667184, 20769.137205, 21152.555947, 21497.962204, 21914.342533, 22410.7142, 23036.123305, 23620.127746, 24409.778262], "slopes": [56.625246, 55.149053, 59.797479, 63.110102, 63.048569, 69.231137, 71.995938, 73.818627, 73.886134, 73.369974, 73.02766, 72.042535, 73.396858, 75.189677, 80.433718, 84.465619, 86.960989, 89.931298, 93.641795, 97.239978, 102.251628, 105.153235, 109.58301, 111.236036, 111.88243, 114.287592, 115.891033, 116.912599, 119.477269, 120.789175, 122.531215, 123.184181, 124.822271, 126.793715, 127.718502, 130.538264, 133.532469, 134.339566, 134.870661, 135.452536, 137.699385, 139.55075, 141.478583, 143.4793, 144.387956, 146.060099, 149.457554, 151.287413, 153.875381, 155.340223, 158.345779, 161.850768, 162.890256, 163.337714, 163.693172, 164.164526, 163.261246, 163.861043, 165.763188, 167.360057, 170.56455, 172.403369, 172.627397, 172.494773, 175.085131, 176.599558, 174.676504, 176.095944, 175.223729, 175.091702, 174.742816, 173.940498, 175.421471, 175.549316, 174.629309, 175.156222, 172.987036, 171.505466, 171.326244, 173.25109, 171.215724, 169.858414, 169.462931, 170.605174, 170.743175, 169.904415, 166.585818, 170.310652, 171.022164, 171.170918, 168.067985, 168.016011, 160.077066, 161.037099, 160.284963, 156.47231, 146.806261, 148.697055, 152.807217] }, "slowdown": { "intercepts": [-7.07679, -5.773578, -5.14765, -4.749643, -4.366865, -4.13005, -3.897619, -3.649881, -3.362931, -3.234081, -3.020877, -2.78838, -2.619877, -2.401168, -2.187601, -1.929426, -1.735467, -1.57148, -1.350899, -1.11755, -0.895829, -0.718131, -0.460158, -0.312023, -0.056329, 0.206879, 0.427318, 0.619169, 0.823132, 1.040774, 1.266678, 1.519787, 1.785144, 1.979759, 2.224334, 2.471216, 2.745777, 2.949091, 3.174832, 3.459816, 3.7147, 3.926766, 4.200286, 4.494493, 4.734332, 5.020765, 5.28404, 5.524026, 5.842314, 6.154751, 6.451897, 6.768316, 7.029345, 7.300521, 7.654064, 8.001463, 8.30004, 8.590927, 8.896902, 9.25059, 9.567835, 9.939103, 10.24534, 10.579644, 10.918811, 11.271684, 11.660364, 11.986566, 12.337647, 12.693689, 13.111999, 13.520389, 13.876201, 14.23092, 14.685085, 15.101145, 15.537304, 15.947734, 16.400021, 16.893596, 17.375723, 17.838133, 18.373801, 18.913209, 19.439425, 19.933745, 20.466736, 21.128303, 21.925605, 22.675025, 23.327095, 24.127697, 25.005501, 25.980843, 27.232495, 28.906301, 31.047979, 33.284634, 36.74575], "slopes": [0.338377, 0.350224, 0.370829, 0.392216, 0.401649, 0.417283, 0.429602, 0.438766, 0.443641, 0.45802, 0.46633, 0.469664, 0.478493, 0.482, 0.487287, 0.489205, 0.493644, 0.500257, 0.502658, 0.502521, 0.503877, 0.508555, 0.506135, 0.512002, 0.510449, 0.507874, 0.507838, 0.50932, 0.511309, 0.511637, 0.510747, 0.508997, 0.50543, 0.506822, 0.503728, 0.501942, 0.49776, 0.499122, 0.498381, 0.494301, 0.491045, 0.49074, 0.486779, 0.480722, 0.479646, 0.474359, 0.471235, 0.470148, 0.463893, 0.456891, 0.452906, 0.446532, 0.443999, 0.441454, 0.433682, 0.425187, 0.421357, 0.416387, 0.412498, 0.405938, 0.401129, 0.392998, 0.388135, 0.382478, 0.376152, 0.370339, 0.363236, 0.359872, 0.355702, 0.351264, 0.342422, 0.334118, 0.330378, 0.328496, 0.319177, 0.313376, 0.306751, 0.303178, 0.297413, 0.290591, 0.283751, 0.281785, 0.276833, 0.272119, 0.269843, 0.272483, 0.27292, 0.269526, 0.260631, 0.258229, 0.263911, 0.272161, 0.280775, 0.292992, 0.304558, 0.304248, 0.310777, 0.383159, 0.544973] } } }, "fine_pacing_lookup": { "Sub-2:30": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 2.97, "count": 40 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 3.21, "count": 56 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 2.5, "count": 72 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 3.16, "count": 55 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 5.24, "count": 27 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 1.9, "count": 83 }], "regression": { "intercept": 0.474173, "slope": 0.219523 } }, "2:30-2:45": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 4.15, "count": 329 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 3.31, "count": 442 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 2.91, "count": 479 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 4.08, "count": 495 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 7.0, "count": 250 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 2.83, "count": 639 }], "regression": { "intercept": -0.256604, "slope": 0.351287 } }, "2:45-3:00": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 4.16, "count": 1020 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 2.44, "count": 1387 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 2.66, "count": 1533 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 3.61, "count": 1380 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 7.5, "count": 833 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 3.35, "count": 1536 }], "regression": { "intercept": -1.415034, "slope": 0.438234 } }, "3:00-3:15": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 7.29, "count": 1542 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 5.28, "count": 1804 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 5.58, "count": 1871 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 6.84, "count": 1873 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 10.11, "count": 1316 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 6.04, "count": 1764 }], "regression": { "intercept": 1.767271, "slope": 0.415461 } }, "3:15-3:30": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 7.49, "count": 2138 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 4.83, "count": 2551 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 5.25, "count": 2576 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 6.73, "count": 2524 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 13.42, "count": 1926 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 5.51, "count": 2747 }], "regression": { "intercept": -1.892669, "slope": 0.742667 } }, "3:30-3:45": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 7.79, "count": 2765 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 5.3, "count": 3201 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 5.59, "count": 3197 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 7.21, "count": 3002 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 13.02, "count": 2331 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 7.18, "count": 3489 }], "regression": { "intercept": -0.511468, "slope": 0.668827 } }, "3:45-4:00": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 8.24, "count": 3959 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 6.21, "count": 4563 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 5.75, "count": 4513 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 8.04, "count": 4032 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 13.99, "count": 3003 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 7.62, "count": 4575 }], "regression": { "intercept": -0.436303, "slope": 0.713848 } }, "4:00-4:30": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 12.48, "count": 7200 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 9.49, "count": 7786 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 9.52, "count": 7644 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 11.79, "count": 7178 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 17.3, "count": 6189 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 12.07, "count": 7866 }], "regression": { "intercept": 3.640765, "slope": 0.69123 } }, "4:30-5:00": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 16.41, "count": 6712 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 13.31, "count": 6926 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 13.42, "count": 7137 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 14.92, "count": 7272 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 20.66, "count": 7156 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 14.97, "count": 7603 }], "regression": { "intercept": 7.649609, "slope": 0.650236 } }, "5h+": { "data_points": [{ "year": 2014, "temp": 12.7, "tailwind": -12.84, "median_slowdown": 21.36, "count": 10087 }, { "year": 2015, "temp": 9.3, "tailwind": 0.53, "median_slowdown": 20.22, "count": 8708 }, { "year": 2016, "temp": 7.7, "tailwind": -13.12, "median_slowdown": 19.36, "count": 9838 }, { "year": 2017, "temp": 12.2, "tailwind": -5.53, "median_slowdown": 20.54, "count": 11400 }, { "year": 2018, "temp": 19.6, "tailwind": -7.43, "median_slowdown": 19.92, "count": 17001 }, { "year": 2019, "temp": 12.0, "tailwind": -17.01, "median_slowdown": 19.82, "count": 12125 }], "regression": { "intercept": 19.865963, "slope": 0.02754 } } } };
+      init();
+    }
+
+    loadData();
+  </script>
+</body>
+
+</html>
