@@ -1531,7 +1531,7 @@
 
     // ─── Finish chart rendering ────────────────────────────────────────────────────
     function renderFinishChart(grp) {
-      const yMin = 88;
+      const yMin = 120;  // 2:00:00 — below world record, sensible floor
       const yMax = finishZoomed ? 215 : 332;  // 215 min = 3:35, 332 min = 5:32
       drawFanChart('chart-finish', DATA.fan_data[grp], {
         metric: 'finish',
