@@ -807,6 +807,130 @@
         padding: 20px;
       }
     }
+
+    /* ══════════ RACE FORECAST CARD ══════════ */
+    #forecast-card {
+      background: linear-gradient(135deg, rgba(79,128,226,.09), rgba(155,114,240,.06));
+      border: 1px solid rgba(79,128,226,.22);
+      border-radius: var(--rad);
+      padding: 22px 26px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(14px);
+    }
+
+    .fc-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .fc-icon { font-size: 1.9rem; line-height: 1; }
+
+    .fc-title {
+      font-weight: 800;
+      font-size: .92rem;
+      letter-spacing: -.01em;
+    }
+
+    .fc-subtitle {
+      font-size: .73rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .fc-countdown {
+      margin-left: auto;
+      background: rgba(79,128,226,.14);
+      border: 1px solid rgba(79,128,226,.28);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .fc-stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fc-stat {
+      flex: 1;
+      min-width: 120px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: var(--rad-sm);
+      padding: 13px 15px;
+    }
+
+    .fcs-lbl {
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .fcs-val {
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -.04em;
+    }
+
+    .fcs-sub {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    .fc-loading {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 10px 0;
+    }
+
+    .fc-footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fc-applied {
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .fc-reapply {
+      background: rgba(79,128,226,.12);
+      border: 1px solid rgba(79,128,226,.28);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background .18s;
+    }
+
+    .fc-reapply:hover { background: rgba(79,128,226,.22); }
+
+    .fc-error {
+      color: var(--muted);
+      font-size: 12.5px;
+      padding: 8px 0;
+    }
   </style>
 </head>
 
@@ -852,6 +976,25 @@
           <div class="lbl">Hottest Race Day (2018)</div>
         </div>
       </div>
+      <!-- ── 2026 Race Forecast Card ── -->
+      <div id="forecast-card">
+        <div class="fc-header">
+          <span class="fc-icon" id="fc-icon">📅</span>
+          <div>
+            <div class="fc-title">London Marathon 2026 — Live Race Day Forecast</div>
+            <div class="fc-subtitle">26 April · 10am Start · Blackheath → The Mall · Open-Meteo</div>
+          </div>
+          <div class="fc-countdown" id="fc-countdown"></div>
+        </div>
+        <div class="fc-stats" id="fc-stats">
+          <div class="fc-loading">Fetching forecast…</div>
+        </div>
+        <div class="fc-footer" id="fc-footer" style="display:none">
+          <span class="fc-applied">✓ Forecast values applied to calculator</span>
+          <button class="fc-reapply" onclick="applyForecastToCalc()">Re-apply to Calculator →</button>
+        </div>
+      </div>
+
       <div class="year-cards" id="yearCards"></div>
     </div>
   </section>
@@ -1653,6 +1796,126 @@
       el.style.color = w < -5 ? 'var(--hot)' : w > 5 ? 'var(--cool)' : 'var(--muted)';
     }
 
+    // ─── Race Forecast ─────────────────────────────────────────────────────────────
+    const RACE_ISO       = '2026-04-26';
+    const RACE_HOUR      = 10;          // 10am local
+    const FC_LAT         = 51.4774;     // Blackheath start
+    const FC_LON         = 0.0090;
+    const TAILWIND_FROM  = 115;         // ESE — direction a true tailwind comes FROM
+    let   raceForecastData = null;
+
+    function degToCompass(deg) {
+      const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+      return dirs[Math.round(deg / 22.5) % 16];
+    }
+
+    function updateCountdown() {
+      const raceMs = new Date(RACE_ISO + 'T10:00:00+01:00').getTime();
+      const diffMs = raceMs - Date.now();
+      const el = document.getElementById('fc-countdown');
+      if (!el) return;
+      if (diffMs <= 0) { el.textContent = '🏁 Race Day!'; return; }
+      const days  = Math.floor(diffMs / 86400000);
+      const hours = Math.floor((diffMs % 86400000) / 3600000);
+      el.textContent = days > 0 ? `${days}d ${hours}h to race` : `${hours}h to race`;
+    }
+
+    async function fetchRaceForecast() {
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+
+      const url = `https://api.open-meteo.com/v1/forecast` +
+        `?latitude=${FC_LAT}&longitude=${FC_LON}` +
+        `&hourly=temperature_2m,wind_speed_10m,wind_direction_10m,precipitation_probability` +
+        `&wind_speed_unit=kmh&timezone=Europe%2FLondon` +
+        `&start_date=${RACE_ISO}&end_date=${RACE_ISO}`;
+
+      try {
+        const res  = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const h    = data.hourly;
+
+        const temp = h.temperature_2m[RACE_HOUR];
+        const wSpd = h.wind_speed_10m[RACE_HOUR];
+        const wDir = h.wind_direction_10m[RACE_HOUR];
+        const rain = h.precipitation_probability ? h.precipitation_probability[RACE_HOUR] : null;
+
+        // Course-aligned component: positive = tailwind from ESE, negative = headwind
+        const angleRad  = (wDir - TAILWIND_FROM) * Math.PI / 180;
+        const courseTW  = wSpd * Math.cos(angleRad);
+
+        raceForecastData = { temp, wSpd, wDir, courseTW, rain };
+        renderForecastCard(raceForecastData);
+        applyForecastToCalc();
+
+      } catch (err) {
+        const st = document.getElementById('fc-stats');
+        if (st) st.innerHTML = `<div class="fc-error">⚠ Could not load forecast — try again closer to race day. (${err.message})</div>`;
+        document.getElementById('fc-icon').textContent = '⚠️';
+      }
+    }
+
+    function renderForecastCard(d) {
+      const statsEl  = document.getElementById('fc-stats');
+      const footerEl = document.getElementById('fc-footer');
+      const iconEl   = document.getElementById('fc-icon');
+      if (!statsEl) return;
+
+      const tColor   = tempColor(d.temp);
+      const isHead   = d.courseTW < -2;
+      const isTail   = d.courseTW >  2;
+      const twSign   = isTail ? '+' : '';
+      const twLabel  = isTail  ? 'tailwind — slight benefit'
+                     : isHead  ? 'headwind — adds time'
+                     : 'near-calm on course';
+      const twColor  = isTail ? 'var(--cool)' : isHead ? 'var(--hot)' : 'var(--muted)';
+      const tempDesc = d.temp < 10 ? 'Cool — ideal conditions'
+                     : d.temp < 15 ? 'Mild — near ideal'
+                     : d.temp < 18 ? 'Warm — slight impact'
+                     : d.temp < 22 ? 'Hot — significant slowdown'
+                     : 'Very hot — tough day ahead';
+
+      iconEl.textContent = d.temp >= 20 ? '🔥' : d.temp >= 15 ? '☀️' : d.temp >= 10 ? '🌤️' : '❄️';
+
+      statsEl.innerHTML = `
+        <div class="fc-stat">
+          <div class="fcs-lbl">Temperature at 10am</div>
+          <div class="fcs-val" style="color:${tColor}">${d.temp.toFixed(1)}<span style="font-size:1rem">°C</span></div>
+          <div class="fcs-sub">${tempDesc}</div>
+        </div>
+        <div class="fc-stat">
+          <div class="fcs-lbl">Wind Speed</div>
+          <div class="fcs-val">${d.wSpd.toFixed(1)}<span style="font-size:1rem"> km/h</span></div>
+          <div class="fcs-sub">From ${degToCompass(d.wDir)} (${Math.round(d.wDir)}°)</div>
+        </div>
+        <div class="fc-stat">
+          <div class="fcs-lbl">Course Impact</div>
+          <div class="fcs-val" style="color:${twColor}">${twSign}${d.courseTW.toFixed(1)}<span style="font-size:1rem"> km/h</span></div>
+          <div class="fcs-sub">${twLabel}</div>
+        </div>
+        ${d.rain !== null ? `
+        <div class="fc-stat">
+          <div class="fcs-lbl">Rain Chance</div>
+          <div class="fcs-val" style="color:${d.rain > 50 ? 'var(--cool)' : 'var(--muted)'}">${d.rain}<span style="font-size:1rem">%</span></div>
+          <div class="fcs-sub">${d.rain > 60 ? 'Rain likely' : d.rain > 30 ? 'Possible showers' : 'Mostly dry'}</div>
+        </div>` : ''}
+      `;
+
+      if (footerEl) footerEl.style.display = 'flex';
+    }
+
+    function applyForecastToCalc() {
+      if (!raceForecastData) return;
+      const { temp, courseTW } = raceForecastData;
+      // Clamp to slider ranges
+      document.getElementById('calcTemp').value = Math.max(5,  Math.min(28, Math.round(temp * 2) / 2));
+      document.getElementById('calcWind').value = Math.max(-25, Math.min(25, Math.round(courseTW)));
+      onTempChange();
+      onWindChange();
+      runCalc();
+    }
+
     // ─── Init ──────────────────────────────────────────────────────────────────────
     function init() {
       buildHero();
@@ -1686,6 +1949,9 @@
       onTempChange();
       onWindChange();
       runCalc();
+
+      // Live race forecast — fetches & auto-fills calculator
+      fetchRaceForecast();
     }
 
     function renderSlowdownChart(grp) {
