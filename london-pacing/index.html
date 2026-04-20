@@ -1706,7 +1706,7 @@
       return '5h+';
     }
 
-    const WIND_COEFF = 2.0;  // sec/km per m/s headwind (Olds et al. 1995)
+    const WIND_COEFF = 1.0;  // sec/km per m/s headwind — halved from Olds et al. (1995) to account for drafting in mass-race conditions
     const COURSE_KM = 42.195;
     const REF_TEMP = 10;   // °C — "perfect conditions" reference
 
