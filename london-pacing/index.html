@@ -810,8 +810,8 @@
 
     /* ══════════ RACE FORECAST CARD ══════════ */
     #forecast-card {
-      background: linear-gradient(135deg, rgba(79,128,226,.09), rgba(155,114,240,.06));
-      border: 1px solid rgba(79,128,226,.22);
+      background: linear-gradient(135deg, rgba(79, 128, 226, .09), rgba(155, 114, 240, .06));
+      border: 1px solid rgba(79, 128, 226, .22);
       border-radius: var(--rad);
       padding: 22px 26px;
       margin-bottom: 28px;
@@ -826,7 +826,10 @@
       flex-wrap: wrap;
     }
 
-    .fc-icon { font-size: 1.9rem; line-height: 1; }
+    .fc-icon {
+      font-size: 1.9rem;
+      line-height: 1;
+    }
 
     .fc-title {
       font-weight: 800;
@@ -842,8 +845,8 @@
 
     .fc-countdown {
       margin-left: auto;
-      background: rgba(79,128,226,.14);
-      border: 1px solid rgba(79,128,226,.28);
+      background: rgba(79, 128, 226, .14);
+      border: 1px solid rgba(79, 128, 226, .28);
       border-radius: 999px;
       padding: 4px 14px;
       font-size: 11px;
@@ -861,7 +864,7 @@
     .fc-stat {
       flex: 1;
       min-width: 120px;
-      background: rgba(255,255,255,.04);
+      background: rgba(255, 255, 255, .04);
       border: 1px solid var(--border);
       border-radius: var(--rad-sm);
       padding: 13px 15px;
@@ -912,8 +915,8 @@
     }
 
     .fc-reapply {
-      background: rgba(79,128,226,.12);
-      border: 1px solid rgba(79,128,226,.28);
+      background: rgba(79, 128, 226, .12);
+      border: 1px solid rgba(79, 128, 226, .28);
       border-radius: 6px;
       padding: 4px 12px;
       font-size: 11px;
@@ -924,7 +927,9 @@
       transition: background .18s;
     }
 
-    .fc-reapply:hover { background: rgba(79,128,226,.22); }
+    .fc-reapply:hover {
+      background: rgba(79, 128, 226, .22);
+    }
 
     .fc-error {
       color: var(--muted);
@@ -1797,15 +1802,15 @@
     }
 
     // ─── Race Forecast ─────────────────────────────────────────────────────────────
-    const RACE_ISO       = '2026-04-26';
-    const RACE_HOUR      = 10;          // 10am local
-    const FC_LAT         = 51.4774;     // Blackheath start
-    const FC_LON         = 0.0090;
-    const TAILWIND_FROM  = 115;         // ESE — direction a true tailwind comes FROM
-    let   raceForecastData = null;
+    const RACE_ISO = '2026-04-26';
+    const RACE_HOUR = 10;          // 10am local
+    const FC_LAT = 51.4774;     // Blackheath start
+    const FC_LON = 0.0090;
+    const TAILWIND_FROM = 115;         // ESE — direction a true tailwind comes FROM
+    let raceForecastData = null;
 
     function degToCompass(deg) {
-      const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+      const dirs = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
       return dirs[Math.round(deg / 22.5) % 16];
     }
 
@@ -1815,7 +1820,7 @@
       const el = document.getElementById('fc-countdown');
       if (!el) return;
       if (diffMs <= 0) { el.textContent = '🏁 Race Day!'; return; }
-      const days  = Math.floor(diffMs / 86400000);
+      const days = Math.floor(diffMs / 86400000);
       const hours = Math.floor((diffMs % 86400000) / 3600000);
       el.textContent = days > 0 ? `${days}d ${hours}h to race` : `${hours}h to race`;
     }
@@ -1831,10 +1836,10 @@
         `&start_date=${RACE_ISO}&end_date=${RACE_ISO}`;
 
       try {
-        const res  = await fetch(url);
+        const res = await fetch(url);
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
-        const h    = data.hourly;
+        const h = data.hourly;
 
         const temp = h.temperature_2m[RACE_HOUR];
         const wSpd = h.wind_speed_10m[RACE_HOUR];
@@ -1842,8 +1847,8 @@
         const rain = h.precipitation_probability ? h.precipitation_probability[RACE_HOUR] : null;
 
         // Course-aligned component: positive = tailwind from ESE, negative = headwind
-        const angleRad  = (wDir - TAILWIND_FROM) * Math.PI / 180;
-        const courseTW  = wSpd * Math.cos(angleRad);
+        const angleRad = (wDir - TAILWIND_FROM) * Math.PI / 180;
+        const courseTW = wSpd * Math.cos(angleRad);
 
         raceForecastData = { temp, wSpd, wDir, courseTW, rain };
         renderForecastCard(raceForecastData);
@@ -1857,24 +1862,24 @@
     }
 
     function renderForecastCard(d) {
-      const statsEl  = document.getElementById('fc-stats');
+      const statsEl = document.getElementById('fc-stats');
       const footerEl = document.getElementById('fc-footer');
-      const iconEl   = document.getElementById('fc-icon');
+      const iconEl = document.getElementById('fc-icon');
       if (!statsEl) return;
 
-      const tColor   = tempColor(d.temp);
-      const isHead   = d.courseTW < -2;
-      const isTail   = d.courseTW >  2;
-      const twSign   = isTail ? '+' : '';
-      const twLabel  = isTail  ? 'tailwind — slight benefit'
-                     : isHead  ? 'headwind — adds time'
-                     : 'near-calm on course';
-      const twColor  = isTail ? 'var(--cool)' : isHead ? 'var(--hot)' : 'var(--muted)';
+      const tColor = tempColor(d.temp);
+      const isHead = d.courseTW < -2;
+      const isTail = d.courseTW > 2;
+      const twSign = isTail ? '+' : '';
+      const twLabel = isTail ? 'tailwind — slight benefit'
+        : isHead ? 'headwind — adds time'
+          : 'near-calm on course';
+      const twColor = isTail ? 'var(--cool)' : isHead ? 'var(--hot)' : 'var(--muted)';
       const tempDesc = d.temp < 10 ? 'Cool — ideal conditions'
-                     : d.temp < 15 ? 'Mild — near ideal'
-                     : d.temp < 18 ? 'Warm — slight impact'
-                     : d.temp < 22 ? 'Hot — significant slowdown'
-                     : 'Very hot — tough day ahead';
+        : d.temp < 15 ? 'Mild — near ideal'
+          : d.temp < 18 ? 'Warm — slight impact'
+            : d.temp < 22 ? 'Hot — significant slowdown'
+              : 'Very hot — tough day ahead';
 
       iconEl.textContent = d.temp >= 20 ? '🔥' : d.temp >= 15 ? '☀️' : d.temp >= 10 ? '🌤️' : '❄️';
 
@@ -1909,7 +1914,7 @@
       if (!raceForecastData) return;
       const { temp, courseTW } = raceForecastData;
       // Clamp to slider ranges
-      document.getElementById('calcTemp').value = Math.max(5,  Math.min(28, Math.round(temp * 2) / 2));
+      document.getElementById('calcTemp').value = Math.max(5, Math.min(28, Math.round(temp * 2) / 2));
       document.getElementById('calcWind').value = Math.max(-25, Math.min(25, Math.round(courseTW)));
       onTempChange();
       onWindChange();
