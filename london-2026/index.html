@@ -543,7 +543,8 @@
       <section class="section" id="s-finish">
         <div class="section-header">
           <h2>Finish Time Distribution</h2>
-          <p>All finishers including elites. Spikes at round-number targets are clearly visible. Hover for exact time.
+          <p>All finishers including elites. Spikes at round-number targets are clearly visible, showing the
+            motivational value of a goal.
           </p>
         </div>
         <div class="chart-wrap chart-tall" id="chart-finish"></div>
@@ -574,8 +575,9 @@
       <section class="section" id="s-scatter">
         <div class="section-header">
           <h2>Half 1 vs Half 2</h2>
-          <p>Every plotted runner. The dashed diagonal = perfect even split. Points above the line slowed in the second
-            half. All top 200 mass runners are guaranteed to be shown alongside a random sample. Elites shown as stars,
+          <p>The dashed diagonal = perfect even split. Points above the line slowed in the second
+            half. All top 200 mass runners are guaranteed to be shown alongside a random sample from the field. Elites
+            shown as stars,
             suspicious results in red.</p>
         </div>
         <div class="chart-wrap chart-tall" id="chart-scatter"></div>
@@ -585,9 +587,9 @@
       <section class="section" id="s-suspicious">
         <div class="section-header">
           <h2>⚠️ Suspicious Results</h2>
-          <p>Runners whose second half was <strong>≥25% faster</strong> than their first half, where the first half was
-            over 90 minutes. May indicate timing mat errors or course shortcuts. Results are anonymised — not confirmed
-            cheating.</p>
+          <p>Runners whose second half suspiciously fast. May indicate timing mat errors or course shortcuts. Results
+            are anonymised. This is not confirmed
+            cheating. Judge for yourself.</p>
         </div>
         <div class="table-wrap" id="suspicious-table"></div>
       </section>
@@ -639,7 +641,7 @@
   <footer>
     <div class="container">
       <p>Data: results.tcslondonmarathon.com &nbsp;·&nbsp; Unofficial results &nbsp;·&nbsp; 26 April 2026 &nbsp;·&nbsp;
-        Analysis by Antigravity</p>
+        Analysis by Antigravity with support from Josh Elston-Carr</p>
     </div>
   </footer>
 
@@ -741,7 +743,7 @@
         { label: 'Negative Split — Men', value: `${s.pct_neg_m}%`, sub: 'ran faster H2', cls: 'ms-green' },
         { label: 'Negative Split — Women', value: `${s.pct_neg_f}%`, sub: 'ran faster H2', cls: 'ms-green' },
       ].map(c => `<div class="mini-stat ${c.cls}"><div class="ms-label">${c.label}</div><div class="ms-value">${c.value}</div><div class="ms-sub">${c.sub}</div></div>`).join('');
-      $('insight-pacing').innerHTML = `<strong>The Wall:</strong> Runners finishing ~4 hrs slowed an average of 12–15%. Elites held to just <strong>+${D.comparison.med[0]}%</strong> (men) / <strong>+${D.comparison.med[1]}%</strong> (women).`;
+      $('insight-pacing').innerHTML = `<strong>The Wall:</strong> Slower runners fade more than the elites. Men fade more than women.`;
     }
 
     // ── chart 4: scatter (top 200 guaranteed, no special colour) ─────
